@@ -1,0 +1,23 @@
+% Nicer TODO's
+\newcommand{\TODO}[1]{\todo[color=red,inline,size=\small]{TODO: #1}}
+\newcommand{\extra}[1]{\todo[color=orange,inline,size=\small]{EXTRA: #1}}
+\newcommand{\clarify}[1]{\todo[color=yellow,inline,size=\small]{CLARIFY: #1}}
+\newcommand{\question}[1]{\todo[color=green,inline,size=\small]{QUESTION: #1}}
+
+\newcommand{\why}[0]{\clarify{waarom?}}
+\newcommand{\needed}[0]{\clarify{referentie?}}
+
+% More space between math arrays
+\renewcommand{\arraystretch}{1.25}
+
+% An actual QED symbol.
+\renewcommand{\qedsymbol}{$\square$}
+
+\definecolor{solarback}{HTML}{FDF6E3}
+\definecolor{solarfront}{HTML}{657A81}
+\mdfdefinestyle{klad}{linewidth=0pt,backgroundcolor=solarback,fontcolor=solarfront}
+\newenvironment{klad}{\begin{mdframed}[style=klad]}{\end{mdframed}}
+
+
+% \nointent everywhere
+\setlength\parindent{0pt}

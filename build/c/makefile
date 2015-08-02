@@ -33,12 +33,11 @@ CPP = g++
 
 TESTSUITE = testsuite.bin
 LIB_FLAGS = -lgtest -leuler
-OUTPUT_FLAG = -o $(TESTSUITE)
 TEST_SRCS = test.cpp
 
 
 FLAGS = \
-	$(OUTPUT_FLAG) \
+	-o $(TESTSUITE) \
 	$(LIB_DIR_FLAGS) \
 	$(LIB_FLAGS)
 

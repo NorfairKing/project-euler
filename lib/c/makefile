@@ -22,7 +22,6 @@ OBJS=$(SRCS:.c=.o)
 	ar rcs lib$@ $<
 
 euler.a: $(OBJS)
-	echo $(OBJS)
 	ar rcs libeuler.a $(OBJS)
 
 

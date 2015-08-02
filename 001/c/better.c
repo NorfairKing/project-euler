@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int solve(int p);
+int solve (int p);
 int multiples_under(int p, int n);
 
 #ifndef TESTING
@@ -19,7 +19,11 @@ int solve(int p) {
     return sum;
 }
 
-int multiples_under (int p, int n){
-    int pdn = p / n - (p % n == 0);
-    return (n * pdn * (pdn + 1)) / 2;
+int multiples_under(int p, int n) {
+    int sum = 0;
+    int i;
+    for (i = 0; i < p; i += n ) {
+        sum += i;
+    }
+    return sum;
 }
