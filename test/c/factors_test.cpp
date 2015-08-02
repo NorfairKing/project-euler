@@ -6,6 +6,17 @@
 #include "factors.h"
 #include "primes.h"
 
+TEST(factors, even_odd) {
+    int n = 100;
+    int i;
+    for (i = 0; i < n; i+= 2){
+        EXPECT_TRUE(even(i));
+        EXPECT_FALSE(odd(i));
+        EXPECT_TRUE(odd(i+1));
+        EXPECT_FALSE(even(i+1));
+    }
+}
+
 TEST(factors, divides_zero) {
     EXPECT_TRUE(divides(1, 0));
     EXPECT_TRUE(divides(2, 0));

@@ -1,5 +1,21 @@
 #include <stdbool.h>
 
+#include "factors.h"
+
+/*
+ * Test whether a given number is even, that is, divisible by 2.
+ */
+bool even(int n) {
+    return ! odd(n);
+}
+
+/*
+ * Test whether a given number is odd, that is, not divisible by 2.
+ */
+bool odd(int n) {
+    return n & 1;
+}
+
 /*
  * Test whether a given number divides a given other number
  */

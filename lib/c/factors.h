@@ -3,6 +3,12 @@
 
 #include <stdbool.h>
 
+bool even(int n);
+bool even_l(int n);
+
+bool odd(int n);
+bool odd_l(long n);
+
 bool is_factor(int n, int m);
 bool is_factor_l(long n, long m);
 

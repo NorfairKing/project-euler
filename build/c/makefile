@@ -11,18 +11,17 @@ WARNING_FLAGS = -Wall -Werror
 LIB_DIR = $(EDEN_ROOT)/lib/c
 LIB_DIR_FLAGS = -L$(LIB_DIR) -I$(LIB_DIR)
 
-LIBS = -leuler
-
 CC_FLAGS = $(OPTIMISATION_FLAG) \
            $(WARNING_FLAGS) \
            $(LIB_DIR_FLAGS) \
-           $(LIBS) \
-           $(OUTPUT_FLAG) \
+           $(OUTPUT_FLAG)
+
+SRCS=$(wildcard $(LIB_DIR)/*.c)
 
 all: solver
 
 solver:
-	$(CC) $(SOLUTION_NAME) $(CC_FLAGS) 
+	$(CC) $(SOLUTION_NAME) $(SRCS) $(CC_FLAGS) 
 
 ## Tests
 
@@ -32,9 +31,8 @@ test: testsuite
 CPP = g++
 
 TESTSUITE = testsuite.bin
-LIB_FLAGS = -lgtest -leuler
+LIB_FLAGS = -lgtest
 TEST_SRCS = test.cpp
-
 
 FLAGS = \
 	-o $(TESTSUITE) \
@@ -43,7 +41,7 @@ FLAGS = \
 
 
 testsuite:
-	$(CPP) $(TEST_SRCS) $(FLAGS)
+	$(CPP) $(SRCS) $(TEST_SRCS) $(FLAGS)
 
 
 

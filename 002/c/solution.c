@@ -1,4 +1,5 @@
-#include <stdio.h>
+#include <stdio.h> 
+#include "factors.h"
 
 int solve(int p);
 
@@ -16,7 +17,7 @@ int solve (int p) {
     int cur = 1;
 
     while (cur <= p){
-        if (cur & 1){
+        if (even(cur)){
             sum += cur;
         }
 

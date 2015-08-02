@@ -2,6 +2,7 @@
 #include <gtest/gtest.h>
 
 #define TESTING
+#include "factors.h"
 #include "solution.c"
 
 GTEST_API_ int main(int argc, char **argv) {
@@ -14,5 +15,5 @@ TEST(problem, easy) {
 }
 
 TEST(problem, correct) {
-    EXPECT_EQ(4613731, solve(4000000));
+    EXPECT_EQ(4613732, solve(4000000));
 }

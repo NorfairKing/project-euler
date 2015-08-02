@@ -13,6 +13,8 @@ FLAGS = $(LIB_FLAGS) \
 test: compile
 	./$(TESTSUITE)
 
+SRCS = SRCS=$(wildcard $(LIB_DIR)/*.[hc])
+
 compile:
 	$(CPP) $(TEST_SRCS) $(SRC_DIR)/*.[hc] -I$(SRC_DIR) $(FLAGS)
 
