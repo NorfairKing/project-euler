@@ -1,7 +1,14 @@
 #include <stdio.h>
 
+int solve ();
+
+#ifndef TESTING
 int main () {
-    int p = 1000;
+    printf("%d\n", solve(1000));
+}
+#endif
+
+int solve(int p) {
     int sum = 0;
 
     int i;
@@ -10,7 +17,5 @@ int main () {
             sum += i;
         }
     }
-
-    printf("%d\n",sum);
+    return sum;
 }
-

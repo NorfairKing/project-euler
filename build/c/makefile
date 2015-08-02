@@ -24,6 +24,29 @@ all: solver
 solver:
 	$(CC) $(SOLUTION_NAME) $(CC_FLAGS) 
 
+## Tests
+
+test: testsuite
+	./$(TESTSUITE)
+
+CPP = g++
+
+TESTSUITE = testsuite.bin
+LIB_FLAGS = -lgtest -leuler
+OUTPUT_FLAG = -o $(TESTSUITE)
+TEST_SRCS = test.cpp
+
+
+FLAGS = \
+	$(OUTPUT_FLAG) \
+	$(LIB_DIR_FLAGS) \
+	$(LIB_FLAGS)
+
+
+testsuite:
+	$(CPP) $(TEST_SRCS) $(FLAGS)
+
+
 
 DIRTY_EXT = *.o
 DIRTY = $(DIRTY_EXT) $(BIN_NAME)
