@@ -18,7 +18,7 @@ solve nr = (maximum . (map product) . (setsOf p) . digits) nr
 
 -- IO
 rd :: String -> Integer
-rd x  = read x :: Integer
+rd x = read x :: Integer
 
 main :: IO ()
 main = do

@@ -1,10 +1,10 @@
-CC = g++
+CPP = g++
 
 TESTSUITE = testsuite.bin
 LIB_FLAGS = -lgtest
 OUTPUT_FLAG = -o $(TESTSUITE)
 TEST_SRCS = *.cpp
-SRC_DIR = ../../lib/c
+SRC_DIR = $(EDEN_ROOT)/lib/c
 
 
 FLAGS = $(LIB_FLAGS) \
@@ -14,5 +14,5 @@ test: compile
 	./$(TESTSUITE)
 
 compile:
-	$(CC) $(TEST_SRCS) $(SRC_DIR)/*.[hc] -I$(SRC_DIR) $(FLAGS)
+	$(CPP) $(TEST_SRCS) $(SRC_DIR)/*.[hc] -I$(SRC_DIR) $(FLAGS)
 

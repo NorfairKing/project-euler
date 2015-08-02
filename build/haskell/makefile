@@ -10,26 +10,32 @@ GHC_FLAGS = 	-fwarn-unused-imports \
 				-Wall \
 				-fno-warn-unused-do-bind \
 				-fno-warn-name-shadowing
-GHC_SRC_DIRS = 	-i$(SRC_DIR) \
-			   	-ibenchmarks \
-			   	-itests
 GHC_OPTIONS = 	-threaded \
 				$(GHC_OPTIMISATION) \
-				$(GHC_FLAGS) \
-				$(GHC_SRC_DIRS)
+				$(GHC_FLAGS)
 
 
 SRC_DIR = src
 
 all: bin
-	
+
 bin:
 	$(GHC) $(GHC_OPTIONS) -o $(BIN) --make $(SRC)
 
-love:
-	@echo "not war"
+TESTSUITE = testsuite.bin
+TEST_SRC = Test.hs
+
+test: testsuite
+	./$(TESTSUITE)
+
+testsuite:
+	$(GHC) -o $(TESTSUITE) $(TEST_SRC) --make -main-is Test.test
+	
 	
 DIRTY_EXT = *.o *.hi *.bin
 
 clean:
 	rm -f $(BIN) $(DIRTY_EXT)
+
+love:
+	@echo "not war"
