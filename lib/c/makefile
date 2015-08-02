@@ -15,15 +15,15 @@ libs: $(LIBS)
 SRCS=$(wildcard *.c)
 OBJS=$(SRCS:.c=.o)
 
-euler.a: $(OBJS)
-	ar rcs libeuler.a $(OBJS)
-
 %.o : %.c
 	$(CC) -c -fpic $(CC_FLAGS) $< -o $@
 
 %.a: %.o
 	ar rcs lib$@ $<
 
+euler.a: $(OBJS)
+	echo $(OBJS)
+	ar rcs libeuler.a $(OBJS)
 
 
 DIRTY_EXT = *.o *.so *.a
