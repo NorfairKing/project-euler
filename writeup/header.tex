@@ -1,11 +1,25 @@
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[chapter] %Reset counter every chapter
+\theoremstyle{definition}
+\newmdtheoremenv{de}[thm]{Definition} % Definitie with frame
+\newtheorem{prop}[thm]{Property}
+\let\th\undefined
+\newtheorem{th}[thm]{Theorem}
+\newtheorem{pr}[thm]{Proposition}
+\newtheorem{nt}[thm]{Note}
+\newtheorem{ex}[thm]{Example}
+\newtheorem{cex}[thm]{Counterexample}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{alg}[thm]{Algorithm}
+
 % Nicer TODO's
 \newcommand{\TODO}[1]{\todo[color=red,inline,size=\small]{TODO: #1}}
 \newcommand{\extra}[1]{\todo[color=orange,inline,size=\small]{EXTRA: #1}}
 \newcommand{\clarify}[1]{\todo[color=yellow,inline,size=\small]{CLARIFY: #1}}
 \newcommand{\question}[1]{\todo[color=green,inline,size=\small]{QUESTION: #1}}
 
-\newcommand{\why}[0]{\clarify{waarom?}}
-\newcommand{\needed}[0]{\clarify{referentie?}}
+\newcommand{\why}[0]{\clarify{why?}}
+\newcommand{\needed}[0]{\clarify{reference?}}
 
 % More space between math arrays
 \renewcommand{\arraystretch}{1.25}

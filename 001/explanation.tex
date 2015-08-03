@@ -40,13 +40,13 @@ First we have to rewrite the formula, but for the sake of simplicity we will cou
 + \sum_{i=0}^{5i \le p}5i
 - \sum_{i=0}^{15i \le p}15i
 \\
-&= \sum_{i=0}^{i \le \floor{\frac{p}{3}}}3i
-+ \sum_{i=0}^{i \le \floor{\frac{p}{5}}}5i
-- \sum_{i=0}^{i \le \floor{\frac{p}{3\cdot 5}}}15i
+&= \sum_{i=0}^{i \le \floor*{\frac{p}{3}}}3i
++ \sum_{i=0}^{i \le \floor*{\frac{p}{5}}}5i
+- \sum_{i=0}^{i \le \floor*{\frac{p}{3\cdot 5}}}15i
 \\
-&= 3\sum_{i=0}^{\floor{\frac{p}{3}}}i
-+ 5\sum_{i=0}^{\floor{\frac{p}{5}}}i
-- 15\sum_{i=0}^{\floor{\frac{p}{3\cdot 5}}}i
+&= 3\sum_{i=0}^{\floor*{\frac{p}{3}}}i
++ 5\sum_{i=0}^{\floor*{\frac{p}{5}}}i
+- 15\sum_{i=0}^{\floor*{\frac{p}{3\cdot 5}}}i
 \\
 &= 3\frac{\floor{\frac{p}{3}}\cdot \left(\floor{\frac{p}{3}} + 1\right)}{2}
 + 5\frac{\floor{\frac{p}{5}}\cdot \left(\floor{\frac{p}{5}} + 1\right)}{2}
