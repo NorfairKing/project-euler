@@ -10,8 +10,7 @@ The naïve solution, to check every Fibonnacci number, gives us an $O(N)$ runtim
 Because the terms of the Fibonacci sequence grow exponentially, that is an $O(\log(p))$ runtime solution.
 
 \begin{figure}[H]
-\centering
-\lstinputlisting[language=c, firstline=11, lastline=29]{\sol{002}{c}/naive.c}
+\lstinputlisting[language=c, firstline=11, lastline=30]{\sol{002}{c}/naive.c}
 \caption{A Naïve solution}
 \end{figure}
 
@@ -46,7 +45,7 @@ Here $k$ is the largest number such that $F_{3k} < p$ holds.
 Rewriting this gets us the sum of two geometric series: \clarify{geometric series closed form}
 
 \begin{align*}
-    &= \frac{1}{\sqrt{5}}\left( \sum_{n=1}^{k}\Phi^{3n} - \sum_{n=1}^{k}(-\Phi)^{-3n} \right)\\
+    &= \frac{1}{\sqrt{5}}\left( \sum_{n=1}^{k}(\Phi^{3})^{n} - \sum_{n=1}^{k}(-\Phi^{3})^{n} \right)\\
     &= \frac{1}{\sqrt{5}}\left( \Phi^{3}\frac{1-\left(\Phi^{3}\right)^{k}}{1-\Phi^{3}} - \Phi^{-3}\frac{1-\left(-\Phi^{-3}\right)^{k}}{1+\Phi^{-3}} \right)
 \end{align*}
 
@@ -56,8 +55,7 @@ This can be done in constant time:
 \[ n(F_n) = \floor*{\frac{\ln{F_n \cdot \sqrt{5}}}{\ln{\Phi}+\frac{1}{2}}} \]
 
 \begin{figure}[H]
-\centering
-\lstinputlisting[language=c, firstline=16, lastline=32]{\sol{002}{c}/solution.c}
+\lstinputlisting[language=c, firstline=15, lastline=30]{\sol{002}{c}/solution.c}
 \caption{A Naïve solution}
 \end{figure}
 
