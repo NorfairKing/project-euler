@@ -1,20 +1,23 @@
 CPP = g++
 
-TESTSUITE = testsuite.bin
-LIB_FLAGS = -lgtest
-OUTPUT_FLAG = -o $(TESTSUITE)
-TEST_SRCS = *.cpp
+TESTSUITE = main.bin
 SRC_DIR = $(EDEN_ROOT)/lib/c
+LIB_SRCS = $(SRC_DIR)/*.[hc]
 
+LIB_FLAGS = -lgtest
+FLAGS = $(LIB_FLAGS)
 
-FLAGS = $(LIB_FLAGS) \
-		$(OUTPUT_FLAG)
+TESTCASES=$(wildcard *.cpp)
+UNITTESTS=$(TESTCASES:.cpp=.bin)
 
-test: compile
+all: $(TESTSUITE) $(UNITTESTS)
+
+test: $(TESTSUITE)
 	./$(TESTSUITE)
 
-SRCS = SRCS=$(wildcard $(LIB_DIR)/*.[hc])
+main.bin:
+	$(CPP) $(TESTCASES) $(LIB_SRCS) -I$(SRC_DIR) $(FLAGS) -o $(TESTSUITE)
 
-compile:
-	$(CPP) $(TEST_SRCS) $(SRC_DIR)/*.[hc] -I$(SRC_DIR) $(FLAGS)
+%.bin: %.cpp
+	$(CPP) main.cpp $< $(LIB_SRCS) -I$(SRC_DIR) $(FLAGS) -o $@
 
