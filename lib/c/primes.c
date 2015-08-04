@@ -6,7 +6,18 @@
  * Works in O(sqrt(n)) time.
  * Does not work on numbers smaller than 2
  */
-bool is_prime (long n) {
+bool is_prime (int n) {
+    if (n == 1){ return false; }
+    int i;
+    for (i = 2; i*i <= n; i++) {
+        if (is_factor(i, n)){
+            return false;
+        }
+    }
+    return true;
+}
+
+bool is_prime_l (long n) {
     if (n == 1){ return false; }
     int i;
     for (i = 2; i*i <= n; i++) {

@@ -13,14 +13,11 @@ int main () {
 #endif
 
 long solve(long p) {
-    long f = 2;
-
-    while (p > 1){
-        if (is_prime_l(f) && is_factor_l(f, p)){
-            p /= f;
-            continue;
+    long i;
+    for (i = p/2; i >= 1; i++){
+        if (is_prime(i) && is_factor_l(i, p)){
+            return i;
         }
-        f++;
     }
-    return f;
+    return 1;
 }

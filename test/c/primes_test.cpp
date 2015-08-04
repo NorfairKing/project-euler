@@ -28,6 +28,15 @@ TEST(primes, is_prime_under20) {
     EXPECT_FALSE(is_prime(20));
 }
 
+TEST(primes, is_prime_l) {
+    int n = 100;
+
+    int i;
+    for (i = 2; i < n; i++) {
+        EXPECT_EQ(is_prime(i), is_prime_l(i));
+    }
+}
+
 TEST(primes, sieve) {
     int n = 100;
 

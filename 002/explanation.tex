@@ -2,16 +2,16 @@
 \begin{document}
 
 \subsection{Problem 2: Even Fibonacci numbers}
-\subsubsection{A Naïve solution}
+\subsubsection{A naive solution}
 
 \TODO{ definition of Fibonacci series }
-An input size of $p=4000000$ is small enough to let us get away with a naïve solution.
-The naïve solution, to check every Fibonnacci number, gives us an $O(N)$ runtime in the amount of Fibonacci numbers calculated.
+An input size of $p=4000000$ is small enough to let us get away with a naive solution.
+The naive solution, to check every Fibonnacci number, gives us an $O(N)$ runtime in the amount of Fibonacci numbers calculated.
 Because the terms of the Fibonacci sequence grow exponentially, that is an $O(\log(p))$ runtime solution.
 
 \begin{figure}[H]
 \lstinputlisting[language=c, firstline=11, lastline=30]{\sol{002}{c}/naive.c}
-\caption{A Naïve solution}
+\caption{A naive solution}
 \end{figure}
 
 To optimise, we first need to see that every third Fibonacci number is even.
@@ -56,7 +56,7 @@ This can be done in constant time:
 
 \begin{figure}[H]
 \lstinputlisting[language=c, firstline=15, lastline=30]{\sol{002}{c}/solution.c}
-\caption{A Naïve solution}
+\caption{A better solution}
 \end{figure}
 
 \TODO{What's the total runtime complexity? It's logarithmic in $k$ but what's the relation between $n$ and $k$?}
