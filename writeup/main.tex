@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{book}
+\documentclass[12pt,a4paper,oneside]{book}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 
@@ -7,10 +7,16 @@
 
 \begin{document}
 
+\input{titlepage.tex}
 
 \tableofcontents
 
+\part{Background}
 \subfile{series}
+
+\part{Libraries}
+
+\part{Solutions}
 \input{explanations.tex}
 
 \listoftodos
