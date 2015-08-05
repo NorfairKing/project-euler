@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <math.h>
 
 #include "factors.h"
+#include "digit.h"
 
 int solve(int p);
 
@@ -13,23 +15,28 @@ int main () {
 #endif
 
 int solve(int p) {
-    int i,j,k;
-    int divisor;
-    int palindrome;
-    for (i = 9; i >= 0; i--) {
-        for (j = 9; j >= 0; j--) {
-            for (k = 9; k >= 0; k--) {
-                palindrome = 100000 * i
-                           +  10000 * j
-                           +   1000 * k
-                           +    100 * k
-                           +     10 * j
-                           +      1 * i;
-                for (divisor = 999; divisor >= 100; divisor--) {
-                    if (is_evenly_divisible_by(palindrome, divisor) && palindrome / divisor < 1000) {
-                        return palindrome;
-                    }
-                }
+    int len = 2*p; int hi = pow(10, p); int lo = pow(10, p-1);
+    int digits[len];
+    int i;
+    for (i = 0; i < hi; i++) {
+        int j;
+        int num = i;
+        for (j = p - 1; j >= 0; j--){
+            digits[j] = 9 - (num % 10);
+            num /= 10;
+        }
+
+        for (j = 0; j < p; j++) {
+            digits[len-1-j] = digits[j];
+        }
+
+        int palindrome = from_digits(digits, len);
+        
+        for (j = hi - 1; j >= lo; j--){
+            int q = palindrome / j;
+            int m = palindrome % j;
+            if (m == 0 && q < hi && q > lo) {
+                return palindrome;
             }
         }
     }

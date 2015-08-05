@@ -6,5 +6,6 @@
 
 int nr_of_digits(int n);
 int digit(int n, int p);
+int from_digits(int digit[], int n);
 
 #endif

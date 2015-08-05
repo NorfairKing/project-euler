@@ -3,16 +3,16 @@
 
 #include "palindrome.h"
 
-long solve(long p);
+int solve(int p);
 
 #ifndef TESTING
 int main () {
-    printf("%ld\n", solve(3));
+    printf("%d\n", solve(3));
     return 0;
 }
 #endif
 
-long solve(long p) {
+int solve(int p) {
     int max = 0;
     int lo = pow(10, p - 1); int hi = pow(10, p);
     int i,j,product;

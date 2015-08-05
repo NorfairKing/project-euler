@@ -26,3 +26,10 @@ TEST(digit, digit_some) {
     EXPECT_EQ(2,digit(1,21));
     EXPECT_EQ(4,digit(1,4941));
 }
+
+TEST(digit, from_digits) {
+    int digits1[] = {4,5,6,6};
+    EXPECT_EQ(4566, from_digits(digits1, 4));
+    int digits2[] = {2};
+    EXPECT_EQ(2, from_digits(digits2, 1));
+}
