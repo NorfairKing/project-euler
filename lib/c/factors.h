@@ -12,8 +12,8 @@ bool odd_l(long n);
 bool is_factor(int n, int m);
 bool is_factor_l(long n, long m);
 
-bool is_evenly_divisible(int n, int m);
-bool is_evenly_divisible_l(long n, long m);
+bool is_evenly_divisible_by(int n, int m);
+bool is_evenly_divisible_by_l(long n, long m);
 
 bool divides(int n, int m);
 bool divides_l(long n, long m);
