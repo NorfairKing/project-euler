@@ -9,6 +9,7 @@ double n(int fn);
 #ifndef TESTING
 int main () {
     printf("%d\n", solve(4000000));
+    return 0;
 }
 #endif
 

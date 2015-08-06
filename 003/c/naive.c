@@ -9,6 +9,7 @@ long solve(long p);
 #ifndef TESTING
 int main () {
     printf("%ld\n", solve(600851475143));
+    return 0;
 }
 #endif
 

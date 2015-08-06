@@ -11,7 +11,7 @@ What is the largest prime factor of the number 600851475143 ?
 Let $p$ be $600851475143$.
 A very naive solution would be to go over every number from $1$ until $600851475143$, check if it's prime and if it's a factor, and keep the largest.
 \begin{figure}[H]
-    \lstinputlisting[language=c, firstline=15, lastline=24]{\sol{003}{c}/naive.c}
+    \lstinputlisting[language=c, firstline=16, lastline=25]{\sol{003}{c}/naive.c}
     \caption{A Naïve solution}
 \end{figure}
 This solution is $O(p)$, but with $p$ as big as it is, this will not finish within one minute.
@@ -21,7 +21,7 @@ A better solution would be to start from $p$ and work our way downwards until we
 Because we're now working out way down, it's a good idea to consider possible upper bounds for the largest prime factors of $p$.
 $p$ is an upper bound, but $\nicefrac{p}{2}$ is also an upper bound. \why
 \begin{figure}[H]
-    \lstinputlisting[language=c, firstline=15, lastline=23]{\sol{003}{c}/better.c}
+    \lstinputlisting[language=c, firstline=16, lastline=24]{\sol{003}{c}/better.c}
     \caption{A sligtly better solution}
 \end{figure}
 This is still $O(p)$ though.
@@ -32,7 +32,7 @@ Because the prime factorisation of a number is unique, the product of all prime 
 If we divide out every prime factor we find starting from $1$, the last prime factor we found will be the largest prime factor of $p$.
 
 \begin{figure}[H]
-    \lstinputlisting[language=c, firstline=15, lastline=26]{\sol{003}{c}/solution.c}
+    \lstinputlisting[language=c, firstline=16, lastline=27]{\sol{003}{c}/solution.c}
     \caption{A even better solution}
 \end{figure}
 

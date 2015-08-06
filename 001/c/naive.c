@@ -5,6 +5,7 @@ int solve (int p);
 #ifndef TESTING
 int main () {
     printf("%d\n", solve(1000));
+    return 0;
 }
 #endif
 
