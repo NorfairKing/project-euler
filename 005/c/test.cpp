@@ -14,5 +14,5 @@ TEST(problem, easy) {
 }
 
 TEST(problem, correct) {
-    //EXPECT_EQ(906609, solve(20));
+    EXPECT_EQ(232792560, solve(20));
 }

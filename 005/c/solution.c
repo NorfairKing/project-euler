@@ -2,32 +2,50 @@
 #include <stdbool.h>
 
 #include "factors.h"
+#include "primes.h"
+#include "order.h"
 
 int solve(int p);
-bool all_divisible(int p, int n);
 
 #ifndef TESTING
 int main () {
-    printf("%d\n", solve(10));
+    printf("%d\n", solve(20));
     return 0;
 }
 #endif
 
 int solve(int p) {
-    int i;
-    for (i = 1; ;i++) {
-        if (all_divisible(p, i)){
-            return i;
-        }
-    }
-}
+    int factors[p+1];
+    bool is_prime[p+1];
 
-bool all_divisible(int p, int n) {
-    int i;
-    for (i = 2; i <= p; i++) {
-        if (!is_evenly_divisible_by(n, i)){
-            return false;
+    sieve(is_prime, p+1);
+
+    int i, j, num, found;
+
+    for (i = 0; i <= p; i++) {
+        factors[i] = 0;
+    }
+
+    for (i = 2; i <= p ; i++) {
+        num = i; j = 2; found = 0;
+        while (num > 1) {
+            if (is_prime[j] && is_evenly_divisible_by(num, j)) {
+                found++; num /= j;
+            } else {
+                factors[j] = max(found, factors[j]);
+                found = 0; j++;
+            }
+        }
+        factors[j] = max(found, factors[j]);
+    }
+
+    int result = 1;
+    for (i = 1; i <= p; i++) {
+        if (is_prime[i]) {
+            for (j = 0; j < factors[i]; j++) {
+                result *= i;
+            }
         }
     }
-    return true;
+    return result;
 }
