@@ -15,7 +15,7 @@ int main () {
 
 int solve(int p) {
     int i;
-    for (i = 1; ;i++) {
+    for (i = 1;;i++) {
         if (all_divisible(p, i)){
             return i;
         }

@@ -17,17 +17,12 @@ int main () {
 int solve(int p) {
     int factors[p+1];
     bool is_prime[p+1];
+    int i, j, num, found;
 
     sieve(is_prime, p+1);
 
-    int i, j, num, found;
-
-    for (i = 0; i <= p; i++) {
-        factors[i] = 0;
-    }
-
     for (i = 2; i <= p ; i++) {
-        num = i; j = 2; found = 0;
+        factors[i] = 0; num = i; j = 2; found = 0;
         while (num > 1) {
             if (is_prime[j] && is_evenly_divisible_by(num, j)) {
                 found++; num /= j;
@@ -40,7 +35,7 @@ int solve(int p) {
     }
 
     int result = 1;
-    for (i = 1; i <= p; i++) {
+    for (i = 2; i <= p; i++) {
         if (is_prime[i]) {
             for (j = 0; j < factors[i]; j++) {
                 result *= i;
