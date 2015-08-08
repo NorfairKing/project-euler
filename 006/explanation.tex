@@ -1,46 +1,50 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
-\subsection{Problem 6: Sum square difference}
-\begin{problem}
-    The sum of the squares of the first ten natural numbers is,
-    \[ 1^2 + 2^2 + ... + 10^2 = 385 \]
+\begin{prob}{6}{Sum square difference}
+    \begin{problem}
+        The sum of the squares of the first ten natural numbers is,
+        \[ 1^2 + 2^2 + ... + 10^2 = 385 \]
 
-    The square of the sum of the first ten natural numbers is,
-    \[ (1 + 2 + ... + 10)^2 = 55^2 = 3025 \]
+        The square of the sum of the first ten natural numbers is,
+        \[ (1 + 2 + ... + 10)^2 = 55^2 = 3025 \]
 
-    Hence the difference between the sum of the squares of the first ten natural numbers and the square of the sum is $3025 - 385 = 2640$.
+        Hence the difference between the sum of the squares of the first ten natural numbers and the square of the sum is $3025 - 385 = 2640$.
 
-    Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
-\end{problem}
+        Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
+    \end{problem}
+    \begin{solutions}
+        \begin{solution}{A Naive solution}
+            Let $p$ be $100$.
 
-\subsubsection{A Naive solution}
-Let $p$ be $100$.
+            The naive solution is of course to just calculate both the sum of squares and the square of the sum.
 
-The naive solution is of course to just calculate both the sum of squares and the square of the sum.
+            \begin{figure}[H]
+                \lstinputlisting[language=haskell, firstline=1, lastline=10]{\sol{006}{haskell}/naive.hs}
+                \caption{A naive solution}
+            \end{figure}
 
-\begin{figure}[H]
-    \lstinputlisting[language=haskell, firstline=1, lastline=10]{\sol{006}{haskell}/naive.hs}
-    \caption{A naive solution}
-\end{figure}
+            This is an $O(p)$ solution and it's fast enough to reach a solution in under one minute.
+        \end{solution}
 
-This is an $O(p)$ solution and it's fast enough to reach a solution in under one minute.
+        \begin{solution}{A better solution}
+            There is, of course, a better solution.
+            The question even alludes to it.
 
-\subsubsection{A better solution}
-There is, of course, a better solution.
-The question even alludes to it.
+            The sum of natural numbers up to $p$ can be obtained in constant time: \needed
+            \[ \sum_{i}i = \frac{n(n+1)}{2} \]
 
-The sum of natural numbers up to $p$ can be obtained in constant time: \needed
-\[ \sum_{i}i = \frac{n(n+1)}{2} \]
+            The sum of the first $p$ natural squares can be obtained in constant time as well: \why
+            \[ \sum_{i}i^{2} = \frac{n(n+1)(n+2)}{6} \]
 
-The sum of the first $p$ natural squares can be obtained in constant time as well: \why
-\[ \sum_{i}i^{2} = \frac{n(n+1)(n+2)}{6} \]
+            This means that the solution can be computed in constant time.
 
-This means that the solution can be computed in constant time.
-
-\begin{figure}[H]
-    \lstinputlisting[language=haskell, firstline=1, lastline=2]{\sol{006}{haskell}/solution.hs}
-    \caption{A naive solution}
-\end{figure}
+            \begin{figure}[H]
+                \lstinputlisting[language=haskell, firstline=1, lastline=2]{\sol{006}{haskell}/solution.hs}
+                \caption{A better solution}
+            \end{figure}
+        \end{solution}
+    \end{solutions}
+\end{prob}
 
 \end{document}

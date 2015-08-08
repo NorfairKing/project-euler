@@ -32,15 +32,34 @@
 \mdfdefinestyle{klad}{linewidth=0pt,backgroundcolor=solarback,fontcolor=solarfront}
 \newenvironment{klad}{\begin{mdframed}[style=klad]}{\end{mdframed}}
 
-\newenvironment{problem}{}{}
+\newenvironment{prob}[2]
+{
+\newpage
+\section{Problem #1: #2}
+}
+{}
+
+\newenvironment{problem}
+{}
+{}
+
+\newenvironment{solutions}
+{}
+{}
+
+\newenvironment{solution}[1]
+{
+\subsection{#1}
+}
+{}
+
 
 % \nointent everywhere
 \setlength\parindent{0pt}
 
 % Eden root
 \newcommand{\eden}[0]{..}
-\newcommand{\prob}[1]{\eden/#1}
-\newcommand{\sol}[2]{\prob{#1}/#2}
+\newcommand{\sol}[2]{\eden/#1/#2}
 
 \lstset{
   basicstyle=\small\ttfamily
