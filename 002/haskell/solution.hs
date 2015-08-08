@@ -1,18 +1,10 @@
-import Data.List
-
-p :: Int
-p = 4000000
+import           Data.List
 
 fibs :: [Int]
 fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
 
-evenFibs :: [Int]
-evenFibs = [ x | x <- fibs, x `rem` 2 == 0]
+solve :: Int -> Int
+solve p = sum $ takeWhile (<= p) $ filter even fibs
 
-solve :: Int
-solve = sum $ takeWhile (<= p) evenFibs
-
--- IO
 main :: IO ()
-main = do
-    putStrLn $ show solve        
+main = print $ solve 4000000
