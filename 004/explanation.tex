@@ -17,6 +17,8 @@ The most naive solution would be to go over every pair of $p$-digit numbers and 
 This solution is $O(N^2)$ in the amount of $p$-digit numbers, so $O(10^{2p})$.
 Given that $p$ is only $3$, this solution is already good enough to get an answer within one minute.
 
+\TODO{ A solution using a priority queue to look downwards }
+
 \subsubsection{A better solution}
 The worst part of the naive solution is that we're still checking a lot of number that aren't even palindromes.
 We could generate palindromes, check whether they have a $p$-digit divisor with a $p$-digit quotient and keep the largest.
