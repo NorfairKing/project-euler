@@ -13,14 +13,15 @@ GHC_FLAGS = 	-fwarn-unused-imports \
 GHC_OPTIONS = 	-threaded \
 				$(GHC_OPTIMISATION) \
 				$(GHC_FLAGS)
-
-
 SRC_DIR = src
+SOLUTIONS=$(wildcard [a-z]*.hs)
+SOLVERS=$(SOLUTIONS:.hs=.bin)
 
-all: bin
 
-bin: $(SRC)
-	$(GHC) $(GHC_OPTIONS) -o $(BIN) --make $(SRC)
+all: $(SOLVERS)
+
+%.bin: %.hs
+	$(GHC) $(GHC_OPTIONS) -o $@ --make $<
 
 TESTSUITE = testsuite.bin
 TEST_SRC = Test.hs
@@ -29,7 +30,6 @@ TMP_SRC = TestTmp.hs
 
 test: $(TESTSUITE)
 	./$(TESTSUITE)
-
 
 $(TESTSUITE): $(TEST_SRC)
 	cat $(TEST_BOILERPLATE) $(TEST_SRC) > $(TMP_SRC)
