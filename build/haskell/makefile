@@ -19,17 +19,21 @@ SRC_DIR = src
 
 all: bin
 
-bin:
+bin: $(SRC)
 	$(GHC) $(GHC_OPTIONS) -o $(BIN) --make $(SRC)
 
 TESTSUITE = testsuite.bin
 TEST_SRC = Test.hs
+TEST_BOILERPLATE = $(EDEN_ROOT)/build/haskell/test-boilerplate.hs
+TMP_SRC = TestTmp.hs
 
-test: testsuite
+test: $(TESTSUITE)
 	./$(TESTSUITE)
 
-testsuite:
-	$(GHC) -o $(TESTSUITE) $(TEST_SRC) --make -main-is Test.test
+
+$(TESTSUITE): $(TEST_SRC)
+	cat $(TEST_BOILERPLATE) $(TEST_SRC) > $(TMP_SRC)
+	$(GHC) -o $(TESTSUITE) $(TMP_SRC) --make -main-is TestTmp.test
 	
 	
 DIRTY_EXT = *.o *.hi *.bin
