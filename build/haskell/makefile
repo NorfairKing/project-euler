@@ -4,16 +4,18 @@ BIN = $(NAME)
 
 GHC = ghc
 GHC_OPTIMISATION = -O2
+LIB_DIR = $(EDEN_ROOT)/lib/haskell
 GHC_FLAGS = 	-fwarn-unused-imports \
 				-fforce-recomp \
 				-fwarn-incomplete-patterns \
 				-Wall \
 				-fno-warn-unused-do-bind \
 				-fno-warn-name-shadowing
+SRC_DIR_FLAGS = -i$(LIB_DIR)
 GHC_OPTIONS = 	-threaded \
 				$(GHC_OPTIMISATION) \
-				$(GHC_FLAGS)
-SRC_DIR = src
+				$(GHC_FLAGS) \
+				$(SRC_DIR_FLAGS)
 SOLUTIONS=$(wildcard [a-z]*.hs)
 SOLVERS=$(SOLUTIONS:.hs=.bin)
 
@@ -21,7 +23,7 @@ SOLVERS=$(SOLUTIONS:.hs=.bin)
 all: $(SOLVERS)
 
 %.bin: %.hs
-	$(GHC) $(GHC_OPTIONS) -o $@ --make $<
+	$(GHC) $(GHC_OPTIONS) -o $@ --make $< 
 
 TESTSUITE = testsuite.bin
 TEST_SRC = Test.hs
