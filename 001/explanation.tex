@@ -8,13 +8,13 @@
     \end{problem}
     \begin{solutions}
         \begin{solution}{A naive solution}
-            An input size of $p=1000$ is small enough to let us get away with a naïve solution.
-            The naïve solution, to check every number, gives us an $O(p)$ runtime.
+            An input size of $p=1000$ is small enough to let us get away with a naive solution.
+            The naive solution, to check every number, gives us an $O(p)$ runtime.
 
             \begin{figure}[H]
                 \centering
                 \lstinputlisting[language=c, firstline=12, lastline=22]{\sol{001}{c}/naive.c}
-                \caption{A Naïve solution}
+                \caption{A naive solution}
             \end{figure}
         \end{solution}
 
@@ -31,10 +31,16 @@
             \begin{figure}[H]
                 \centering
                 \lstinputlisting[language=c, firstline=13, lastline=30]{\sol{001}{c}/better.c}
-                \caption{A Better solution}
+                \caption{A better solution}
             \end{figure}
 
             In this solution, we check less than half of the numbers we did in the last solution.
+            The same can be done in haskell on one line:
+            \begin{figure}[H]
+                \centering
+                \lstinputlisting[language=c, firstline=7, lastline=7]{\sol{001}{haskell}/solution.hs}
+                \caption{A better solution in Haskell}
+            \end{figure}
         \end{solution}
 
         \begin{solution}{A constant-time solution}
@@ -59,7 +65,7 @@
                 - 15\frac{\floor{\frac{p}{15}}\cdot \left(\floor{\frac{p}{15}} + 1\right)}{2}
             \end{align*}
 
-            The critical insight is here the explicit formula for the sum of the first $n$ nont-zero integers:
+            The critical insight is here the explicit formula for the sum of the first $n$ nont-zero integers:\prref{pr:sum-of-first-n-natural-numbers}
             \[
                 \sum_{i=1}^{n}i = \frac{n(n+1)}{2}
             \]
