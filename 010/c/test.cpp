@@ -2,9 +2,9 @@
 #include "solution.c"
 
 TEST(problem, easy) {
-    EXPECT_EQ(13, solve(6));
+    EXPECT_EQ(17, solve(10));
 }
 
 TEST(problem, correct) {
-    EXPECT_EQ(104743, solve(10001));
+    EXPECT_EQ(142913828922, solve(2000000));
 }
