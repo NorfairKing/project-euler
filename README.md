@@ -1,4 +1,4 @@
 # Project Euler Solutions: Norfair
 EDEN driven project euler solutions
 
-Under construction
+For more info on EDEN, look here: https://github.com/NorfairKing/eden.
