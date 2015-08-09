@@ -1,6 +1,3 @@
-#include "testmain.cpp"
-#include "solution.c"
-
 TEST(problem, correct) {
     int n = 20;
     int nums[20*20] = 

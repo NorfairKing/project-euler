@@ -18,7 +18,7 @@ CC_FLAGS = $(OPTIMISATION_FLAG) \
 
 SRCS=$(wildcard $(LIB_DIR)/*.c)
 
-SOLUTIONS=$(wildcard *.c)
+SOLUTIONS=$(wildcard [a-z]*.c)
 SOLVERS=$(SOLUTIONS:.c=.bin)
 
 all: solver $(SOLVERS)
@@ -31,23 +31,23 @@ solver:
 
 ## Tests
 
-test: testsuite
-	./$(TESTSUITE)
-
 CPP = g++
-
 TESTSUITE = testsuite.bin
 LIB_FLAGS = -lgtest
-TEST_SRCS = test.cpp
+TEST_SRC = test.cpp
+TEST_BOILERPLATE = $(EDEN_ROOT)/build/c/test-boilerplate.c
+TMP_SRC = TestTmp.cpp
 
 FLAGS = \
-	-o $(TESTSUITE) \
 	$(LIB_DIR_FLAGS) \
 	$(LIB_FLAGS)
 
+test: $(TESTSUITE)
+	./$(TESTSUITE)
 
-testsuite:
-	$(CPP) $(SRCS) $(TEST_SRCS) $(FLAGS)
+$(TESTSUITE):
+	cat $(TEST_BOILERPLATE) $(TEST_SRC) > $(TMP_SRC)
+	$(CPP) $(SRCS) $(TMP_SRC) -o $(TESTSUITE) $(FLAGS)
 
 
 
