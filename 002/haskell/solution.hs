@@ -1,9 +1,7 @@
 import           Data.List
+import           Fibonacci
 
-fibs :: [Int]
-fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
-
-solve :: Int -> Int
+solve :: Integer -> Integer
 solve p = sum $ takeWhile (<= p) $ filter even fibs
 
 main :: IO ()
