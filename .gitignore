@@ -1,5 +1,7 @@
 # Temporary source files
 TestTmp.*
+stub.sh
+MANIFEST.MF
 
 ### Executables
 
