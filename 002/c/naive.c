@@ -17,8 +17,8 @@ int solve (int p) {
     int fst = 1;
     int cur = 1;
 
-    while (cur <= p){
-        if (even(cur)){
+    while (cur <= p) {
+        if (even(cur)) {
             sum += cur;
         }
 

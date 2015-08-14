@@ -26,7 +26,7 @@ int solve(int p) {
             num /= 10;
         }
 
-        for (j = 0; j < p; j++) {
+        for (j = 0; j < p; j++) { // Fill second half
             digits[len-1-j] = digits[j];
         }
 
