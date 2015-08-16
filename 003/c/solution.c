@@ -2,7 +2,7 @@
 #include <stdbool.h>
 
 #include "factors.h"
-#include "primes.h"
+#include "prime.h"
 
 long solve(long p);
 
