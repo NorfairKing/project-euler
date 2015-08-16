@@ -25,6 +25,8 @@
 \newcommand{\why}[0]{\clarify{why?}}
 \newcommand{\needed}[0]{\clarify{reference?}}
 
+\newcommand{\term}[1]{\index{#1}\textbf{#1}}
+
 % More space between math arrays
 \renewcommand{\arraystretch}{1.25}
 
@@ -75,6 +77,8 @@
 
 
 \makeatletter
+
+% Partial inclusions
 \newread\pin@file
 \newcounter{pinlineno}
 \newcommand\pin@accu{}
@@ -107,4 +111,14 @@
     \errmessage{File `#3' doesn't exist!}%
   }%
 }
+
+% Better boxes
+\makeatletter
+\renewcommand{\boxed}[1]{\text{\fboxsep=.2em\fbox{\m@th$\displaystyle#1$}}}
+\makeatother
+
+% Leftarrow and Rightarrow with boxes around them 
+\newcommand{\bla}{$\boxed{\Leftarrow}$\ } % Boxed left arrow
+  \newcommand{\bra}{$\boxed{\Rightarrow}$\ } % Boxed right arrow
+
 \makeatother
