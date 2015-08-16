@@ -4,7 +4,7 @@ EDEN driven project euler solutions
 For more info on EDEN, look here: https://github.com/NorfairKing/eden.
 
 ### Contributors
-- Tom Sydney Kerckhove https://projecteuler.net/profile/Norfair.png
+- Tom Sydney Kerckhove ![norfair badge](https://projecteuler.net/profile/Norfair.png)
 - Michael Kirsche
 
 ### How to add a solution
