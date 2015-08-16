@@ -72,3 +72,39 @@
 \lstset{
   basicstyle=\small\ttfamily
 }
+
+
+\makeatletter
+\newread\pin@file
+\newcounter{pinlineno}
+\newcommand\pin@accu{}
+\newcommand\pin@ext{pintmp}
+% inputs #3, selecting only lines #1 to #2 (inclusive)
+\newcommand*\partialinput [3] {%
+  \IfFileExists{#3}{%
+    \openin\pin@file #3
+    % skip lines 1 to #1 (exclusive)
+    \setcounter{pinlineno}{1}
+    \@whilenum\value{pinlineno}<#1 \do{%
+      \read\pin@file to\pin@line
+      \stepcounter{pinlineno}%
+    }
+    % prepare reading lines #1 to #2 inclusive
+    \addtocounter{pinlineno}{-1}
+    \let\pin@accu\empty
+    \begingroup
+    \endlinechar\newlinechar
+    \@whilenum\value{pinlineno}<#2 \do{%
+      % use safe catcodes provided by e-TeX's \readline
+      \readline\pin@file to\pin@line
+      \edef\pin@accu{\pin@accu\pin@line}%
+      \stepcounter{pinlineno}%
+    }
+    \closein\pin@file
+    \expandafter\endgroup
+    \scantokens\expandafter{\pin@accu}%
+  }{%
+    \errmessage{File `#3' doesn't exist!}%
+  }%
+}
+\makeatother
