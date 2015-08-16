@@ -1,3 +1,10 @@
+main :: IO ()
+main = readLn >>= print . solve
+
+solve :: Integer -> Int
+solve p = length $ filter largerNumerator $ map (evalFrac . expan) [1..p]
+    where largerNumerator = (\(Fr n d) -> (nDigits n) > (nDigits d))
+
 data Frac = F (Frac) (Frac)
           | A (Frac) (Frac)
           | N Integer
@@ -27,10 +34,3 @@ evalFrac (F f g) = Fr (a*d) (b*c)
 nDigits :: Integer -> Int
 nDigits 0 = 0
 nDigits x = 1 + (nDigits (div x 10))
-
-solve :: Integer -> Int
-solve p = length $ filter largerNumerator $ map (evalFrac . expan) [1..p]
-    where largerNumerator = (\(Fr n d) -> (nDigits n) > (nDigits d))
-
-main :: IO ()
-main = print $ solve 1000

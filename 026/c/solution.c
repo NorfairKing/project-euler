@@ -8,8 +8,10 @@ int decimals(int x, int y);
 
 #ifndef TESTING
 int main () {
-    printf("%d\n", solve(1000));
-    return 0;
+  int p;
+  scanf("%d", &p);
+  printf("%d\n", solve(p));
+  return 0;
 }
 #endif
 

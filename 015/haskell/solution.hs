@@ -1,5 +1,7 @@
 import           Data.Function.Memoize (memoize2)
-main = print $ solve 20
+
+main :: IO ()
+main = readLn >>= print . solve
 
 solve :: Int -> Integer
 solve p = fast_go p p

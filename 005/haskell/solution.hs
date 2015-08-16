@@ -1,5 +1,6 @@
 import           Data.List (foldl')
-main = print $ solve 20
+
+main = readLn >>= print . solve
 
 solve :: Integer -> Integer
 solve p = lcml [2..p]

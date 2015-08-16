@@ -1,13 +1,13 @@
-import           Data.List
+import           Data.List (nub)
 
--- Define the range for the a and b
-as, bs :: Int -> [Integer]
-as p = [2.. fromIntegral p]
-bs p = [2.. fromIntegral p]
+main :: IO ()
+main = readLn >>= print . solve
 
 -- Explicitly calculate every one of the powers and count them
 solve :: Int -> Int
 solve p = (length . nub) [ a^b | a <- as p, b <- bs p]
 
-main :: IO ()
-main = print $ solve 100
+-- Define the range for the a and b
+as, bs :: Int -> [Integer]
+as p = [2.. fromIntegral p]
+bs p = [2.. fromIntegral p]

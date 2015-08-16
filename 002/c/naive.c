@@ -5,8 +5,10 @@ int solve(int p);
 
 #ifndef TESTING
 int main () {
-    printf("%d\n", solve(4000000));
-    return 0;
+  int p;
+  scanf("%d", &p);
+  printf("%d\n", solve(p));
+  return 0;
 }
 #endif
 

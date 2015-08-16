@@ -1,7 +1,8 @@
 import           Data.List (takeWhile)
 import           Fibonacci
 
-main = print $ solve 1000
+main :: IO ()
+main = readLn >>= print . solve
 
 nrDigits :: Integer -> Int
 nrDigits = fromIntegral . length . show

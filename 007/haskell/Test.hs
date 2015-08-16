@@ -1,1 +1,1 @@
-test_correct = assertEqual (solve 10001) 104743
+test_easy = assertEqual (solve 6) 13

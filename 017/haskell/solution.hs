@@ -1,5 +1,11 @@
 import           Data.List
 
+main :: IO ()
+main = readLn >>= print . solve
+
+solve :: Int -> Int
+solve p = sum $ map (length . stringify) [1..p]
+
 smalls :: [String]
 smalls = [ "", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" ]
 
@@ -21,9 +27,3 @@ stringify n | n >= 100 && n < 1000 = smalls !! firstDigit ++ "hundred" ++ sndPar
         rest = n `rem` 100
 stringify 1000 = "onethousand"
 stringify _ = undefined
-
-solve :: Int -> Int
-solve p = sum $ map (length . stringify) [1..p]
-
-main :: IO ()
-main = print $ solve 1000

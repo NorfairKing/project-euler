@@ -1,16 +1,14 @@
 import           Control.Monad
 import           Data.List
 
-p = 4
+factorList :: Int -> [a] -> [[a]]
+factorList _ [] = []
+factorList p list | length list < p = []
+factorList p list = [(take p list)] ++ (factorList p $ tail list)
 
-factorList :: [a] -> [[a]]
-factorList [] = []
-factorList list | length list < p = []
-factorList list = [(take p list)] ++ (factorList $ tail list)
-
-diagonals :: [[a]] -> [[a]]
-diagonals [] = []
-diagonals m = concatMap factorList lists
+diagonals :: Int -> [[a]] -> [[a]]
+diagonals _ [] = []
+diagonals p m = concatMap (factorList p) lists
         where
             lists = (lasts (f lowerLeft)) ++
                     (lasts (f lowerRight)) ++
@@ -34,19 +32,19 @@ lasts list = [(map last list)] ++ (lasts (f (map init list)))
 f :: [[a]] -> [[a]]
 f = filter (not . null)
 
-verticals :: [[a]] -> [[a]]
-verticals = (horizontals . transpose)
+verticals :: Int -> [[a]] -> [[a]]
+verticals p = (horizontals p . transpose)
 
-horizontals :: [[a]] -> [[a]]
-horizontals =  concatMap factorList
+horizontals :: Int -> [[a]] -> [[a]]
+horizontals p = concatMap (factorList p)
 
-solve :: [[Int]] -> Int
-solve matrix = maximum $ map product factors
+solve :: [[Int]] -> Int -> Int
+solve matrix p = maximum $ map product factors
         where
             factors = d ++ v ++ h
-            d = diagonals matrix
-            v = verticals matrix
-            h = horizontals matrix
+            d = diagonals p matrix
+            v = verticals p matrix
+            h = horizontals p matrix
 
 -- IO
 rd :: String -> Int
@@ -62,6 +60,7 @@ getInts = do
 
 main :: IO ()
 main = do
+    p <- getInt
     n <- getInt
     matrix <- replicateM n getInts
-    putStrLn $ show (solve matrix)
+    putStrLn $ show (solve matrix p)

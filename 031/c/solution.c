@@ -5,8 +5,10 @@ int go (int amount, int first);
 
 #ifndef TESTING
 int main () {
-    printf("%d\n", solve(200));
-    return 0;
+  int p;
+  scanf("%d", &p);
+  printf("%d\n", solve(p));
+  return 0;
 }
 #endif
 

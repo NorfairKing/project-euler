@@ -1,3 +1,6 @@
+main :: IO ()
+main = readLn >>= print . solve
+
 solve :: Int -> Int
 solve p = squareOfSum p - sumOfSquares p
 
@@ -9,5 +12,3 @@ sumOfSquares n = sum $ map (^2) [1..n]
 squareOfSum :: Int -> Int
 squareOfSum n = (sum [1..n])^2
 
-main :: IO ()
-main = print $ solve 100

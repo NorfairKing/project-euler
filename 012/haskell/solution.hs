@@ -1,6 +1,12 @@
 import           Control.Monad
 import           Data.List
 
+main :: IO ()
+main = readLn >>= print . solve
+
+solve :: Int -> Integer
+solve n = head [ x | x <- triangles, nr_divisors x >= n]
+
 {-
 Triangle numbers are defined recursively but they can be computed explicityly.
 1 + 2 + ... + n = (n*(n+1))/2
@@ -23,9 +29,3 @@ divisors x = firstHalf ++ secondHalf
 
 nr_divisors :: Integer -> Int
 nr_divisors = length . divisors
-
-solve :: Int -> Integer
-solve n = head [ x | x <- triangles, nr_divisors x >= n]
-
-main :: IO ()
-main = print $ solve 500

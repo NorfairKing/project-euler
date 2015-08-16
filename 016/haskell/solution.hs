@@ -1,4 +1,5 @@
-main = print $ solve $ 2^1000
+main :: IO ()
+main = readLn >>= print . solve
 
 solve :: Integer -> Int
-solve = sum . map (read . (\c -> [c])) . show
+solve = sum . map (read . (\c -> [c])) . show . (2^)

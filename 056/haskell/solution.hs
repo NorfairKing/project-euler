@@ -1,26 +1,21 @@
-import Data.List
-import Data.Char
+import           Data.Char
+import           Data.List
 
--- p is the limit for a and b
-p :: Integer
-p = 100
+main :: IO ()
+main = readLn >>= print . solve
+
+solve :: Integer -> Int
+solve p = maximum [ digitalSum x | x <- nrs p ]
 
 -- Calculate every number in the sequence
-nrs :: [Integer]
-nrs = [ a^b | a <- [1..p], b <- [1..p]]
+nrs :: Integer -> [Integer]
+nrs p = [ a^b | a <- [1..p], b <- [1..p]]
 
 -- Split a number into its digits
 digits :: Integer -> [Int]
-digits = (map digitToInt) . show
+digits = map digitToInt . show
 
 -- Calculate the sum of the digits of a number
 digitalSum :: Integer -> Int
 digitalSum = sum . digits
 
-solve :: Int
-solve = maximum [ digitalSum x | x <- nrs]
-
--- IO
-main :: IO ()
-main = do
-    putStrLn $ show solve        

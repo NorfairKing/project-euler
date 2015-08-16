@@ -1,3 +1,9 @@
+main :: IO ()
+main = readLn >>= print . solve
+
+solve :: Integer -> Integer
+solve p = sum [ n | n <- [1..p], isPalindromeNr n, isPalindromeBin (toBinary n) ]
+
 -- Test whether a given number is palindromic
 isPalindromeNr :: Integer -> Bool
 isPalindromeNr n | n `mod` 10 == 0 = False
@@ -16,9 +22,3 @@ toBinary n = reverse (helper n)
     where
         helper 0 = []
         helper x = let (q,r) = x `divMod` 2 in r : helper q
-
-solve :: Integer -> Integer
-solve p = sum [ n | n <- [1..p], isPalindromeNr n, isPalindromeBin (toBinary n) ]
-
-main :: IO ()
-main = print $ solve 10^6

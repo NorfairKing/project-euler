@@ -1,2 +1,1 @@
-test_easy = assertEqual (solve $ 2^15) 26
-test_correct = assertEqual (solve $ 2^1000) 1366
+test_easy = assertEqual (solve $ 15) 26

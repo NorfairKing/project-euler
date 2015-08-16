@@ -1,14 +1,9 @@
--- We want the last p digits, so p = 10.
-p :: Integer
-p = 10
-
--- The number.
-n :: Integer
-n = (28433 * 2^7830457) + 1
-
-solve :: Integer
-solve = n `mod` 10^p
-
--- IO
 main :: IO ()
-main = print solve
+main = do
+  p <- readLn
+  a <- readLn
+  b <- readLn
+  print $ solve a b p
+
+solve :: Integer -> Integer -> Integer -> Integer
+solve a b p = (a * 2^b + 1) `mod` 10 ^ p

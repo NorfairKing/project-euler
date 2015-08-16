@@ -1,6 +1,12 @@
-import Data.List
+import           Data.List
 
--- Upper limit for the numbers that can be written as the sum of two abundant numbers 
+main :: IO ()
+main = print solve
+
+solve :: Int
+solve = sum $ notPossible
+
+-- Upper limit for the numbers that can be written as the sum of two abundant numbers
 p = 28123
 
 -- The proper divisors of a given integer.
@@ -22,11 +28,3 @@ isSumOfTwoAbundants n = any (\x -> isAbundant (n - x)) $ takeWhile (<n) abundant
 
 -- The list of numbers for which it's not possible to be written as a sum of two abundant numbers.
 notPossible = filter (not . isSumOfTwoAbundants) [1..p]
-
-solve :: Int
-solve = sum $ notPossible
-
--- IO
-main :: IO ()
-main = do
-    print solve        

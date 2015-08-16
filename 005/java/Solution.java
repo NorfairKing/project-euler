@@ -1,6 +1,10 @@
+import java.util.Scanner;
+
 public class Solution {
   public static void main (String[] args){
-    System.out.println(solve(20));
+    Scanner in = new Scanner(System.in);
+    int p = in.nextInt();
+    System.out.println(solve(p));
   }
 
   public static int solve (int p) {

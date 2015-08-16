@@ -1,7 +1,14 @@
 import           Data.List
 
-years :: [Integer]
-years = [1901..1999]
+main :: IO ()
+main = readLn >>= print . solve
+
+solve :: Integer -> Int
+solve p = length . filter n $ allAssignedDays p
+    where n = (== (last dayNames, 1))
+
+years :: Integer -> [Integer]
+years p = [100*(p-1) + 1 .. 100*p - 1]
 
 -- Constant inputs
 daysNormal, daysLeap, dayNames :: [Integer]
@@ -21,17 +28,9 @@ yearDays y = concat $ map (\n -> [1..n]) d
     where d = if isLeap y then daysLeap else daysNormal
 
 -- All day numbers from the 20th century
-allDays :: [Integer]
-allDays = concat $ map yearDays years
+allDays :: Integer -> [Integer]
+allDays p = concat $ map yearDays $ years p
 
 -- A list of all days from the 20th century with their day named
-allAssignedDays :: [(Integer, Integer)]
-allAssignedDays = zip (cycle dayNames) allDays
-
-solve :: Int
-solve = (length . filter p) allAssignedDays
-    where p = (== ((last dayNames),1))
-
-main :: IO ()
-main = do
-    putStrLn $ show solve
+allAssignedDays :: Integer -> [(Integer, Integer)]
+allAssignedDays p = zip (cycle dayNames) (allDays p)

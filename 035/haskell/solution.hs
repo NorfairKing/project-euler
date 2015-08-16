@@ -1,5 +1,11 @@
 import           Data.List
 
+main :: IO ()
+main = readLn >>= print . solve
+
+solve :: Int -> Int
+solve p = (length . (filter isCircular) . primesUntil) p
+
 -- The integer nearest to the square root of a number
 integerRoot :: Int -> Int
 integerRoot = floor . sqrt . fromIntegral
@@ -29,8 +35,3 @@ nrRots :: Show a => a -> [Int]
 nrRots n = map read (rots $ show n) :: [Int]
     where rots xs = init (zipWith (++) (tails xs) (inits xs))
 
-solve :: Int -> Int
-solve p = (length . (filter isCircular) . primesUntil) p
-
-main :: IO ()
-main = print $ solve 1000000
