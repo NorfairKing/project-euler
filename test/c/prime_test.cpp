@@ -3,7 +3,7 @@
 // Hide main
 #define TESTING
 // Hide the io function since this will segfault in testing
-#include "primes.h"
+#include "prime.h"
 
 TEST(primes, is_prime_under20) {
     EXPECT_FALSE(is_prime(1));
