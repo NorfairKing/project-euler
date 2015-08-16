@@ -1,16 +1,8 @@
-import           Data.List
-
--- Sum n terms, here n = 1000
-n :: Integer
-n = 1000
-
--- Take the last p digits, here p = 10
-p :: Integer
-p = 10
+import           Text.Printf (printf)
 
 -- Explicitly calculate the sum and get the last p digits by performing a modulo operation.
-solve :: Integer
-solve = (sum [ a^a | a <- [1..n]]) `mod` 10^p
+solve :: Integer -> Integer -> String
+solve p n = printf ("%0" ++ show p ++ "d") $ (sum [ a^a | a <- [1..n]]) `mod` 10^p
 
 main :: IO ()
-main = print solve
+main = putStrLn $ solve 10 1000

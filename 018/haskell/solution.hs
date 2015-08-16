@@ -3,8 +3,8 @@
     In problem 67, I will find an efficient solution.
 -}
 
-import Data.List
-import Control.Monad
+import           Control.Monad
+import           Data.List
 
 -- Find all paths in a triangle
 paths [] = []
@@ -27,9 +27,9 @@ sharpen trapezium index = map sh trapezium
 
 -- Construct the two subtriangles of a given triangle
 subtriangles [] = []
-subtriangles [[x]] = [[[x]]]            
+subtriangles [[x]] = [[[x]]]
 subtriangles triangle = map (sharpen (tail triangle)) [0,1]
-        
+
 -- Get the maximum of the sums of all paths
 solve triangle = maximum $ map sum (paths triangle)
 
@@ -49,4 +49,4 @@ main :: IO ()
 main = do
     n <- getInt
     triangle <- replicateM n getInts
-    putStrLn $ show (solve triangle)        
+    putStrLn $ show (solve triangle)

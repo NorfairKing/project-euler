@@ -8,7 +8,6 @@ factorList [] = []
 factorList list | length list < p = []
 factorList list = [(take p list)] ++ (factorList $ tail list)
 
-
 diagonals :: [[a]] -> [[a]]
 diagonals [] = []
 diagonals m = concatMap factorList lists

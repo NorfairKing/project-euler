@@ -1,6 +1,6 @@
-import Data.Char
-import Data.List
-import Data.Maybe
+import           Data.Char
+import           Data.List
+import           Data.Maybe
 
 alphabet :: [Char]
 alphabet = "#ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -10,7 +10,7 @@ findI list e = fromJust $ elemIndex e list
 
 value :: String -> Int
 value str = sum $ map rank str -- sum $ map (findI alphabet) str
-    where rank = findI alphabet 
+    where rank = findI alphabet
 
 solve :: [String] -> Int
 solve names = sum $ zipWith (*) values [1..]
@@ -20,5 +20,5 @@ solve names = sum $ zipWith (*) values [1..]
 main :: IO ()
 main = do
     line <- getLine
-    let names = sort $ read $ "["++ line ++"]" 
-    putStrLn $ (show . solve) names 
+    let names = sort $ read $ "["++ line ++"]"
+    putStrLn $ (show . solve) names
