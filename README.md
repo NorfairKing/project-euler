@@ -10,3 +10,5 @@ For more info on EDEN, look here: https://github.com/NorfairKing/eden.
 Solutions are in `<problem>/<language>`.
 After creating your solution, make sure it builds with `eden build solution <problem> <language>`.
 Make sure you add a test and run it with `eden test solution <problem> <language>`.
+
+Please run `eden test all` to ensure that everything is in order before sending a pull request.
