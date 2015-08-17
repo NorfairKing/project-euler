@@ -42,10 +42,14 @@ FLAGS = \
 	$(LIB_DIR_FLAGS) \
 	$(LIB_FLAGS)
 
-test: $(TESTSUITE)
+test:
+ifeq (,$(wildcard TEST_SRC)) # Don't test if there are no tests
+	exit
+endif
+	make $(TESTSUITE)
 	./$(TESTSUITE)
 
-$(TESTSUITE):
+$(TESTSUITE): $(TEST_SRC)
 	cat $(TEST_BOILERPLATE) $(TEST_SRC) > $(TMP_SRC)
 	$(CPP) $(SRCS) $(TMP_SRC) -o $(TESTSUITE) $(FLAGS)
 
