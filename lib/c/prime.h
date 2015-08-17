@@ -1,5 +1,5 @@
-#ifndef primes_h__
-#define primes_h__
+#ifndef prime_h__
+#define prime_h__
 
 #include <stdbool.h>
 

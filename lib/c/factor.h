@@ -1,5 +1,5 @@
-#ifndef factors_h__
-#define factors_h__
+#ifndef factor_h__
+#define factor_h__
 
 #include <stdbool.h>
 

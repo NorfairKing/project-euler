@@ -42,16 +42,17 @@ FLAGS = \
 	$(LIB_DIR_FLAGS) \
 	$(LIB_FLAGS)
 
+ifeq ("$(wildcard $(TEST_SRC))","")
 test:
-ifeq (,$(wildcard TEST_SRC)) # Don't test if there are no tests
-	exit
-endif
-	make $(TESTSUITE)
+	@echo "not testing because there is no test"
+else
+test: $(TESTSUITE)
 	./$(TESTSUITE)
 
 $(TESTSUITE): $(TEST_SRC)
 	cat $(TEST_BOILERPLATE) $(TEST_SRC) > $(TMP_SRC)
 	$(CPP) $(SRCS) $(TMP_SRC) -o $(TESTSUITE) $(FLAGS)
+endif
 
 
 

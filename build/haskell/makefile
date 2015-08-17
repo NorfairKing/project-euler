@@ -30,12 +30,17 @@ TEST_SRC = Test.hs
 TEST_BOILERPLATE = $(EDEN_ROOT)/build/haskell/test-boilerplate.hs
 TMP_SRC = TestTmp.hs
 
+ifeq ("$(wildcard $(TEST_SRC))","")
+test:
+	@echo "not testing because there is no test"
+else
 test: $(TESTSUITE)
 	./$(TESTSUITE)
 
 $(TESTSUITE): $(TEST_SRC)
 	cat $(TEST_BOILERPLATE) $(TEST_SRC) > $(TMP_SRC)
 	$(GHC) -o $(TESTSUITE) $(TMP_SRC) $(GHC_OPTIMISATION) --make -main-is TestTmp.test $(SRC_DIR_FLAGS)
+endif
 	
 	
 DIRTY_EXT = *.o *.hi *.bin
