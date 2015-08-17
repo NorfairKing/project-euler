@@ -21,10 +21,7 @@ SRCS=$(wildcard $(LIB_DIR)/*.c)
 SOLUTIONS=$(wildcard [a-z]*.c)
 SOLVERS=$(SOLUTIONS:.c=.bin)
 
-all: solver $(SOLVERS)
-
-solver:
-	$(CC) $(SOLUTION_NAME) $(SRCS) $(CC_FLAGS) -o $(BIN_NAME)
+all: $(SOLVERS)
 
 %.bin : %.c
 	$(CC) $< $(SRCS) -o $@ $(CC_FLAGS)
@@ -54,9 +51,7 @@ $(TESTSUITE): $(TEST_SRC)
 	$(CPP) $(SRCS) $(TMP_SRC) -o $(TESTSUITE) $(FLAGS)
 endif
 
-
-
-DIRTY_EXT = *.o
+DIRTY_EXT = *.o *.bin
 DIRTY = $(DIRTY_EXT) $(BIN_NAME)
 
 clean:
