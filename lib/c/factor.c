@@ -1,6 +1,6 @@
 #include <stdbool.h>
 
-#include "factors.h"
+#include "factor.h"
 
 /*
  * Test whether a given number is even, that is, divisible by 2.

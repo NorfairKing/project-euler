@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "factors.h"
+#include "factor.h"
 
 int solve(int p);
 

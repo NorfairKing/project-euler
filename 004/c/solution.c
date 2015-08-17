@@ -2,7 +2,7 @@
 #include <stdbool.h>
 #include <math.h>
 
-#include "factors.h"
+#include "factor.h"
 #include "digit.h"
 
 int solve(int p);

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-#include "factors.h"
+#include "factor.h"
 #include "prime.h"
 #include "order.h"
 

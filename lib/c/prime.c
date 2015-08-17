@@ -1,5 +1,5 @@
 #include <stdbool.h>
-#include "factors.h"
+#include "factor.h"
 
 /*
  * Tests whether a given long is prime.

@@ -1,6 +1,6 @@
 #include <stdio.h> 
 #include <math.h>
-#include "factors.h"
+#include "factor.h"
 
 int solve(int p);
 double geom(double k, double f);

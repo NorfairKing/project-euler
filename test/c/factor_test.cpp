@@ -3,8 +3,8 @@
 // Hide main
 #define TESTING
 // Hide the io function since this will segfault in testing
-#include "factors.h"
-#include "primes.h"
+#include "factor.h"
+#include "prime.h"
 
 TEST(factors, even_odd) {
     int n = 100;

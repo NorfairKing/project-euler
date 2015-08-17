@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-#include "factors.h"
+#include "factor.h"
 
 int solve(int p);
 bool all_divisible(int p, int n);
