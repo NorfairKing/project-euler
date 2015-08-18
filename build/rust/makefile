@@ -7,12 +7,10 @@ OPTIMISATION_FLAG = -O
 
 
 LIB_DIR = $(EDEN_ROOT)/lib/rust
-LIB_DIR_FLAGS = -L$(LIB_DIR)
+LIB_DIR_FLAGS = -L $(LIB_DIR) --extern euler=$(LIB_DIR)/libeuler.rlib
 
 RS_FLAGS = $(OPTIMISATION_FLAG) \
            $(LIB_DIR_FLAGS)
-
-SRCS=$(wildcard $(LIB_DIR)/*.rs)
 
 SOLUTIONS=$(wildcard [a-z]*.rs)
 SOLVERS=$(SOLUTIONS:.rs=.bin)
@@ -20,7 +18,7 @@ SOLVERS=$(SOLUTIONS:.rs=.bin)
 all: $(SOLVERS)
 
 %.bin : %.rs
-	$(RUSTC) $< $(SRCS) $(RS_FLAGS) -o $@
+	$(RUSTC) $< $(RS_FLAGS) -o $@
 
 TEST_SRC = placeholder
 TESTSUITE = testsuite.bin

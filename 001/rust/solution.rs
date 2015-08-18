@@ -1,16 +1,11 @@
 use std::io;
+extern crate euler;
+use euler::ReadValue;
 
 fn main() {
-  let p: u32 = getUInt();
+  let p: u32 = std::io::stdin().read_value().unwrap();
   let r: u32 = solve(p);
   println!("{}", r);
-}
-
-fn getUInt() -> u32 {
-  let mut guess = String::new();
-  io::stdin().read_line(&mut guess).ok().expect("failed to read line");
-  let p: u32 = guess.trim().parse().ok().expect("Please type a number!");
-  p
 }
 
 fn solve(p: u32) -> u32 {

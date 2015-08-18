@@ -9,6 +9,16 @@ MANIFEST.MF
 *.exe
 
 
+### Java
+
+*.class
+
+
+### Rust
+
+*.rlib
+
+
 ### C
 
 *.o
