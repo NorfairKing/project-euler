@@ -1,8 +1,0 @@
-[package]
-name = "euler"
-version = "0.1.0"
-authors = [ "Tom Sydney Kerckhove <syd.kerckhove@gmail.com>" ]
-
-[[bin]]
-name = "solution"
-path = "solution.rs"

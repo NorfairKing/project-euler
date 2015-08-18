@@ -17,6 +17,9 @@ MANIFEST.MF
 ### Rust
 
 *.rlib
+Cargo.toml
+*.lock
+target/
 
 
 ### C
