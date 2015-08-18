@@ -13,3 +13,12 @@ After creating your solution, make sure it builds with `eden build solution <pro
 Make sure you add a test and run it with `eden test solution <problem> <language>`.
 
 Please run `eden test all` to ensure that everything is in order before sending a pull request.
+
+### Dependencies
+#### C/C++
+- `gcc`
+- library `libgtest-dev`
+
+#### Haskell
+- `ghc`
+- library `memoize`
