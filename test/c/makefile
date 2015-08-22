@@ -21,3 +21,7 @@ main.bin:
 %.bin: %.cpp
 	$(CPP) main.cpp $< $(LIB_SRCS) -I$(SRC_DIR) $(FLAGS) -o $@
 
+DIRTY = *.bin
+
+clean:
+	rm -f $(DIRTY)
