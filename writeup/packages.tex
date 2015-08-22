@@ -1,0 +1,73 @@
+% For sub files
+\usepackage{subfiles}
+
+% For todo's
+\usepackage{todonotes}
+
+% For maths
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+% A nicer font with math support
+\usepackage{libertine}
+\usepackage[libertine]{newtxmath}
+
+% To count pages
+\usepackage{lastpage}
+\usepackage{afterpage}
+
+% To get pages in the right position
+\usepackage{float}
+
+% For frames
+\usepackage{mdframed}
+
+% To adjust marges
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm,headheight=15pt]{geometry}
+
+% Voor kleuren, duh
+\usepackage{color}
+
+% Voor intervallen
+\usepackage{interval}
+
+% Voor mooiere enumerates
+\usepackage{enumerate}
+
+% Voor mooie verbatim stukjes
+\usepackage{verbatim}
+
+% For headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Project Euler Write-up}
+\rhead{\thepage}
+\cfoot{Tom Sydney Kerckhove}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% For commit in titlepagine
+\immediate\write18{git rev-parse --short HEAD > commit.tex}
+
+% For urls
+\usepackage{hyperref}
+
+\usepackage{listings}
+
+% For Ceil and Floor functions
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+
+% For nicer inline fractions
+\usepackage{nicefrac} 
+
+% For a nicer code font
+\usepackage{courier}
+
+% For indices
+\usepackage{makeidx}
+\makeindex

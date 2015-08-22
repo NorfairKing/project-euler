@@ -1,0 +1,31 @@
+\begin{titlepage}
+  \thispagestyle{empty}
+  \hbox{
+    \hspace*{0.05\textwidth}
+    \foreach \i in {1,...,4} {
+      \rule{\i pt}{\textheight}
+      \hspace{\i pt}
+    }
+    \hspace*{0.05\textwidth}
+    \parbox[b]{0.75\textwidth}{
+
+      \vspace{0.1\textheight}
+
+      {\noindent\Huge\bfseries Project Euler}\\
+      [2\baselineskip] % Title
+      {\large \textit{Writeups}}\\[4\baselineskip]
+      {\Large \textsc{Tom Sydney Kerckhove}}\\[4\baselineskip]
+
+
+      \begin{large}
+        \begin{tabular}{l l}
+          Started  & July 30, 2015\\
+          Compiled & \today\\
+          Commit & \input{commit.tex}\\
+        \end{tabular}
+      \end{large}
+
+      \vspace{0.5\textheight}
+    }
+  }
+\end{titlepage}

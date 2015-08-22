@@ -1,0 +1,45 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\begin{prob}{5}{Smallest multiple}
+    \begin{problem}
+        2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
+        What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
+    \end{problem}
+    \begin{solutions}
+        \begin{solution}{A Naive solution}
+            Let $p$ be $20$.
+
+            A naive solution would be to start from $1$ and check every number for divisibility by every number up to $p$.
+            \begin{figure}[H]
+                \lstinputlisting[language=c, firstline=16, lastline=33]{\sol{005}{c}/naive.c}
+                \caption{A naive solution}
+            \end{figure}
+            Even with $p=20$, this runs in under one minute.
+            This solution runs in $O(pN)$ where $N$ is the result.
+        \end{solution}
+        \begin{solution}{A better solution}
+            If we can find out what the prime factors are of $p$ then we can construct $p$ by multiplying them all together.
+            Let's start from $p!$.
+            We know that $p!$ is divisible by every number up to and including $p$.
+            There are factors that can be left out though.
+            Take $p=4$ for example. $4! = 4 \cdot 3 \cdot 2 = 24$ and $24$ is divisible by $2$, $3$ and $4$ but $12$ is also divisible by $2$, $3$ and $4$.
+            The reason is that is the case is that the prime decomposition $2^{2}$ of $4$ contains one of the factors: $2$.
+            All we need to do to construct the solution is find all prime \textbf{unique} multiplicities of all prime factors of the numbers up to $p$.
+            In the example, the prime $2$ has multiplicity $1$ in de prime decomposition of $2$ and multiplicity $2$ in the prime decomposition of $4$ so the solution for $p=4$ will have $2^{2}$ in its prime decomposition.
+
+            First we precompute the primes up to and including $p$.
+            \lstinputlisting[language=c, firstline=17, lastline=22]{\sol{005}{c}/solution.c}
+            Then we aggregate all the multiplicities of the prime decompositions of the numbers up to and including $p$.
+            \lstinputlisting[language=c, firstline=24, lastline=35]{\sol{005}{c}/solution.c}
+            Lastly we multiply all the prime factors together with their respective multiplicity.
+            \lstinputlisting[language=c, firstline=37, lastline=51]{\sol{005}{c}/solution.c}
+            Calculating all the primes untill $p+1$ takes $O(p\sqrt{p})$ time.
+            Calculating all mutiplicites takes $O(p\sqrt{p})$ time again.
+            Multiplying all the prime factors together takes time proportional to the amount of prime factors of the result.
+            This is less than $O(p\sqrt{p})$ \why so this solution runs in $O(p\sqrt{p})$.
+        \end{solution}
+    \end{solutions}
+\end{prob}
+
+\end{document}

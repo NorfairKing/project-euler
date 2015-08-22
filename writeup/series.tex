@@ -1,0 +1,35 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+\chapter{Series}
+
+\begin{de}
+    A sequence $(a_{n})_{n}$ of elements in a set $A$ is a function $a: N
+    \rightarrow A: n \rightarrow a_{n}$ that identifies every natural number $n$ with an element of
+    the set $A$. The element $a_{n}$ in the sequence $(a_{n})_{n}$ is called a the
+    $n$-th element of that sequence.
+\end{de}
+
+\begin{de}
+    Let $(a_{n})_{n}$ be a row
+    A sequence $(s_{n})_{n}$ as follows is the series of the sequence $(a_{n})_{n}$.
+    \[ s_{n} = \sum_{i=0}a_{i} \]
+\end{de}
+
+\begin{pr}
+    \label{pr:sum-of-first-n-natural-numbers}
+    \[
+        \sum_{i=1}^n i = \frac{n\cdot(n+1)}{2}
+    \]
+    \begin{proof}
+        \begin{align*}
+            \sum_{i=1}^n i
+            &= 1 + 2 + 3 + \dotsb + (n-2) + (n-1) + n\\
+            &= (1 + n) + (2+n-1) + (3+n-2) + \dotsb + (i+n-i+1) + \dotsb\\
+            &= \frac{n}{2} (n+1)
+            &= \frac{n\cdot(n+1)}{2}
+        \end{align*}
+    \end{proof}
+\end{pr}
+
+
+\end{document}

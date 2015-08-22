@@ -1,0 +1,2 @@
+- use one array of size p and jump around in it
+- build a graph backwards

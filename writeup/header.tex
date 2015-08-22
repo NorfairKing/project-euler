@@ -1,0 +1,139 @@
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[chapter] %Reset counter every chapter
+\theoremstyle{definition}
+\newmdtheoremenv{de}[thm]{Definition} % Definitie with frame
+\newtheorem{prop}[thm]{Property}
+\let\th\undefined
+\newtheorem{th}[thm]{Theorem}
+\newtheorem{pr}[thm]{Proposition}
+\newtheorem{nt}[thm]{Note}
+\newtheorem{ex}[thm]{Example}
+\newtheorem{cex}[thm]{Counterexample}
+\newtheorem{lem}[thm]{Lemma}
+\newmdtheoremenv{alg}[thm]{Algorithm}
+
+\newenvironment{algorithm}[3]
+{\begin{alg}
+    \label{alg:#3}
+    Time: O(#1), Space: O(#2)\\
+  }
+{\end{alg}}
+
+\newenvironment{algorithm-description}[0]
+{}
+{}
+\newenvironment{algorithm-explanation}[0]
+{}
+{}
+
+\newcommand{\algref}[1]{\footnote{See definition \ref{de:#1} on page \pageref{alg:#1}.}}
+\newcommand{\deref}[1]{\footnote{See definition \ref{de:#1} on page \pageref{de:#1}.}}
+\newcommand{\prref}[1]{\footnote{See proposition \ref{pr:#1} on page \pageref{pr:#1}.}}
+
+
+% Nicer TODO's
+\newcommand{\TODO}[1]{\todo[color=red,inline,size=\small]{TODO: #1}}
+\newcommand{\extra}[1]{\todo[color=orange,inline,size=\small]{EXTRA: #1}}
+\newcommand{\clarify}[1]{\todo[color=yellow,inline,size=\small]{CLARIFY: #1}}
+\newcommand{\question}[1]{\todo[color=green,inline,size=\small]{QUESTION: #1}}
+
+\newcommand{\why}[0]{\clarify{why?}}
+\newcommand{\needed}[0]{\clarify{reference?}}
+
+\newcommand{\term}[1]{\index{#1}\textbf{#1}}
+
+% More space between math arrays
+\renewcommand{\arraystretch}{1.25}
+
+% An actual QED symbol.
+\renewcommand{\qedsymbol}{$\square$}
+
+\definecolor{solarback}{HTML}{FDF6E3}
+\definecolor{solarfront}{HTML}{657A81}
+\mdfdefinestyle{klad}{linewidth=0pt,backgroundcolor=solarback,fontcolor=solarfront}
+\newenvironment{klad}{\begin{mdframed}[style=klad]}{\end{mdframed}}
+
+\newenvironment{prob}[2]
+{
+\newpage
+\section{Problem #1: #2}
+}
+{}
+
+\newenvironment{problem}
+{}
+{}
+
+\newenvironment{solutions}
+{}
+{}
+
+\newenvironment{solution}[1]
+{
+\subsection{#1}
+}
+{}
+
+\newenvironment{libraryfile}
+{}
+{}
+
+% \nointent everywhere
+\setlength\parindent{0pt}
+
+% Eden root
+\newcommand{\eden}[0]{..}
+\newcommand{\sol}[2]{\eden/#1/#2}
+\newcommand{\lib}[2]{\eden/lib/#1/#2}
+
+\lstset{
+  basicstyle=\small\ttfamily
+}
+
+
+\makeatletter
+
+% Partial inclusions
+\newread\pin@file
+\newcounter{pinlineno}
+\newcommand\pin@accu{}
+\newcommand\pin@ext{pintmp}
+% inputs #3, selecting only lines #1 to #2 (inclusive)
+\newcommand*\partialinput [3] {%
+  \IfFileExists{#3}{%
+    \openin\pin@file #3
+    % skip lines 1 to #1 (exclusive)
+    \setcounter{pinlineno}{1}
+    \@whilenum\value{pinlineno}<#1 \do{%
+      \read\pin@file to\pin@line
+      \stepcounter{pinlineno}%
+    }
+    % prepare reading lines #1 to #2 inclusive
+    \addtocounter{pinlineno}{-1}
+    \let\pin@accu\empty
+    \begingroup
+    \endlinechar\newlinechar
+    \@whilenum\value{pinlineno}<#2 \do{%
+      % use safe catcodes provided by e-TeX's \readline
+      \readline\pin@file to\pin@line
+      \edef\pin@accu{\pin@accu\pin@line}%
+      \stepcounter{pinlineno}%
+    }
+    \closein\pin@file
+    \expandafter\endgroup
+    \scantokens\expandafter{\pin@accu}%
+  }{%
+    \errmessage{File `#3' doesn't exist!}%
+  }%
+}
+
+% Better boxes
+\makeatletter
+\renewcommand{\boxed}[1]{\text{\fboxsep=.2em\fbox{\m@th$\displaystyle#1$}}}
+\makeatother
+
+% Leftarrow and Rightarrow with boxes around them 
+\newcommand{\bla}{$\boxed{\Leftarrow}$\ } % Boxed left arrow
+  \newcommand{\bra}{$\boxed{\Rightarrow}$\ } % Boxed right arrow
+
+\makeatother

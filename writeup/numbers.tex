@@ -1,0 +1,166 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\chapter{Numbers}
+
+\section{Natural Numbers}
+
+\begin{de}
+  \term{Zero} is defined as the empty set $\emptyset$ and written as ``$0$''.
+\end{de}
+
+\begin{de}
+  The \term{successor function} is defined as follows:
+  \[ s(n) = n \cup \{n\} \]
+\end{de}
+
+\begin{de}
+  The set of \term{natural numbers} $\mathbb{N}$ is defined to contain $0$ and is further recursively defined as the smallest set that is closed under the successor function.
+  This means that the successor of any natural number is, by definition, also a natural number.
+\end{de}
+
+\begin{de}
+  The \term{sum} of two natural numbers is defined as follows:
+  \[ a + 0 = a = 0 + a\]
+  \[ a + s(b) = s(a+b) = s(a) + b \]
+\end{de}
+
+\begin{de}
+  The \term{product} of two natural numbers is defined as follows:
+  \[ a \cdot 0 = 0 = 0 \cdot a \]
+  \[ a \cdot s(b) = a + (a\cdot b) = s(a) \cdot b\]
+\end{de}
+
+\begin{pr}
+  Multiplication is distributive over addition with respect to natural numbers.
+  \[ \forall a, b, c \in \mathbb{N}:\ a \cdot (b + c) = a \cdot b + a \cdot c \]
+
+  \begin{proof}
+    Proof by induction.
+    \noindent
+    \begin{itemize}
+        \item Base case: The statement holds for $a = 0$.
+          \[ a \cdot (b + c) = 0 = 0 + 0 = a \cdot b + a \cdot c \]
+        \item Inductive step: Assuming the statement holds for $a = k$, the statement holds for $a = s(k)$.
+          \begin{align*}
+            s(k) \cdot (b + c)
+            &= (b + c) + k \cdot (b + c)\\
+            &= (b + c) + k \cdot b + k \cdot c\\
+            &= s(k) \cdot b + s(k) \cdot c
+          \end{align*}
+    \end{itemize}
+  \end{proof}
+\end{pr}
+
+\begin{de}
+  \label{de:inequality-natural-numbers}
+  A natural number $a$ is considered smaller than, or equal to, a natural number $b$ if there exists $a$ natural number $n$ such that $a + n = b$. In symbols:
+  \[ \forall a,b \in \mathbb{N}: a \le b \Leftrightarrow \exists n\in\mathbb{N}: a + n = b \]
+\end{de}
+
+\begin{pr}
+  \label{pr:inequality-of-natural-numers-stable-under-addition}
+  The inequality of natural numbers is stable under addition:
+  \[ \forall a, b, n \in \mathbb{N}: a \le b \Leftrightarrow a + n \le b + n \]
+
+  \begin{proof}
+    Let $a$, $b$ and $n$ be natural numbers.
+    \noindent
+    \begin{itemize}
+      \item \bra
+        Assume $a \le b$.\\
+        This means there exists a natural number $c$ such that $a+c = b$ holds.
+        We now find the following:
+        \[ (a + c) + n = b + n \Leftrightarrow (a + n) + c = b + n \]
+        This means that $a + n \le b + n$ holds.
+      \item \bla
+        Assume $a + n \le b + n$\\
+        This means that there exists a natural number $c$ as follows:
+        \[ (a + n) + c = b + n \]
+        We find that $(a + c) + n = b + n$ holds as well and thus $a + c = b$.
+        This means that $a \le b$ holds.
+    \end{itemize}
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  The inequality of natural numbers is stable under multiplication:
+  \[ \forall a, b, n \in \mathbb{N}: a \le b \Leftrightarrow a \cdot n \le b \cdot n \]
+
+  \begin{proof}
+    Let $a$, $b$ and $n$ be natural numbers
+    \noindent
+    \begin{itemize}
+      \item \bra
+        Assume $a \le b$\\
+        This means that there exists a natural number $c$ as follows:
+        \[ a + c = b \]
+        By multiplying both sides by $n$, we find the following:
+        \begin{align*}
+          (a + c) \cdot n = b \cdot n\\
+          a\cdot n + c \cdot n = b \cdot n
+        \end{align*}
+        This means that $a\cdot n \le b \cdot n$ holds.
+      \item \bla
+        Assume $a \cdot n \le b \cdot n$.\\
+        This means that there exists a natural number $c$ as follows:
+        \[ a\cdot n + c = b \cdot n \]
+        \TODO{now what?}
+    \end{itemize}
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  Inequality of natural numbers imposes a total order on the set $\mathbb{N}$.
+
+  \begin{proof}
+    \noindent
+    \begin{itemize}
+      \item Transivity\\
+        Let $a$, $b$ and $c$ be natural numbers such that both $a \le b$ and $b \le c$ hold.
+        By definition there exist natural numbers $n$ and $m$ such that $a + n = b$ and $b + m = c$ hold.
+        We immediately find $a + n + m = c$.
+        Because $n$ and $m$ are natural numbers, $n+m$ must be a natural numbers.
+        This means that there exists a natural number $x = n + m$ such that $a+x = c$ holds.
+      \item Antisymmetry\\
+        Let $a$ and $b$ be natural numbers such that $a \le b$ and $b \le a$ both hold.
+        This means that there exist natural numbers $n$ and $m$ such that $a + n = b$ and $b + m = a$ hold.
+        By substitution we find that this means that $a + n + m = a$ must hold.
+        Because $a$ equals itself, we find that $n+m$ must be zero.
+        For $n+m$ to be zero, both $n$ and $m$ must be zero.
+        This means that $a$ and $b$ must be equal.
+      \item Totality\\
+        Let $a$ and $b$.
+        By cases:
+        \noindent
+        \begin{itemize}
+          \item
+            $a$ and $b$ are both zero.
+            $a \le b$ and $ b\le a$ both hold.
+          \item
+            $a$ is zero and $b$ is non-zero.
+            $b$ is a natural number such that $a + b = 0 + b = b$ holds so $a \le b$ holds.
+          \item
+            $a$ and $b$ are both not zero.
+            This means that there exist natural numbers $c$ and $d$ such that $a = c + 1$ and $b = d + 1$ hold.
+            Because the inequality of numbers is stable under addition\prref{pr:inequality-of-natural-numers-stable-under-addition}, the statement $a \le b$ is equivalent to the statement $c \le d$.
+            The same holds for the statements $b \le a$ and $d \le c$.
+            This reduction can be continued until one of the numbers is zero because all natural numbers are finite.
+        \end{itemize}
+    \end{itemize}
+  \end{proof}
+\end{pr}
+
+\begin{de}
+  We use ...
+  \begin{itemize}
+    \item ... $a \ge b$ to mean $b \le a$
+    \item ... $a > b$ to mean $a \not\le b$
+    \item ... $a < b$ to mean $b \not\le a$
+  \end{itemize}
+\end{de}
+
+% Whole numbers
+% Divisibility
+
+\end{document}

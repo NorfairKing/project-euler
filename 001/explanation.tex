@@ -1,0 +1,55 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\begin{prob}{1}{Multiples of 3 and 5}
+  \begin{problem}
+    If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
+    Find the sum of all the multiples of 3 or 5 below 1000.
+  \end{problem}
+  \begin{solutions}
+    \begin{solution}{A naive solution}
+      An input size of $p=1000$ is small enough to let us get away with a naive solution.
+      The naive solution, to go over every number up to $p$ and adding up the ones that are divisible by $3$ or by $5$, gives us an $O(p)$ runtime.
+
+      \begin{figure}[H]
+        \centering
+        \lstinputlisting[language=c, firstline=13, lastline=23]{\sol{001}{c}/naive.c}
+        \caption{A naive solution in C}
+      \end{figure}
+    \end{solution}
+
+    \begin{solution}{A better solution}
+      As it turns out, there's a better way to solve this problem.
+      Because the numbers that are divisible by $3$ and $5$ are easily predicitible, we can calculate the solution with the following formula:
+
+      \[
+        \sum_{i=0}^{3i < p}3i
+        + \sum_{i=0}^{5i < p}5i
+        - \sum_{i=0}^{15i < p}15i
+      \]
+
+      This formula can quite literally be implemented so find the solution.
+      In this solution, we check less than half of the numbers we did in the last solution.
+
+      \begin{figure}[H]
+        \centering
+        \lstinputlisting[language=c, firstline=14, lastline=31]{\sol{001}{c}/better.c}
+        \caption{A better solution in C}
+      \end{figure}
+
+      The same can be done in haskell on two line:
+      \begin{figure}[H]
+        \centering
+        \lstinputlisting[language=haskell, firstline=7, lastline=9]{\sol{001}{haskell}/better.hs}
+        \caption{A better solution in Haskell}
+      \end{figure}
+    \end{solution}
+
+    \begin{solution}{A constant-time solution}
+      Looking at the above formula, we find that there's a constant-time algorithm to calculate each term and therefore the entire expression.\algref{multiples-under}
+    \end{solution}
+  \end{solutions}
+\end{prob}
+
+
+\end{document}

@@ -1,0 +1,33 @@
+\documentclass[12pt,a4paper,oneside]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\input{packages}
+\input{header}
+
+\begin{document}
+
+\input{titlepage.tex}
+
+\tableofcontents
+
+\subfile{background}
+\subfile{libs}
+\subfile{solutions}
+
+% Bibliography
+\bibliographystyle{plain}
+\bibliography{main}
+
+% Index
+\printindex
+
+% Todo's
+\listoftodos
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
