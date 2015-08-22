@@ -1,0 +1,31 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\chapter{Multiple}
+
+\begin{libraryfile}
+  \begin{algorithm}{1}{1}{multiples-under}
+    \begin{algorithm-description}
+        Compute the sum of al multiples of a given number $n$ below a given number $p$.
+    \end{algorithm-description}
+    \begin{algorithm-explanation}
+      The exact solution would be the value of the following expression:
+      \[ \sum_{i=0}^{ni < p}ni \]
+      If we would want all the multiples up to \textit{and including} $p$, we could rewrite the solution as follows:
+      \[ \sum_{i=0}^{i \le \floor*{\frac{p}{n}}}ni \]
+      If we factor out $n$, we see the sum of the first $\floor*{\frac{p}{n}}$ appearing and that has a closed form expression.\prref{pr:sum-of-first-n-natural-numbers}
+      That means the above is equal to the following:
+      \[ n\frac{\floor{\frac{p}{n}}\cdot \left(\floor{\frac{p}{n}} + 1\right)}{2} \]
+      Now we might have counted too many numbers because $p$ itself will be included if it is divisible by $n$.
+      Because we've considered numbers up to and including $p$, we will have included $p$ if $p$ is divisible by $n$ so we have to substract $p$ in that case to get the result.
+
+      \begin{figure}[H]
+        \centering
+        \lstinputlisting[language=c, firstline=3, lastline=6] {\lib{c}{multiple.c}}
+        \caption{An implementation in C}
+      \end{figure}
+    \end{algorithm-explanation}
+  \end{algorithm}
+\end{libraryfile}
+
+\end{document}

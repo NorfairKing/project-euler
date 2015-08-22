@@ -10,10 +10,25 @@
 \newtheorem{ex}[thm]{Example}
 \newtheorem{cex}[thm]{Counterexample}
 \newtheorem{lem}[thm]{Lemma}
-\newtheorem{alg}[thm]{Algorithm}
+\newmdtheoremenv{alg}[thm]{Algorithm}
 
-\newcommand{\deref}[1]{\footnote{See definition \ref{#1} on page \pageref{#1}.}}
-\newcommand{\prref}[1]{\footnote{See proposition \ref{#1} on page\pageref{#1}.}}
+\newenvironment{algorithm}[3]
+{\begin{alg}
+    \label{alg:#3}
+    Time: O(#1), Space: O(#2)\\
+  }
+{\end{alg}}
+
+\newenvironment{algorithm-description}[0]
+{}
+{}
+\newenvironment{algorithm-explanation}[0]
+{}
+{}
+
+\newcommand{\algref}[1]{\footnote{See definition \ref{de:#1} on page \pageref{alg:#1}.}}
+\newcommand{\deref}[1]{\footnote{See definition \ref{de:#1} on page \pageref{de:#1}.}}
+\newcommand{\prref}[1]{\footnote{See proposition \ref{pr:#1} on page\pageref{pr:#1}.}}
 
 
 % Nicer TODO's

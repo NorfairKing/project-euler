@@ -2,84 +2,53 @@
 \begin{document}
 
 \begin{prob}{1}{Multiples of 3 and 5}
-    \begin{problem}
-        If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
-        Find the sum of all the multiples of 3 or 5 below 1000.
-    \end{problem}
-    \begin{solutions}
-        \begin{solution}{A naive solution}
-            An input size of $p=1000$ is small enough to let us get away with a naive solution.
-            The naive solution, to check every number, gives us an $O(p)$ runtime.
+  \begin{problem}
+    If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
+    Find the sum of all the multiples of 3 or 5 below 1000.
+  \end{problem}
+  \begin{solutions}
+    \begin{solution}{A naive solution}
+      An input size of $p=1000$ is small enough to let us get away with a naive solution.
+      The naive solution, to go over every number up to $p$ and adding up the ones that are divisible by $3$ or by $5$, gives us an $O(p)$ runtime.
 
-            \begin{figure}[H]
-                \centering
-                \lstinputlisting[language=c, firstline=12, lastline=22]{\sol{001}{c}/naive.c}
-                \caption{A naive solution}
-            \end{figure}
-        \end{solution}
+      \begin{figure}[H]
+        \centering
+        \lstinputlisting[language=c, firstline=13, lastline=23]{\sol{001}{c}/naive.c}
+        \caption{A naive solution in C}
+      \end{figure}
+    \end{solution}
 
-        \begin{solution}{A better solution}
-            As it turns out, there's a better way to solve this problem.
-            Because the numbers that are divisible by $3$ and $5$ are easily predicitible, we can calculate the solution with the following formula:
+    \begin{solution}{A better solution}
+      As it turns out, there's a better way to solve this problem.
+      Because the numbers that are divisible by $3$ and $5$ are easily predicitible, we can calculate the solution with the following formula:
 
-            \[
-                \sum_{i=0}^{3i < p}3i
-                + \sum_{i=0}^{5i < p}5i
-                - \sum_{i=0}^{15i < p}15i
-            \]
+      \[
+        \sum_{i=0}^{3i < p}3i
+        + \sum_{i=0}^{5i < p}5i
+        - \sum_{i=0}^{15i < p}15i
+      \]
 
-            \begin{figure}[H]
-                \centering
-                \lstinputlisting[language=c, firstline=13, lastline=30]{\sol{001}{c}/better.c}
-                \caption{A better solution}
-            \end{figure}
+      This formula can quite literally be implemented so find the solution.
+      In this solution, we check less than half of the numbers we did in the last solution.
 
-            In this solution, we check less than half of the numbers we did in the last solution.
-            The same can be done in haskell on one line:
-            \begin{figure}[H]
-                \centering
-                \lstinputlisting[language=c, firstline=7, lastline=7]{\sol{001}{haskell}/solution.hs}
-                \caption{A better solution in Haskell}
-            \end{figure}
-        \end{solution}
+      \begin{figure}[H]
+        \centering
+        \lstinputlisting[language=c, firstline=14, lastline=31]{\sol{001}{c}/better.c}
+        \caption{A better solution in C}
+      \end{figure}
 
-        \begin{solution}{A constant-time solution}
-            Looking at the above formula, we see possibilities to optimise even further.
-            First we have to rewrite the formula, but for the sake of simplicity we will count numbers up to \textit{and including} $p$.
+      The same can be done in haskell on two line:
+      \begin{figure}[H]
+        \centering
+        \lstinputlisting[language=haskell, firstline=7, lastline=9]{\sol{001}{haskell}/better.hs}
+        \caption{A better solution in Haskell}
+      \end{figure}
+    \end{solution}
 
-            \begin{align*}
-                & \sum_{i=0}^{3i \le p}3i
-                + \sum_{i=0}^{5i \le p}5i
-                - \sum_{i=0}^{15i \le p}15i
-                \\
-                &= \sum_{i=0}^{i \le \floor*{\frac{p}{3}}}3i
-                + \sum_{i=0}^{i \le \floor*{\frac{p}{5}}}5i
-                - \sum_{i=0}^{i \le \floor*{\frac{p}{3\cdot 5}}}15i
-                \\
-                &= 3\sum_{i=0}^{\floor*{\frac{p}{3}}}i
-                + 5\sum_{i=0}^{\floor*{\frac{p}{5}}}i
-                - 15\sum_{i=0}^{\floor*{\frac{p}{3\cdot 5}}}i
-                \\
-                &= 3\frac{\floor{\frac{p}{3}}\cdot \left(\floor{\frac{p}{3}} + 1\right)}{2}
-                + 5\frac{\floor{\frac{p}{5}}\cdot \left(\floor{\frac{p}{5}} + 1\right)}{2}
-                - 15\frac{\floor{\frac{p}{15}}\cdot \left(\floor{\frac{p}{15}} + 1\right)}{2}
-            \end{align*}
-
-            The critical insight is here the explicit formula for the sum of the first $n$ nont-zero integers:\prref{pr:sum-of-first-n-natural-numbers}
-            \[
-                \sum_{i=1}^{n}i = \frac{n(n+1)}{2}
-            \]
-
-            Now we might have counted too many numbers because $p$ itself might be included if it is divisible by $3$ or $5$.
-            The full solution can then be computed in constant time:
-
-            \begin{figure}[H]
-                \centering
-                \lstinputlisting[language=c, firstline=23, lastline=26]{\sol{001}{c}/solution.c}
-                \caption{A constant-time solution}
-            \end{figure}
-        \end{solution}
-    \end{solutions}
+    \begin{solution}{A constant-time solution}
+      Looking at the above formula, we find that there's a constant-time algorithm to calculate each term and therefore the entire expression.\algref{multiples-under}
+    \end{solution}
+  \end{solutions}
 \end{prob}
 
 
