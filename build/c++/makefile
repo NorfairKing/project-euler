@@ -1,10 +1,9 @@
-CC = gcc
+CC = g++
 
 OPTIMISATION_FLAG = -O3
-
 WARNING_FLAGS = -Wall -Werror
 
-LIB_DIR = $(EDEN_ROOT)/lib/c
+LIB_DIR = $(EDEN_ROOT)/lib/c++
 LIB_DIR_FLAGS = -L$(LIB_DIR) -I$(LIB_DIR)
 STD_LIBS = -lm
 
@@ -13,14 +12,14 @@ CC_FLAGS = $(OPTIMISATION_FLAG) \
            $(LIB_DIR_FLAGS) \
 		   $(STD_LIBS)
 
-SRCS=$(wildcard $(LIB_DIR)/*.c)
+SRCS=$(wildcard $(LIB_DIR)/*.cpp)
 
-SOLUTIONS=$(wildcard [a-z]*.c)
-SOLVERS=$(SOLUTIONS:.c=.bin)
+SOLUTIONS=$(wildcard [a-z]*.cpp)
+SOLVERS=$(SOLUTIONS:.cpp=.bin)
 
 all: $(SOLVERS)
 
-%.bin : %.c
+%.bin : %.cpp
 	$(CC) $< $(SRCS) -o $@ $(CC_FLAGS)
 
 ## Tests
