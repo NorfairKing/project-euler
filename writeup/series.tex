@@ -31,11 +31,28 @@
     \end{proof}
 \end{pr}
 
+
 \section{The Fibonacci sequence}
+
 \begin{de}
   The \term{Fibonacci sequence} $(F_{n})_{n}$ is recursively defined as follows:
   \[ F_{0} = 1,\ F_{1} = 1,\ F_{n} = F_{n-1} + F_{n-2} \]
 \end{de}
+
+\begin{de}
+  The \term{golden ratio} $\phi$ is defined as follows:
+  \[ \phi = \frac{1 + \sqrt{5}}{2} \]
+\end{de}
+
+\begin{prop}
+  \[ \lim_{n \rightarrow +\infty}F_{n} = \frac{1 + \sqrt{5}}{2} \]
+  \TODO{Proof of limit of ratio of terms of Fibonacci sequence}
+\end{prop}
+
+\begin{prop}
+  \[ F_{n} = \frac{\phi^{n} - (-\phi)^{-n}}{\sqrt{5}} \]
+  \TODO{Proof of closed form expression of term of Fibonacci sequence}
+\end{prop}
 
 
 \end{document}
