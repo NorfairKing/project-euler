@@ -116,7 +116,7 @@
   \begin{proof}
     \noindent
     \begin{itemize}
-      \item Transivity\\
+      \item Transitivity\\
         Let $a$, $b$ and $c$ be natural numbers such that both $a \le b$ and $b \le c$ hold.
         By definition there exist natural numbers $n$ and $m$ such that $a + n = b$ and $b + m = c$ hold.
         We immediately find $a + n + m = c$.
@@ -159,6 +159,83 @@
     \item ... $a < b$ to mean $b \not\le a$
   \end{itemize}
 \end{de}
+
+
+\subsection{Divisibility}
+
+\begin{de}
+  We define a natural number $a$ to be \term{divisible} by a natural number $b$ if there exists a natural number $c$ as follows:
+  \[ b \mdiv a \Leftrightarrow \exists c \in \mathbb{N}:\ a = bc \]
+  
+\end{de}
+
+\begin{pr}
+  \[
+    \forall n \in \mathbb{N}: 1 \mdiv n
+  \]
+
+  \begin{proof}
+    Indeed, $n = 1 \cdot n$.
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  \[
+    \forall n \in \mathbb{N}: n \mdiv n
+  \]
+
+  \begin{proof}
+    Indeed, $n = n \cdot 1$.
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  \term{Transitivity of divisibility}
+  \[ \forall a, b, c \in \mathbb{N}:\ c \mdiv b \mand b \mdiv a \mimplies c \mdiv a \]
+
+  \begin{proof}
+    Let $a$, $b$ and $c$ be natural numbers such that both $c \mdiv b$ and $b \mdiv a$ hold.
+    This means that there exist natural numbers $d$ and $f$ as follows:
+    \[ cd = b \tand bf = a \]
+    This means that $cdf = a$ holds and that there exists a natural number $g = df$ such that $cg = a$ holds.
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  \[ \forall a, b, c \in \mathbb{N}:\ b \mdiv a \mimplies bc \mdiv ac \]
+
+  \begin{proof}
+    Let $a$ and $b$ be natural numbers such that $b \mdiv a$ holds.
+    This means that there exists a natural number $d$ as follows:
+    \[ bd = a \]
+    Let $c$ be any natural number, $bdc = ac$ then also holds.
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  \label{pr:divisor-also-divides-multiple}
+  \[ \forall a, b, c \in \mathbb{N}:\ b \mdiv a \mimplies b \mdiv ac \]
+  
+  \begin{proof}
+    Let $a$ and $b$ be natural numbers such that $b \mdiv a$ holds.
+    This means that there exists a natural number $d$ as follows:
+    \[ bd = a \]
+    Let $c$ be any natural number, $(bd)c = b(dc) = ac$ then also holds.
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  \[ \forall a, b \in \mathbb{N}, c \in \mathbb{N}_{0}:\ c \mdiv a \mand c \mdiv b \mimplies (\forall m, n \in \mathbb{N}:\ c \mdiv ma + nb) \]
+
+  \begin{proof}
+    Let $a$ and $b$ be natural numbers and let $c$ be a non-zero natural number such that both $c \mdiv a$ and $c \mdiv b$ hold.
+    This means that there exist natural numbers $d$ and $e$ as follows:
+    \[ cd = a \tand ce = b \]
+    Now let $m$ and $n$ be arbitrary natural numbers.
+    \[ ma + nb = mcd + nce = c(md + ne) \]
+    This means that $c$ divides $ma + nb$.
+  \end{proof}
+\end{pr}
 
 % Whole numbers
 % Divisibility
