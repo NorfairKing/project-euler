@@ -1,5 +1,3 @@
-#include <stdbool.h>
-
 #include "factor.h"
 
 /*
@@ -9,10 +7,18 @@ bool even(int n) {
     return ! odd(n);
 }
 
+bool even_l(long n) {
+    return ! odd(n);
+}
+
 /*
  * Test whether a given number is odd, that is, not divisible by 2.
  */
 bool odd(int n) {
+    return n & 1;
+}
+
+bool odd_l(long n) {
     return n & 1;
 }
 

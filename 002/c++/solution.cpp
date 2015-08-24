@@ -1,5 +1,5 @@
-#include <stdio.h> 
-#include <math.h>
+#include <iostream> 
+#include <cmath>
 #include "factor.h"
 #include "constant.h"
 #include "series.h"
@@ -9,9 +9,8 @@ int solve(int p);
 #ifndef TESTING
 int main () {
   int p;
-  scanf("%d", &p);
-  printf("%d\n", solve(p));
-  return 0;
+  std::cin >> p;
+  std::cout << solve(p) << "\n";
 }
 #endif
 
