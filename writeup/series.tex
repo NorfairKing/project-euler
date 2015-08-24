@@ -3,32 +3,51 @@
 \chapter{Series}
 
 \begin{de}
-    A sequence $(a_{n})_{n}$ of elements in a set $A$ is a function $a: N
-    \rightarrow A: n \rightarrow a_{n}$ that identifies every natural number $n$ with an element of
-    the set $A$. The element $a_{n}$ in the sequence $(a_{n})_{n}$ is called a the
-    $n$-th element of that sequence.
+  A sequence $(a_{n})_{n}$ of elements in a set $A$ is a function $a: N
+  \rightarrow A: n \rightarrow a_{n}$ that identifies every natural number $n$ with an element of
+  the set $A$. The element $a_{n}$ in the sequence $(a_{n})_{n}$ is called a the
+  $n$-th element of that sequence.
 \end{de}
 
 \begin{de}
-    Let $(a_{n})_{n}$ be a row
-    A sequence $(s_{n})_{n}$ as follows is the series of the sequence $(a_{n})_{n}$.
-    \[ s_{n} = \sum_{i=0}a_{i} \]
+  Let $(a_{n})_{n}$ be a sequence.
+  A sequence $(s_{n})_{n}$ as follows is the series of the sequence $(a_{n})_{n}$.
+  \[ s_{n} = \sum_{i=0}^{n}a_{i} \]
+\end{de}
+
+\begin{de}
+  We often use $\sum_{n}a_n$ as a shorthand for $\left(\sum_{i=0}^{n}a_{i}\right)_{n}$.
 \end{de}
 
 \begin{pr}
-    \label{pr:sum-of-first-n-natural-numbers}
-    \[
-        \sum_{i=1}^n i = \frac{n\cdot(n+1)}{2}
-    \]
-    \begin{proof}
-        \begin{align*}
-            \sum_{i=1}^n i
-            &= 1 + 2 + 3 + \dotsb + (n-2) + (n-1) + n\\
-            &= (1 + n) + (2+n-1) + (3+n-2) + \dotsb + (i+n-i+1) + \dotsb\\
-            &= \frac{n}{2} (n+1)
-            &= \frac{n\cdot(n+1)}{2}
-        \end{align*}
-    \end{proof}
+  \label{pr:sum-of-first-n-natural-numbers}
+  \[
+    \sum_{i=1}^n i = \frac{n\cdot(n+1)}{2}
+  \]
+  \begin{proof}
+    \begin{align*}
+      \sum_{i=1}^n i
+      &= 1 + 2 + 3 + \dotsb + (n-2) + (n-1) + n\\
+      &= (1 + n) + (2+n-1) + (3+n-2) + \dotsb + (i+n-i+1) + \dotsb\\
+      &= \frac{n}{2} (n+1)
+      &= \frac{n\cdot(n+1)}{2}
+    \end{align*}
+  \end{proof}
+\end{pr}
+
+
+\section{Geometric series}
+
+\begin{de}
+  A geometric series is a series of the following form:
+  \[ \sum_{i}ar^{i} \]
+\end{de}
+
+\begin{pr}
+  \label{pr:closed-form-expression-nth-term-of-geometric-series}
+  Let $\sum_{i}ar^{i}$ be a geometric series.
+  \[ \sum_{i=0}^{n-1}ar^{i} = a\frac{1 - r^{n}}{1 - r} \]
+  \TODO{proof of the closed form expression of the nth term of a geometric series}
 \end{pr}
 
 
@@ -38,6 +57,22 @@
   The \term{Fibonacci sequence} $(F_{n})_{n}$ is recursively defined as follows:
   \[ F_{0} = 1,\ F_{1} = 1,\ F_{n} = F_{n-1} + F_{n-2} \]
 \end{de}
+
+\begin{prop}
+  \label{prop:every-third-fibonacci-term-even}
+  Every third Fibonacci number is even, that is, for every $k$, $F_{3k+1}$ is even.
+  \begin{proof}             
+    \noindent             
+    \begin{itemize}       
+      \item Base case: $F_{1} = 0$ is even.
+      \item Inductive step: If $F_{3k+1}$ is even, then $F_{3k+4}$ is even.\\
+        \[
+          F_{3k+4} = F_{3k+3} + F_{3k+2} = 2F_{3k+2} + F_{3k+1}
+        \]
+        Because both $F_{3k+1}$ and $2F_{3k+2}$ are even, $F_{3k+4}$ must be even.
+    \end{itemize}
+  \end{proof}
+\end{prop}
 
 \begin{de}
   The \term{golden ratio} $\phi$ is defined as follows:
@@ -50,6 +85,7 @@
 \end{prop}
 
 \begin{prop}
+  \label{prop:closed-form-expression-fibonacci-term}
   \[ F_{n} = \frac{\phi^{n} - (-\phi)^{-n}}{\sqrt{5}} \]
   \TODO{Proof of closed form expression of term of Fibonacci sequence}
 \end{prop}
