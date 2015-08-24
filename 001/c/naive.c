@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int solve (int p);
+int solve(int p);
 
 #ifndef TESTING
 int main () {
