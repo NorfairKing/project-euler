@@ -16,6 +16,8 @@
                 \lstinputlisting[language=c, firstline=15, lastline=33]{\sol{002}{c}/naive.c}
                 \caption{A naive solution}
             \end{figure}
+
+            \complexity{\log(p)}{1}
         \end{solution}
         \begin{solution}{A better solution in C}
             To optimise, need to use the fact that every third Fibonacci number is even.\propref{every-third-fibonacci-term-even}
@@ -42,7 +44,8 @@
             \end{figure}
 
             Because $k$ is of the order $\log(p)$, the total runtime complexity of this solution is $\log\log(p)$.
-        \end{solution}
+            \complexity{\log\log(p)}{1}
+          \end{solution}
     \end{solutions}
 \end{prob}
 
