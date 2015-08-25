@@ -9,7 +9,7 @@ long solve(long p);
 int main () {
     long p;
     std::cin >> p;
-    std::cout << solve(p) << "\n";
+    std::cout << solve(p) << std::endl;
 }
 #endif
 

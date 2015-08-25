@@ -70,7 +70,8 @@ int nr_divisors(int n) {
         return 0;
     }
     int d = 1;  // n is always divisible by 1.
-    for (int i = 2; i * i < n; ++i) {  // Don't check sqrt(n)
+    int i;
+    for (i = 2; i * i < n; ++i) {  // Don't check sqrt(n)
         if (is_evenly_divisible_by(n, i)) {
             d += 2;
         }
@@ -104,7 +105,8 @@ int sum_divisors(int n){
         return 0;
     }
     int sum = 1;  // n is always divisible by 1.
-    for (int i = 2; i * i < n; ++i) {  // Don't check sqrt(n)
+    int i;
+    for (i = 2; i * i < n; ++i) {  // Don't check sqrt(n)
         if (is_evenly_divisible_by(n, i)) {
             sum += i + n/i;
         }
