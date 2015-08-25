@@ -7,5 +7,10 @@
  */
 int sum_naturals(int n);
 
+/*
+ * The sum of the first n terms of the geometric series \sum_n ar^k
+ */
+double sum_geometric(double a, double n, double r);
+
 #endif
 

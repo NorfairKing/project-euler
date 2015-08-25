@@ -1,8 +1,6 @@
 #ifndef factor_h__
 #define factor_h__
 
-#include <stdbool.h>
-
 bool even(int n);
 bool even_l(long n);
 

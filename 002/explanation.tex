@@ -8,49 +8,26 @@
     \end{problem}
     \begin{solutions}
         \begin{solution}{A naive solution}
-
-            \TODO{ definition of Fibonacci series }
             An input size of $p=4000000$ is small enough to let us get away with a naive solution.
             The naive solution, to check every Fibonnacci number, gives us an $O(N)$ runtime in the amount of Fibonacci numbers calculated.
             Because the terms of the Fibonacci sequence grow exponentially, that is an $O(\log(p))$ runtime solution.
 
             \begin{figure}[H]
-                \lstinputlisting[language=c, firstline=13, lastline=31]{\sol{002}{c}/naive.c}
+                \lstinputlisting[language=c, firstline=15, lastline=33]{\sol{002}{c}/naive.c}
                 \caption{A naive solution}
             \end{figure}
+
+            \complexity{\log(p)}{1}
         \end{solution}
-        \begin{solution}{A better solution}
+        \begin{solution}{A better solution in C}
+            To optimise, need to use the fact that every third Fibonacci number is even.\propref{every-third-fibonacci-term-even}
 
-            To optimise, we first need to see that every third Fibonacci number is even.
-
-            \begin{prop}
-                Every third Fibonacci number is even, that is, for every $k$, $F_{3k+1}$ is even.
-                \begin{proof}
-                    \noindent
-                    \begin{itemize}
-                        \item Base case: $F_{1} = 0$ is even.
-                        \item Inductive step: If $F_{3k+1}$ is even, then $F_{3k+4}$ is even.\\
-                            \[
-                                F_{3k+4} = F_{3k+3} + F_{3k+2} = 2F_{3k+2} + F_{3k+1}
-                            \]
-                            Because both $F_{3k+1}$ and $2F_{3k+2}$ are even, $F_{3k+4}$ must be even.
-                    \end{itemize}
-                \end{proof}
-            \end{prop}
-
-            This means that we only have to sum every third fiboncci number smaller than $p$:
-            There is a closed form expression describing the Fibonacci sequence: \why
-
-            \[ F_{n} = \frac{\Phi^{n} - (-\Phi)^{-n}}{\sqrt{5}} \]
-
-            Here, $\Phi$ is the golden ratio $\frac{1+\sqrt{5}}{2}$.
-            The sum that we're looking for now looks like this:
-
+            This means that we only have to sum every third fiboncci number smaller than $p$.
+            Because of the closed form expression describing the Fibonacci sequence, the sum that we're looking for now looks like this:\propref{closed-form-expression-fibonacci-term}
             \[ \sum_{n=1}^{k}\frac{\Phi^{3n} - (-\Phi)^{-3n}}{\sqrt{5}} \]
 
             Here $k$ is the largest number such that $F_{3k} < p$ holds.
-            Rewriting this gets us the sum of two geometric series: \clarify{geometric series closed form}
-
+            Rewriting this gets us the sum of two geometric series:\prref{closed-form-expression-nth-term-of-geometric-series}
             \begin{align*}
                 &= \frac{1}{\sqrt{5}}\left( \sum_{n=1}^{k}(\Phi^{3})^{n} - \sum_{n=1}^{k}(-\Phi^{3})^{n} \right)\\
                 &= \frac{1}{\sqrt{5}}\left( \Phi^{3}\frac{1-\left(\Phi^{3}\right)^{k}}{1-\Phi^{3}} - \Phi^{-3}\frac{1-\left(-\Phi^{-3}\right)^{k}}{1+\Phi^{-3}} \right)
@@ -62,15 +39,13 @@
             \[ n(F_n) = \floor*{\frac{\ln{F_n \cdot \sqrt{5}}}{\ln{\Phi}+\frac{1}{2}}} \]
 
             \begin{figure}[H]
-                \lstinputlisting[language=c, firstline=16, lastline=31]{\sol{002}{c}/solution.c}
-                \caption{A better solution}
+                \lstinputlisting[language=c, firstline=18, lastline=29]{\sol{002}{c}/solution.c}
+                \caption{A better solution in C}
             \end{figure}
 
-            \TODO{What's the total runtime complexity? It's logarithmic in $k$ but what's the relation between $n$ and $k$?}
-
-            % This should give better precision:
-            %\[ n(F_n) = \log_{\varphi}\left(\frac{F_n\sqrt{5} + \sqrt{5F_n^2 \pm 4}}{2}\right) \]
-        \end{solution}
+            Because $k$ is of the order $\log(p)$, the total runtime complexity of this solution is $\log\log(p)$.
+            \complexity{\log\log(p)}{1}
+          \end{solution}
     \end{solutions}
 \end{prob}
 

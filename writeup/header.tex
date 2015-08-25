@@ -29,6 +29,7 @@
 \newcommand{\algref}[1]{\footnote{See definition \ref{de:#1} on page \pageref{alg:#1}.}}
 \newcommand{\deref}[1]{\footnote{See definition \ref{de:#1} on page \pageref{de:#1}.}}
 \newcommand{\prref}[1]{\footnote{See proposition \ref{pr:#1} on page \pageref{pr:#1}.}}
+\newcommand{\propref}[1]{\footnote{See property \ref{prop:#1} on page \pageref{prop:#1}.}}
 
 
 % Nicer TODO's
@@ -134,6 +135,15 @@
 
 % Leftarrow and Rightarrow with boxes around them 
 \newcommand{\bla}{$\boxed{\Leftarrow}$\ } % Boxed left arrow
-  \newcommand{\bra}{$\boxed{\Rightarrow}$\ } % Boxed right arrow
+\newcommand{\bra}{$\boxed{\Rightarrow}$\ } % Boxed right arrow
+
+\newcommand{\complexity}[2]{\begin{mdframed}Time: $O(#1)$, Space: $O(#2)$\end{mdframed}}
 
 \makeatother
+
+\newcommand{\mand}{\ \wedge\ } % math and
+\newcommand{\tand}{\ \text{ and }\ } %text and
+\newcommand{\mor}{\ \vee\ } % math of
+\newcommand{\tor}{\ \text{ or }\ } % text or
+\newcommand{\mdiv}{\mid} % math divides
+\newcommand{\mimplies}{\Rightarrow} % math implies

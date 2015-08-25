@@ -17,6 +17,7 @@ Please run `eden test all` to ensure that everything is in order before sending 
 ### Dependencies
 #### C/C++
 - `gcc`
+- `g++`
 - library `libgtest-dev`
 
 #### Haskell
