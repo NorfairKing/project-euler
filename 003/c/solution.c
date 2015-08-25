@@ -17,9 +17,8 @@ int main () {
 
 long solve(long p) {
   long f = 2;
-
-  while (p > 1){
-    if (is_prime_l(f) && is_factor_l(f, p)){
+  while (p > 1) {
+    if (is_prime_l(f) && is_factor_l(f, p)) {
       p /= f;
       continue;
     }
