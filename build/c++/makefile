@@ -12,14 +12,15 @@ CC_FLAGS = $(OPTIMISATION_FLAG) \
            $(LIB_DIR_FLAGS) \
 		   $(STD_LIBS)
 
-SRCS=$(wildcard $(LIB_DIR)/*.cpp)
+EXT = cc
+SRCS=$(wildcard $(LIB_DIR)/*.$(EXT))
 
-SOLUTIONS=$(wildcard [a-z]*.cpp)
-SOLVERS=$(SOLUTIONS:.cpp=.bin)
+SOLUTIONS=$(wildcard [a-z]*.$(EXT))
+SOLVERS=$(SOLUTIONS:.$(EXT)=.bin)
 
 all: $(SOLVERS)
 
-%.bin : %.cpp
+%.bin : %.$(EXT)
 	$(CC) $< $(SRCS) -o $@ $(CC_FLAGS)
 
 ## Tests
@@ -28,7 +29,7 @@ CPP = g++
 TESTSUITE = testsuite.bin
 LIB_FLAGS = -lgtest
 TEST_SRC = test.cpp
-TEST_BOILERPLATE = $(EDEN_ROOT)/build/c/test-boilerplate.c
+TEST_BOILERPLATE = $(EDEN_ROOT)/build/c/test-boilerplate.cc
 TMP_SRC = TestTmp.cpp
 
 FLAGS = \
