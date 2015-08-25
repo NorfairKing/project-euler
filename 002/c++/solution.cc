@@ -10,7 +10,7 @@ int solve(int p);
 int main () {
   int p;
   std::cin >> p;
-  std::cout << solve(p) << "\n";
+  std::cout << solve(p) << std::endl;
 }
 #endif
 
