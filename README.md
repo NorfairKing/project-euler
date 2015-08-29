@@ -15,6 +15,10 @@ Make sure you add a test and run it with `eden test solution <problem> <language
 Please run `eden test all` to ensure that everything is in order before sending a pull request.
 
 ### Dependencies
+#### Publishing
+- latexmk
+- minted
+
 #### C/C++
 - `gcc`
 - `g++`
