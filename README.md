@@ -3,6 +3,11 @@ EDEN driven project euler solutions
 
 For more info on EDEN, look here: https://github.com/NorfairKing/eden.
 
+### Clone submodules:
+```
+$ git submodule update --init --recursive
+```
+
 ### Contributors
 - Tom Sydney Kerckhove ![norfair badge](https://projecteuler.net/profile/Norfair.png)
 - Michael Kirsche
