@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 #include "lib/src/board.h"
 #include "lib/src/constants.h"
 
