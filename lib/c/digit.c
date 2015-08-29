@@ -1,5 +1,6 @@
 #include <stdbool.h>
 
+#include "base.h"
 #include "digit.h"
 
 /*
@@ -32,4 +33,15 @@ int from_digits(int digit[], int n) {
     num += digit[j] * pow(10, n - 1 - j);
   }
   return num;
+}
+
+/*
+ * Fills in the digits of n.
+ */
+void fill_digits(int digit[], int nrd, int n) {
+  int ix = nrd-1;
+  while (n > 0) {
+    digit[ix--] = n % BASE;
+    n /= BASE;
+  }
 }
