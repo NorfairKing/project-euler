@@ -12,20 +12,21 @@ CC_FLAGS = $(OPTIMISATION_FLAG) \
            $(LIB_DIR_FLAGS) \
 		   $(STD_LIBS)
 
-SRCS=$(wildcard $(LIB_DIR)/*.cpp)
+SRC_EXT = cc
+SRCS=$(wildcard $(LIB_DIR)/*.$(SRC_EXT))
 
 # Make does not offer a recursive wildcard function, so here's one:
 rwildcard = $(wildcard $1$2) $(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2))
 # How to recursively find all files that match a pattern
 ALL_SRCS = $(filter-out lib/src/main.o,$(call rwildcard,lib/,*.o))
 
-SOLUTIONS = $(wildcard [a-z]*.cpp)
-SOLVERS = $(SOLUTIONS:.cpp=.bin)
+SOLUTIONS = $(wildcard [a-z]*.$(SRC_EXT))
+SOLVERS = $(SOLUTIONS:.$(SRC_EXT)=.bin)
 
 .PHONY: lib
 all: lib $(SOLVERS)
 
-%.bin : %.cpp
+%.bin : %.$(SRC_EXT)
 	$(CC) $< $(SRCS) $(ALL_SRCS) -o $@ $(CC_FLAGS)
 
 ifeq ("$(wildcard lib)","") 
@@ -41,9 +42,9 @@ endif
 CPP = g++
 TESTSUITE = testsuite.bin
 LIB_FLAGS = -lgtest
-TEST_SRC = test.cpp
-TEST_BOILERPLATE = $(EDEN_ROOT)/build/c/test-boilerplate.cc
-TMP_SRC = TestTmp.cpp
+TEST_SRC = test.$(SRC_EXT)
+TEST_BOILERPLATE = $(EDEN_ROOT)/build/c/test-boilerplate.$(SRC_EXT)
+TMP_SRC = TestTmp.$(SRC_EXT)
 
 FLAGS = \
 	$(LIB_DIR_FLAGS) \
