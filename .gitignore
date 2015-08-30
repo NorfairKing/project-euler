@@ -43,6 +43,7 @@ auto/
 *.figlist
 *.makefile
 commit.tex
+_minted*/
 
 
 ## Core latex/pdflatex auxiliary files:

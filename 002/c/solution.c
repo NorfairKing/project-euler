@@ -1,9 +1,10 @@
 #include <stdio.h> 
 #include <math.h>
 #include "factor.h"
+#include "constant.h"
+#include "series.h"
 
 int solve(int p);
-double geom(double k, double f);
 
 #ifndef TESTING
 int main () {
@@ -16,17 +17,13 @@ int main () {
 
 int solve (int p) {
   double cte = 1/sqrt(5);
-  double phi = (1 + sqrt(5)) / 2.0;
-  double psi = 2.0 / (1 + sqrt(5)); // 1/phi
-  double phi3 = phi * phi * phi;
-  double psi3 = psi * psi * psi;
-  double n = floor(log(p * sqrt(5))/log(phi) + 1/2.0);
+  double h = phi();
+  double s = psi();
+  double phi3 = h * h * h;
+  double psi3 = s * s * s;
+  double n = floor(log(p * sqrt(5))/log(h) + 1/2.0);
   double k = floor(n/3.0);
-  double term1 = geom(k, phi3);
-  double term2 = geom(k, psi3);
-  return (int) (cte * (phi3*term1 + psi3*term2));
-}
-
-double geom(double k, double f){
-  return (1 - pow(f,k))/(1-f);
+  double term1 = sum_geometric(phi3, k, phi3);
+  double term2 = sum_geometric(psi3, k, psi3);
+  return (int) (cte * (term1 + term2));
 }
