@@ -3,6 +3,10 @@ EDEN driven project euler solutions
 
 For more info on EDEN, look here: https://github.com/NorfairKing/eden.
 
+### DISCLAIMER
+This repository contains spoilers.
+If you don't want to be spoiled, don't look at the code (or the writeups).
+
 ### Contributors
 - Tom Sydney Kerckhove ![norfair badge](https://projecteuler.net/profile/Norfair.png)
 - Michael Kirsche
