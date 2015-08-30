@@ -1,8 +1,5 @@
 CC = gcc
 
-BIN_NAME = solution.bin
-SOLUTION_NAME = solution.c
-
 OPTIMISATION_FLAG = -O3
 
 WARNING_FLAGS = -Wall -Werror
