@@ -1,0 +1,3 @@
+[submodule "096/c++/lib"]
+	path = 096/c++/lib
+	url = git@github.com:NorfairKing/sudoku-solver.git

@@ -12,16 +12,29 @@ CC_FLAGS = $(OPTIMISATION_FLAG) \
            $(LIB_DIR_FLAGS) \
 		   $(STD_LIBS)
 
-EXT = cc
-SRCS=$(wildcard $(LIB_DIR)/*.$(EXT))
+SRCS=$(wildcard $(LIB_DIR)/*.cpp)
 
-SOLUTIONS=$(wildcard [a-z]*.$(EXT))
-SOLVERS=$(SOLUTIONS:.$(EXT)=.bin)
+# Make does not offer a recursive wildcard function, so here's one:
+rwildcard = $(wildcard $1$2) $(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2))
+# How to recursively find all files that match a pattern
+ALL_SRCS = $(filter-out lib/src/main.o,$(call rwildcard,lib/,*.o))
 
-all: $(SOLVERS)
+SOLUTIONS = $(wildcard [a-z]*.cpp)
+SOLVERS = $(SOLUTIONS:.cpp=.bin)
 
-%.bin : %.$(EXT)
-	$(CC) $< $(SRCS) -o $@ $(CC_FLAGS)
+.PHONY: lib
+all: lib $(SOLVERS)
+
+%.bin : %.cpp
+	$(CC) $< $(SRCS) $(ALL_SRCS) -o $@ $(CC_FLAGS)
+
+ifeq ("$(wildcard lib)","") 
+lib:
+	@echo placholder
+else
+lib:
+	$(MAKE) -C lib
+endif
 
 ## Tests
 
