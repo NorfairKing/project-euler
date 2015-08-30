@@ -1,31 +1,33 @@
 CC = gcc
 
+SRC_EXT = c
+OBJ_EXT = o
+ARC_EXT = a
+
 OPTIMISATION_FLAG = -O3
 WARNING_FLAGS = -Wall -Werror
-CC_FLAGS = $(OUTPUT_FLAG) \
-           $(OPTIMISATION_FLAG) \
-           $(WARNING_FLAGS)
+CC_FLAGS = \
+	$(OUTPUT_FLAG) \
+  $(OPTIMISATION_FLAG) \
+  $(WARNING_FLAGS)
 
-LIBS = euler.a
+LIBRARY_NAME = euler
+LIBRARY = lib$(LIBRARY_NAME).$(ARC_EXT)
 
 all: libs
 
 libs: $(LIBS)
 
-SRCS=$(wildcard *.c)
-OBJS=$(SRCS:.c=.o)
+SRCS=$(wildcard *.$(SRC_EXT))
+OBJS=$(SRCS:.$(SRC_EXT)=.$(OBJ_EXT))
 
-%.o : %.c
+%.$(OBJ_EXT) : %.$(SRC_EXT)
 	$(CC) -c -fpic $(CC_FLAGS) $< -o $@
 
-%.a: %.o
-	ar rcs lib$@ $<
-
 euler.a: $(OBJS)
-	ar rcs libeuler.a $(OBJS)
+	ar rcs $(LIBRARY) $(OBJS)
 
-
-DIRTY_EXT = *.o *.so *.a
+DIRTY_EXT = *.$(OBJ_EXT) *.$(ARC_EXT)
 DIRTY = $(DIRTY_EXT) $(BIN_NAME)
 
 clean:

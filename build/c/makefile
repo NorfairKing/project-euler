@@ -1,35 +1,37 @@
 CC = gcc
 
+SRC_EXT = c
+OBJ_EXT = o
+BIN_EXT = bin
+
 OPTIMISATION_FLAG = -O3
-
 WARNING_FLAGS = -Wall -Werror
-
 LIB_DIR = $(EDEN_ROOT)/lib/c
 LIB_DIR_FLAGS = -L$(LIB_DIR) -I$(LIB_DIR)
 STD_LIBS = -lm
+CC_FLAGS = \
+	$(OPTIMISATION_FLAG) \
+  $(WARNING_FLAGS) \
+  $(LIB_DIR_FLAGS) \
+	$(STD_LIBS)
 
-CC_FLAGS = $(OPTIMISATION_FLAG) \
-           $(WARNING_FLAGS) \
-           $(LIB_DIR_FLAGS) \
-		   $(STD_LIBS)
+OBJS=$(wildcard $(LIB_DIR)/*.$(OBJ_EXT))
 
-SRCS=$(wildcard $(LIB_DIR)/*.c)
-
-SOLUTIONS=$(wildcard [a-z]*.c)
-SOLVERS=$(SOLUTIONS:.c=.bin)
+SOLUTIONS=$(wildcard [a-z]*.$(SRC_EXT))
+SOLVERS=$(SOLUTIONS:.$(SRC_EXT)=.$(BIN_EXT))
 
 all: $(SOLVERS)
 
-%.bin : %.c
-	$(CC) $< $(SRCS) -o $@ $(CC_FLAGS)
+%.bin : %.$(SRC_EXT)
+	$(CC) $< $(OBJS) -o $@ $(CC_FLAGS)
 
 ## Tests
 
 CPP = g++
-TESTSUITE = testsuite.bin
+TESTSUITE = testsuite.$(BIN_EXT)
 LIB_FLAGS = -lgtest
 TEST_SRC = test.cpp
-TEST_BOILERPLATE = $(EDEN_ROOT)/build/c/test-boilerplate.c
+TEST_BOILERPLATE = $(EDEN_ROOT)/build/c/test-boilerplate.$(SRC_EXT)
 TMP_SRC = TestTmp.cpp
 
 FLAGS = \
@@ -48,7 +50,7 @@ $(TESTSUITE): $(TEST_SRC)
 	$(CPP) $(SRCS) $(TMP_SRC) -o $(TESTSUITE) $(FLAGS)
 endif
 
-DIRTY_EXT = *.o *.bin
+DIRTY_EXT = *.$(OBJ_EXT) *.$(BIN_EXT)
 DIRTY = $(DIRTY_EXT) $(BIN_NAME)
 
 clean:
