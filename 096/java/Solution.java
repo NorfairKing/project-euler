@@ -1,5 +1,5 @@
 import java.util.*;
-public class p096 {
+public class Solution {
 	static int n; // Length of a side
 	static int nn; // Length of a side of small square
 	static int[][] grid;
@@ -7,13 +7,13 @@ public class p096 {
 public static void main(String[] args)
 {
 	Scanner input = new Scanner(System.in);
-	int T = 50;
+  nn = input.nextInt();
+	n = nn * nn;
+	int T = input.nextInt();
 	int res = 0;
 	for(int t = 0; t<T; t++)
 	{
 		String name = input.next() + " " + input.next();
-		n = 9;
-		nn = (int)(Math.sqrt(n) + .5);
 		grid = new int[n][n];
 		rows = new int[n];
 		cols = new int[n];
@@ -38,13 +38,12 @@ public static void main(String[] args)
 			}
 		}
 		good(0);
-//		for(int i = 0; i<n; i++)
-//		{
-//			for(int j = 0; j<n; j++)
-//				System.out.print(grid[i][j]);
-//			System.out.println();
-//		}
-		res += 100 * grid[0][0] + 10 * grid[0][1] + grid[0][2];
+    int toAdd = 0;
+    for (int i = 0; i < nn; i++) {
+      toAdd *= 10;
+      toAdd += grid[0][i];
+    }
+    res += toAdd;
 	}
 	System.out.println(res);
 }
