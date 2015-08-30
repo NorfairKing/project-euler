@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <stdbool.h>
+#include <iostream>
 
 #include "factor.h"
 #include "prime.h"
@@ -8,10 +7,9 @@ long solve(long p);
 
 #ifndef TESTING
 int main () {
-  long p;
-  scanf("%ld", &p);
-  printf("%ld\n", solve(p));
-  return 0;
+    long p;
+    std::cin >> p;
+    std::cout << solve(p) << std::endl;
 }
 #endif
 

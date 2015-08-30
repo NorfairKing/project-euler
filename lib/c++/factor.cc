@@ -71,7 +71,7 @@ int nr_divisors(int n) {
     }
     int d = 1;  // n is always divisible by 1.
     int i;
-    for (i = 2; i * i < n; i++) {  // Don't check sqrt(n)
+    for (i = 2; i * i < n; ++i) {  // Don't check sqrt(n)
         if (is_evenly_divisible_by(n, i)) {
             d += 2;
         }
@@ -90,12 +90,12 @@ int nr_divisors(int n) {
 void fill_nr_divisors(int divs[], int n) {
     int i, j;
     divs[0] = 0;
-    for (i = 1; i < n; i++) {
+    for (i = 1; i < n; ++i) {
         divs[i] = 1;
     }
-    for (i = 2; i <= n/2; i++) {
+    for (i = 2; i <= n/2; ++i) {
         for (j = i+i; j < n; j += i) {
-            divs[j]++;
+            ++divs[j];
         }
     }
 }
@@ -106,7 +106,7 @@ int sum_divisors(int n){
     }
     int sum = 1;  // n is always divisible by 1.
     int i;
-    for (i = 2; i * i < n; i++) {  // Don't check sqrt(n)
+    for (i = 2; i * i < n; ++i) {  // Don't check sqrt(n)
         if (is_evenly_divisible_by(n, i)) {
             sum += i + n/i;
         }
@@ -121,10 +121,10 @@ int sum_divisors(int n){
 void fill_sum_divisors(int divs[], int n){
     int i, j;
     divs[0] = 0;
-    for (i = 1; i < n; i++) {
+    for (i = 1; i < n; ++i) {
         divs[i] = 1;
     }
-    for (i = 2; i <= n/2; i++) {
+    for (i = 2; i <= n/2; ++i) {
         for (j = i+i; j < n; j += i) {
             divs[j] += i;
         }
