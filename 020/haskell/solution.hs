@@ -1,4 +1,5 @@
-main = print $ solve 100
+main :: IO ()
+main = readLn >>= print . solve
 
 solve :: Integer -> Integer
 solve = sumdigits . factorial
