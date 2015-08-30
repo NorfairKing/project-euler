@@ -1,27 +1,45 @@
-CPP = g++
+LANG = c
 
-TESTSUITE = main.bin
-SRC_DIR = $(EDEN_ROOT)/lib/c
-LIB_SRCS = $(SRC_DIR)/*.[hc]
+CC = g++
+
+SRC_EXT = c
+HRD_EXT = h
+TEST_EXT = cc
+BIN_EXT = bin
+
+OPTIMISATION_FLAGS = -O3
+
+LIB_DIR_NAME = lib
+LIB_DIR = $(EDEN_ROOT)/$(LIB_DIR_NAME)/$(LANG)
+LIB_SRCS = $(LIB_DIR)/*.[$(SRC_EXT)$(HRD_EXT)]
 
 LIB_FLAGS = -lgtest
-FLAGS = $(LIB_FLAGS)
+LIB_DIR_FLAGS = -L$(LIB_DIR) -I$(LIB_DIR)
+CC_FLAGS = \
+	$(LIB_FLAGS) \
+	$(LIB_DIR_FLAGS) \
+	$(OPTIMISATION_FLAGS)
 
-TESTCASES=$(wildcard *.cpp)
-UNITTESTS=$(TESTCASES:.cpp=.bin)
+TESTSUITE_NAME = main
+TESTSUITE = $(TESTSUITE_NAME).$(BIN_EXT)
+TESTSUITE_SRC = $(TESTSUITE_NAME).$(TEST_EXT)
+
+TESTCASES=$(wildcard *.$(TEST_EXT))
+UNITTESTS=$(TESTCASES:.$(TEST_EXT)=.$(BIN_EXT))
 
 all: $(TESTSUITE) $(UNITTESTS)
 
 test: $(TESTSUITE)
 	./$(TESTSUITE)
 
-main.bin:
-	$(CPP) $(TESTCASES) $(LIB_SRCS) -I$(SRC_DIR) $(FLAGS) -o $(TESTSUITE)
+$(TESTSUITE): $(TESTCASES)
+	$(CC) $(TESTCASES) $(LIB_SRCS) $(CC_FLAGS) -o $(TESTSUITE)
 
-%.bin: %.cpp
-	$(CPP) main.cpp $< $(LIB_SRCS) -I$(SRC_DIR) $(FLAGS) -o $@
+%.$(BIN_EXT): %.$(TEST_EXT)
+	$(CC) $(TESTSUITE_SRC) $< $(LIB_SRCS) $(CC_FLAGS) -o $@
 
-DIRTY = *.bin
+DIRTY_EXT = *.$(BIN_EXT)
+DIRTY = $(DIRTY_EXT)
 
 clean:
 	rm -f $(DIRTY)

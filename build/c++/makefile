@@ -1,69 +1,88 @@
+LANG = c++
+
 CC = g++
+
+SRC_EXT = cc
+TEST_EXT = $(SRC_EXT)
+OBJ_EXT = o
+BIN_EXT = bin
 
 OPTIMISATION_FLAG = -O3
 WARNING_FLAGS = -Wall -Werror
-
-LIB_DIR = $(EDEN_ROOT)/lib/c++
+BUILD_DIR_NAME = build
+BUILD_DIR = $(EDEN_ROOT)/$(BUILD_DIR_NAME)/$(LANG)
+LIB_DIR_NAME = lib
+LIB_DIR = $(EDEN_ROOT)/$(LIB_DIR_NAME)/$(LANG)
 LIB_DIR_FLAGS = -L$(LIB_DIR) -I$(LIB_DIR)
 STD_LIBS = -lm
 
-CC_FLAGS = $(OPTIMISATION_FLAG) \
-           $(WARNING_FLAGS) \
-           $(LIB_DIR_FLAGS) \
-		   $(STD_LIBS)
+CC_FLAGS = \
+	$(OPTIMISATION_FLAG) \
+  $(WARNING_FLAGS) \
+  $(LIB_DIR_FLAGS) \
+	$(STD_LIBS)
 
-SRC_EXT = cc
 SRCS=$(wildcard $(LIB_DIR)/*.$(SRC_EXT))
+
+SPECIFIC_LIB = lib
+SPECIFIC_LIB_SRC = $(SPECIFIC_LIB)/src
+SPECIFIC_LIB_MAIN_NAME = main
+SPECIFIC_LIB_MAIN = $(SPECIFIC_LIB_SRC)/$(SPECIFIC_LIB_MAIN_NAME)
+
 
 # Make does not offer a recursive wildcard function, so here's one:
 rwildcard = $(wildcard $1$2) $(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2))
 # How to recursively find all files that match a pattern
-ALL_SRCS = $(filter-out lib/src/main.o,$(call rwildcard,lib/,*.o))
+ALL_SRCS = $(filter-out $(SPECIFIC_LIB_MAIN).$(OBJ_EXT),$(call rwildcard,lib/,*.$(OBJ_EXT)))
 
 SOLUTIONS = $(wildcard [a-z]*.$(SRC_EXT))
-SOLVERS = $(SOLUTIONS:.$(SRC_EXT)=.bin)
+SOLVERS = $(SOLUTIONS:.$(SRC_EXT)=.$(BIN_EXT))
 
-.PHONY: lib
-all: lib $(SOLVERS)
+.PHONY: $(SPECIFIC_LIB)
+all: $(SPECIFIC_LIB) $(SOLVERS)
 
 %.bin : %.$(SRC_EXT)
 	$(CC) $< $(SRCS) $(ALL_SRCS) -o $@ $(CC_FLAGS)
 
-ifeq ("$(wildcard lib)","") 
-lib:
-	@echo placholder
+ifeq ("$(wildcard $(SPECIFIC_LIB))","") 
+$(SPECIFIC_LIB):
 else
-lib:
-	$(MAKE) -C lib
+$(SPECIFIC_LIB):
+	$(MAKE) -C $(SPECIFIC_LIB)
 endif
 
 ## Tests
 
-CPP = g++
-TESTSUITE = testsuite.bin
-LIB_FLAGS = -lgtest
-TEST_SRC = test.$(SRC_EXT)
-TEST_BOILERPLATE = $(EDEN_ROOT)/build/c/test-boilerplate.$(SRC_EXT)
-TMP_SRC = TestTmp.$(SRC_EXT)
+TESTSUITE = testsuite.$(BIN_EXT)
 
-FLAGS = \
+LIB_FLAGS = -lgtest
+
+TEST_SRC_NAME = test
+TEST_BOILERPLATE_NAME = test-boilerplate
+TMP_SRC_NAME = TestTmp
+TEST_SRC = $(TEST_SRC_NAME).$(SRC_EXT)
+TEST_BOILERPLATE = $(BUILD_DIR)/$(TEST_BOILERPLATE_NAME).$(SRC_EXT)
+TMP_SRC = $(TEST_SRC_NAME).$(SRC_EXT)
+
+TEST_FLAGS = \
 	$(LIB_DIR_FLAGS) \
 	$(LIB_FLAGS)
 
 ifeq ("$(wildcard $(TEST_SRC))","")
 test:
-	@echo "not testing because there is no test"
 else
 test: $(TESTSUITE)
 	./$(TESTSUITE)
 
-$(TESTSUITE): $(TEST_SRC)
+$(TESTSUITE): $(SRCS) $(TEST_TMP)
+	$(CC) $(SRCS) $(TMP_SRC) -o $(TESTSUITE) $(TEST_FLAGS)
+
+$(TMP_SRC): $(TEST_BOILERPLATE) $(TEST_SRC)
 	cat $(TEST_BOILERPLATE) $(TEST_SRC) > $(TMP_SRC)
-	$(CPP) $(SRCS) $(TMP_SRC) -o $(TESTSUITE) $(FLAGS)
 endif
 
-DIRTY_EXT = *.o *.bin
-DIRTY = $(DIRTY_EXT) $(BIN_NAME)
+DIRTY_EXT = *.$(OBJ_EXT) *.$(BIN_EXT)
+DIRTY = $(DIRTY_EXT) $(BIN_NAME) $(TMP_SRC)
 
 clean:
 	rm -f $(DIRTY)
