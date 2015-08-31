@@ -1,5 +1,5 @@
 import java.util.Scanner;
-import projecteuler.Multiple;
+import static projecteuler.Multiple.multiplesUnder;
 
 public class Solution {
   public static void main (String[] args){
@@ -10,9 +10,9 @@ public class Solution {
 
   public static int solve (int p) {
     int sum = 0;
-    sum += Multiple.multiples_under(p, 3);
-    sum += Multiple.multiples_under(p, 5);
-    sum -= Multiple.multiples_under(p, 15);
+    sum += multiplesUnder(p, 3);
+    sum += multiplesUnder(p, 5);
+    sum -= multiplesUnder(p, 15);
     return sum;
   }
 }
