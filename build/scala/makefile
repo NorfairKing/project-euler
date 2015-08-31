@@ -25,11 +25,13 @@ LIBRARY = $(LIB_DIR)/$(LIB_FILE)
 
 MANIFEST = MANIFEST.MF
 
+PWD = $(shell pwd)
+
 STUB_NAME = stub
 STUB_FILE = $(STUB_NAME).sh
 define STUB
 #!/bin/sh
-scala -classpath "$(LIB_DIR):." $(SOLUTION_NAME)
+scala -classpath "$(LIB_DIR):$(PWD)" $(SOLUTION_NAME)
 endef
 export STUB
 
