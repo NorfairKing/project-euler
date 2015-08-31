@@ -7,7 +7,7 @@ main = readLn >>= print . solve
 -- 1 doesn't count, and there are only 7 numbers that have the
 -- property that is described.
 solve :: Int -> Int
-solve p = (sum . drop 1 . take 7) [ x | x <- [1..], x == (sumpth p x)]
+solve p = (sum . drop 1) [ x | x <- [1..p*9^p], x == (sumpth p x)]
 
 -- Split an integer into its digits
 digits :: Int -> [Int]

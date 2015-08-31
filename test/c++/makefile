@@ -1,3 +1,45 @@
-test: love
-love:
-	@echo not war
+LANG = c++
+
+CC = g++
+
+SRC_EXT = cc
+HRD_EXT = h
+TEST_EXT = $(SRC_EXT)
+BIN_EXT = bin
+
+OPTIMISATION_FLAGS = -O3
+
+LIB_DIR_NAME = lib
+LIB_DIR = $(EDEN_ROOT)/$(LIB_DIR_NAME)/$(LANG)
+LIB_SRCS = $(LIB_DIR)/*.[$(SRC_EXT)$(HRD_EXT)]
+
+LIB_FLAGS = -lgtest
+LIB_DIR_FLAGS = -L$(LIB_DIR) -I$(LIB_DIR)
+CC_FLAGS = \
+	$(LIB_FLAGS) \
+	$(LIB_DIR_FLAGS) \
+	$(OPTIMISATION_FLAGS)
+
+TESTSUITE_NAME = main
+TESTSUITE = $(TESTSUITE_NAME).$(BIN_EXT)
+TESTSUITE_SRC = $(TESTSUITE_NAME).$(TEST_EXT)
+
+TESTCASES=$(wildcard *.$(TEST_EXT))
+UNITTESTS=$(TESTCASES:.$(TEST_EXT)=.$(BIN_EXT))
+
+all: $(TESTSUITE) $(UNITTESTS)
+
+test: $(TESTSUITE)
+	./$(TESTSUITE)
+
+$(TESTSUITE): $(TESTCASES)
+	$(CC) $(TESTCASES) $(LIB_SRCS) $(CC_FLAGS) -o $(TESTSUITE)
+
+%.$(BIN_EXT): %.$(TEST_EXT)
+	$(CC) $(TESTSUITE_SRC) $< $(LIB_SRCS) $(CC_FLAGS) -o $@
+
+DIRTY_EXT = *.$(BIN_EXT)
+DIRTY = $(DIRTY_EXT)
+
+clean:
+	rm -f $(DIRTY)

@@ -1,55 +1,74 @@
+LANG = c
+
 CC = gcc
 
-OPTIMISATION_FLAG = -O3
+SRC_EXT = c
+TEST_EXT = cc
+OBJ_EXT = o
+BIN_EXT = bin
 
+OPTIMISATION_FLAGS = -O3
 WARNING_FLAGS = -Wall -Werror
-
-LIB_DIR = $(EDEN_ROOT)/lib/c
+BUILD_DIR_NAME = build
+BUILD_DIR = $(EDEN_ROOT)/$(BUILD_DIR_NAME)/$(LANG)
+LIB_DIR_NAME = lib
+LIB_DIR = $(EDEN_ROOT)/$(LIB_DIR_NAME)/$(LANG)
 LIB_DIR_FLAGS = -L$(LIB_DIR) -I$(LIB_DIR)
 STD_LIBS = -lm
 
-CC_FLAGS = $(OPTIMISATION_FLAG) \
-           $(WARNING_FLAGS) \
-           $(LIB_DIR_FLAGS) \
-		   $(STD_LIBS)
+CC_FLAGS = \
+	$(OPTIMISATION_FLAGS) \
+  $(WARNING_FLAGS) \
+  $(LIB_DIR_FLAGS) \
+	$(STD_LIBS)
 
-SRCS=$(wildcard $(LIB_DIR)/*.c)
+OBJS=$(wildcard $(LIB_DIR)/*.$(OBJ_EXT))
 
-SOLUTIONS=$(wildcard [a-z]*.c)
-SOLVERS=$(SOLUTIONS:.c=.bin)
+SOLUTIONS=$(wildcard [a-z]*.$(SRC_EXT))
+SOLVERS=$(SOLUTIONS:.$(SRC_EXT)=.$(BIN_EXT))
 
 all: $(SOLVERS)
 
-%.bin : %.c
-	$(CC) $< $(SRCS) -o $@ $(CC_FLAGS)
+%.$(BIN_EXT) : %.$(SRC_EXT)
+	$(CC) $< $(OBJS) -o $@ $(CC_FLAGS)
 
-## Tests
+
+
+### Tests
 
 CPP = g++
-TESTSUITE = testsuite.bin
-LIB_FLAGS = -lgtest
-TEST_SRC = test.cpp
-TEST_BOILERPLATE = $(EDEN_ROOT)/build/c/test-boilerplate.c
-TMP_SRC = TestTmp.cpp
 
-FLAGS = \
+TESTSUITE_NAME = testsuite
+TESTSUITE = $(TESTSUITE).$(BIN_EXT)
+
+LIB_FLAGS = -lgtest
+
+TEST_NAME = test
+TEST_BOILERPLATE_NAME = test-boilerplate
+TMP_SRC_NAME = TestTmp
+TEST_SRC = $(TEST_NAME).$(TEST_EXT)
+TEST_BOILERPLATE = $(BUILD_DIR)/$(TEST_BOILERPLATE_NAME).$(SRC_EXT)
+TMP_SRC = $(TMP_SRC_NAME).$(TEST_EXT)
+
+TEST_FLAGS = \
 	$(LIB_DIR_FLAGS) \
 	$(LIB_FLAGS)
 
 ifeq ("$(wildcard $(TEST_SRC))","")
 test:
-	@echo "not testing because there is no test"
 else
 test: $(TESTSUITE)
 	./$(TESTSUITE)
 
-$(TESTSUITE): $(TEST_SRC)
+$(TESTSUITE): $(SRCS) $(TMP_SRC)
+	$(CPP) $(SRCS) $(TMP_SRC) -o $(TESTSUITE) $(TEST_FLAGS)
+
+$(TMP_SRC): $(TEST_BOILERPLATE) $(TEST_SRC)
 	cat $(TEST_BOILERPLATE) $(TEST_SRC) > $(TMP_SRC)
-	$(CPP) $(SRCS) $(TMP_SRC) -o $(TESTSUITE) $(FLAGS)
 endif
 
-DIRTY_EXT = *.o *.bin
-DIRTY = $(DIRTY_EXT) $(BIN_NAME)
+DIRTY_EXT = *.$(OBJ_EXT) *.$(BIN_EXT)
+DIRTY = $(DIRTY_EXT) $(BIN_NAME) $(TMP_SRC)
 
 clean:
 	rm -f $(DIRTY)

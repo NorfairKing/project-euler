@@ -1,1 +1,0 @@
---test_easy    = assertEqual (solve 4) 19316
