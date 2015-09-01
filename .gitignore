@@ -8,6 +8,11 @@ MANIFEST.MF
 *.bin
 *.exe
 
+### Python
+
+__pycache__/
+*.py[co]
+
 
 ### Java
 
