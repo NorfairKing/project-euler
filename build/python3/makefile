@@ -23,5 +23,11 @@ PYTHON3=$(shell which python3)
 test:
 	@echo placeholder
 
+DIRTY_EXT = *.py[oc]
+DIRTY = $(DIRTY_EXT)
+
+clean:
+	rm -f $(DIRTY)
+
 love:
 	@echo not war
