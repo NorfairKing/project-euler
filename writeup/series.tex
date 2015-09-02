@@ -45,9 +45,19 @@
 
 \begin{pr}
   \label{pr:closed-form-expression-nth-term-of-geometric-series}
-  Let $\sum_{i}ar^{i}$ be a geometric series.
+  Let $\sum_{i}ar^{i}$ be a geometric series where $r \neq 1$ holds.
   \[ \sum_{i=0}^{n-1}ar^{i} = a\frac{1 - r^{n}}{1 - r} \]
-  \TODO{proof of the closed form expression of the nth term of a geometric series}
+
+  \begin{proof}
+    Call $\sum_{i=0}^{n-1}ar^{i}$ $s$ for simplicity.
+    \begin{align*}
+      s &= \sum_{i=0}^{n-1}ar^{i}\\
+      rs &= \sum_{i=1}^{n}ar^{i}\\
+      s-rs &= a - ar^{n}\\
+      s(1 - r) &= 1 - r^{n}\\
+      s &= \frac{1-r^{n}}{1-r}
+    \end{align*}
+  \end{proof}
 \end{pr}
 
 
