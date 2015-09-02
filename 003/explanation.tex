@@ -2,42 +2,44 @@
 \begin{document}
 
 \begin{prob}{3}{Largest Prime Factor}
-    \begin{problem}
-        The prime factors of 13195 are 5, 7, 13 and 29.
-        What is the largest prime factor of the number 600851475143 ?
-    \end{problem}
-    \begin{solutions}
-        \begin{solution}{A Naive solution}
-            Let $p$ be $600851475143$.
-            A very naive solution would be to go over every number from $1$ until $600851475143$, check if it's prime and if it's a factor, and keep the largest.
-            \begin{figure}[H]
-                \lstinputlisting[language=c, firstline=16, lastline=25]{\sol{003}{c}/naive.c}
-                \caption{A Naïve solution}
-            \end{figure}
-            This solution is $O(p)$, but with $p$ as big as it is, this will not finish within one minute.
-        \end{solution}
-        \begin{solution}{A sligtly better solution}
-            A better solution would be to start from $p$ and work our way downwards until we find a prime factor.
-            Because we're now working out way down, it's a good idea to consider possible upper bounds for the largest prime factors of $p$.
-            $p$ is an upper bound, but $\nicefrac{p}{2}$ is also an upper bound. \why
-            \begin{figure}[H]
-                \lstinputlisting[language=c, firstline=16, lastline=24]{\sol{003}{c}/better.c}
-                \caption{A sligtly better solution}
-            \end{figure}
-            This is still $O(p)$ though.
-        \end{solution}
+  \begin{problem}
+    The prime factors of 13195 are 5, 7, 13 and 29.
+    What is the largest prime factor of the number 600851475143?
+  \end{problem}
 
-        \begin{solution}{An even better solution}
-            There is an easier way to know when you can stop looking for larger prime factors.
-            Because the prime factorisation of a number is unique, the product of all prime factors (with their respective multiplicity) is $p$ itself.
-            If we divide out every prime factor we find starting from $1$, the last prime factor we found will be the largest prime factor of $p$.
+  \begin{solutions}
+    \begin{solution}{A Naive solution}
+      Let $p$ be $600851475143$.
+      A very naive solution would be to go over every number from $1$ until $p$, check if it's prime and if it's a factor, and keep the largest.
+      \begin{figure}[H]
+        \inputminted[firstline=19, lastline=28]{c}{\sol{003}{c}/naive.c}
+        \caption{A Naive solution in C}
+      \end{figure}
+      This solution is $O(p)$, but with $p$ as big as it is, this will not finish within one minute.
+    \end{solution}
 
-            \begin{figure}[H]
-                \lstinputlisting[language=c, firstline=16, lastline=27]{\sol{003}{c}/solution.c}
-                \caption{A even better solution}
-            \end{figure}
-        \end{solution}
-    \end{solutions}
+    \begin{solution}{A sligtly better solution}
+      A better solution would be to start from $p$ and work our way downwards until we find a prime factor.
+      Because we're now working out way down, it's a good idea to consider possible upper bounds for the largest prime factors of $p$.
+      $p$ is an upper bound, but $\nicefrac{p}{2}$ is also an upper bound because $2$ is the smallest prime.\deref{primes}
+      \begin{figure}[H]
+        \inputminted[firstline=17, lastline=25]{c}{\sol{003}{c}/better.c}
+        \caption{A sligtly better solution in C}
+      \end{figure}
+      This is still $O(p)$ though.
+    \end{solution}
+
+    \begin{solution}{An even better solution}
+      There is an easier way to know when you can stop looking for larger prime factors.
+      Because the prime factorisation of a number is unique\prref{prime-factorisation-unique}, the product of all prime factors (with their respective multiplicity) is $p$ itself.
+      If we divide out every prime factor we find starting from $1$, the last prime factor we found will be the largest prime factor of $p$.
+
+      \begin{figure}[H]
+        \inputminted[firstline=19, lastline=29]{c}{\sol{003}{c}/solution.c}
+        \caption{A even better solution in C}
+      \end{figure}
+    \end{solution}
+  \end{solutions}
 \end{prob}
 
 \end{document}

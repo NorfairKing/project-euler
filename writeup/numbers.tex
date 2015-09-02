@@ -237,7 +237,29 @@
   \end{proof}
 \end{pr}
 
+\subsection{Primes}
+
+\begin{de}
+  \label{de:primes}
+  A \term{prime number} is a number with precicely two distinct divisors: $1$ and itself.
+\end{de}
+
+\begin{de}
+  A \term{prime factorisation} of a number $n\in\mathbb{N}$ is $n$ written as a product of powers of distinct primes:
+  \[ n = \sum_{i}p_{i}^{m_i} \]
+\end{de}
+
+\begin{pr}
+  \label{pr:prime-factorisation-unique}
+  The prime factorisation of a natural number is unique.
+
+  \begin{proof}
+    Proof by contradiction: Suppose there existed a number $n$ that had two distinct prime factorisations.
+    That would mean that either one $p_{i}$ or one $m_{i}$ but then the product would be different.
+    That would mean that it would not be a prime factorisation.
+  \end{proof}
+\end{pr}
+
 % Whole numbers
-% Divisibility
 
 \end{document}

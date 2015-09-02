@@ -15,6 +15,7 @@ int main () {
 }
 #endif
 
+// [003/explanation.tex]
 long solve(long p) {
   long f = 2;
   while (p > 1) {

@@ -42,12 +42,26 @@ $ git submodule update --init --recursive
 
 ### Dependencies
 
+#### Java
+
+- `javac`
+- `java`
+
+#### Scala
+
+- `scalac`
+- `scala`
+
+#### Rust
+
+- `rustc`
+- `cargo`
+
 #### C/C++
 
 - `gcc`
 - `g++`
 - library `libgtest-dev`
-
 
 #### Haskell
 
