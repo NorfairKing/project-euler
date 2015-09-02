@@ -21,7 +21,7 @@
     \begin{solution}{A sligtly better solution}
       A better solution would be to start from $p$ and work our way downwards until we find a prime factor.
       Because we're now working out way down, it's a good idea to consider possible upper bounds for the largest prime factors of $p$.
-      $p$ is an upper bound, but $\nicefrac{p}{2}$ is also an upper bound because $2$ is the smallest prime.
+      $p$ is an upper bound, but $\nicefrac{p}{2}$ is also an upper bound because $2$ is the smallest prime.\deref{primes}
       \begin{figure}[H]
         \inputminted[firstline=17, lastline=25]{c}{\sol{003}{c}/better.c}
         \caption{A sligtly better solution in C}
@@ -31,7 +31,7 @@
 
     \begin{solution}{An even better solution}
       There is an easier way to know when you can stop looking for larger prime factors.
-      Because the prime factorisation of a number is unique, the product of all prime factors (with their respective multiplicity) is $p$ itself.
+      Because the prime factorisation of a number is unique\prref{prime-factorisation-unique}, the product of all prime factors (with their respective multiplicity) is $p$ itself.
       If we divide out every prime factor we find starting from $1$, the last prime factor we found will be the largest prime factor of $p$.
 
       \begin{figure}[H]
