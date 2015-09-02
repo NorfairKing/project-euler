@@ -13,6 +13,7 @@ int main () {
 }
 #endif
 
+// [003/explanation.tex]
 long solve(long p) {
     long i;
     for (i = p/2; i >= 1; i++){
