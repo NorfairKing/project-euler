@@ -12,16 +12,18 @@ public class Solution {
     int res = 0;
     for(int i = (int) Math.pow(BASE, n - 1); i < Math.pow(BASE, n); i++) {
       for(int j = (int) Math.pow(BASE, n - 1); j < Math.pow(BASE, n); j++) {
-        if(isPalindrome(i*j)) res = Math.max(res, i*j);
+        if(isPalindrome(i * j)) {
+          res = Math.max(res, i*j);
+        }
       }
     }
     return res;
   }
 
   static boolean isPalindrome(int n) {
-    String s = n+"";
-    for(int i = 0; i<s.length(); i++) {
-      if(s.charAt(i) != s.charAt(s.length()-1-i)) {
+    String s = Integer.toString(n);
+    for(int i = 0; i < s.length(); i++) {
+      if(s.charAt(i) != s.charAt(s.length() - 1 - i)) {
         return false;
       }
     }
