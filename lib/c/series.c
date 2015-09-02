@@ -1,6 +1,7 @@
 #include "series.h"
 #include "math.h"
 
+// This is being used in series.tex
 int sum_naturals(int n) {
   return (n * (n + 1)) / 2;
 }
