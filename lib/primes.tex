@@ -1,0 +1,24 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\chapter{Primes}
+
+\begin{libraryfile}
+  \begin{algorithm}{n^2\sqrt{n}}{1}{prime-factorisation}
+    \begin{algorithm-description}
+        Compute the prime factorisation of a natural number $n$.
+    \end{algorithm-description}
+
+    \begin{algorithm-explanation}
+      Starting at $i=2$, divide out $i$ from every time $i$ is both a prime and a factor and store $i$ as a prime factor.
+      Stop when $n$ has become $1$.
+      \begin{figure}[H]
+        \centering
+        \inputminted[firstline=14, lastline=21]{haskell}{\lib{haskell}{Primes.hs}}
+        \caption{An implementation in Haskell}
+      \end{figure}
+    \end{algorithm-explanation}
+  \end{algorithm}
+\end{libraryfile}
+
+\end{document}
