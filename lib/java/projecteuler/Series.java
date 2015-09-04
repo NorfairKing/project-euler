@@ -3,7 +3,6 @@ package projecteuler;
 import java.lang.Math;
 
 public class Series {
-
   public static int sumNaturals(int n) {
     return (n * (n + 1)) / 2;
   }
