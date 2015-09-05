@@ -47,15 +47,18 @@ $ git submodule update --init --recursive
 - `javac`
 - `java`
 
+
 #### Scala
 
 - `scalac`
 - `scala`
 
+
 #### Rust
 
 - `rustc`
 - `cargo`
+
 
 #### C/C++
 
@@ -63,7 +66,14 @@ $ git submodule update --init --recursive
 - `g++`
 - library `libgtest-dev`
 
+
 #### Haskell
 
 - `ghc`
 - library `memoize`
+
+
+#### Python 2/3
+
+- `python2`
+- `python3`
