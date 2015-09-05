@@ -8,6 +8,11 @@ MANIFEST.MF
 *.bin
 *.exe
 
+### Binary files
+
+*.out
+
+
 ### Python
 
 __pycache__/
@@ -37,6 +42,7 @@ __pycache__/
 *.hi
 dist*
 .HTF/
+
 
 ### Latex
 
