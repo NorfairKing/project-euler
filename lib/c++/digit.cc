@@ -1,13 +1,14 @@
-#include <stdbool.h>
+#include <vector>
 
+#include "base.h"
 #include "digit.h"
 
 /*
  * Gets the number of digits in a given number.
  */
 int nr_of_digits(int p) {
-  if (p < 10) { return 1; }
-  return nr_of_digits(p / 10) + 1;
+  if (p < BASE) { return 1; }
+  return nr_of_digits(p / BASE) + 1;
 }
 
 /*
@@ -17,7 +18,19 @@ int nr_of_digits(int p) {
 int from_digits(int digit[], int n) {
   int j; int num = 0;
   for (j = 0; j < n; j++){
-    num += digit[j] * pow(10, n - 1 - j);
+    num += digit[j] * pow(BASE, n - 1 - j);
   }
   return num;
+}
+
+/*
+ * Gets a vector of the digits of n in reverse order.
+ */
+std::vector<int> digits(int n) {
+  std::vector<int> digits;
+  while (n > 0) {
+    digits.push_back(n % BASE);
+    n /= BASE;
+  }
+  return digits;
 }

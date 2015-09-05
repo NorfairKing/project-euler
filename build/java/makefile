@@ -55,7 +55,7 @@ $(MANIFEST): $(LIBRARY) $(SOLUTION_CLASS)
 	echo Class-Path: $(LIBRARY) >> $(MANIFEST)
 
 $(SOLUTION_CLASS): $(SOLUTION_SRC)
-	javac $(SOLUTION_SRC) -classpath $(LIBRARY)
+	javac $(SOLUTION_SRC) -classpath $(LIB_DIR)
 
 $(STUB_FILE):
 	echo "$$STUB" > $(STUB_FILE)

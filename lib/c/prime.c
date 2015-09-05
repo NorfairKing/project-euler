@@ -7,10 +7,10 @@
  * Does not work on numbers smaller than 2
  */
 bool is_prime (int n) {
-    if (n == 1){ return false; }
+    if (n <= 1){ return false; }
     int i;
-    for (i = 2; i*i <= n; i++) {
-        if (is_factor(i, n)){
+    for (i = 2; i * i <= n; ++i) {
+        if (is_factor(i, n)) {
             return false;
         }
     }
@@ -18,10 +18,10 @@ bool is_prime (int n) {
 }
 
 bool is_prime_l (long n) {
-    if (n == 1){ return false; }
+    if (n <= 1){ return false; }
     int i;
-    for (i = 2; i*i <= n; i++) {
-        if (is_factor_l(i, n)){
+    for (i = 2; i * i <= n; ++i) {
+        if (is_factor_l(i, n)) {
             return false;
         }
     }

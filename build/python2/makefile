@@ -1,4 +1,4 @@
-LANG = python3
+LANG = python2
 
 SRC_EXT = py
 BIN_EXT = bin
@@ -17,7 +17,7 @@ PYTHON3=$(shell which python3)
 	rm -f $@
 	touch $@
 	echo "export export PYTHONPATH='$(LIB_DIR)'" >> $@
-	echo python3 $(shell realpath $<) >> $@
+	echo python2 $(shell realpath $<) >> $@
 	chmod 775 $@
 
 test:
