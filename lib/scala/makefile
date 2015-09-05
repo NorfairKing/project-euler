@@ -13,9 +13,14 @@ CLASSES = $(SOURCES:.$(SRC_EXT)=.$(CLASS_EXT))
 all: $(CLASSES)
 	jar -cvf $(LIBRARY) $(CLASSES)
 
-%.$(CLASS_EXT): %.$(SRC_EXT)
-	$(SC) $<
+$(CLASSES): $(SOURCES)
+	$(SC) $(SOURCES)
 
+DIRTY_EXT = */*.$(CLASS_EXT) *.$(LIB_EXT)
+DIRTY = $(DIRTY_EXT)
+
+clean:
+	rm -f $(DIRTY)
 
 love:
 	@echo not war
