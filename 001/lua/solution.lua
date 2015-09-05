@@ -1,12 +1,10 @@
+require "multiple"
+
 function solve(p)
-  local sum = 0
-  for i = 1, (p - 1) do
-    if (i % 5 == 0 or i % 3 == 0) then
-      sum = sum + i
-    end
-  end
-  return sum
+  return multiples_under(p, 3)
+       + multiples_under(p, 5)
+       - multiples_under(p, 15)
 end
 
 p = io.read()
-print(solve(p))
+print(math.floor(solve(p)))
