@@ -13,7 +13,7 @@ int main () {
 #endif
 
 int solve(int p) {
-  int sqosu = sum_naturals(p) * sum_naturals(p);
+  int su = sum_naturals(p);
   int suosq = sum_squares(p);
-  return sqosu - suosq;
+  return su * su - suosq;
 }
