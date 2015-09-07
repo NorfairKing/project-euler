@@ -1,10 +1,10 @@
 #ifndef prime_h__
 #define prime_h__
 
-#include <stdbool.h>
+#include <vector>
 
-extern bool is_prime (int n);
-extern bool is_prime_l (long n);
-extern void sieve (bool nums[], int n);
+bool is_prime (int n);
+void sieve (bool nums[], int n);
+std::vector<bool> sieve (int n);
 
 #endif

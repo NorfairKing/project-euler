@@ -7,18 +7,10 @@ bool even(int n) {
     return ! odd(n);
 }
 
-bool even_l(long n) {
-    return ! odd(n);
-}
-
 /*
  * Test whether a given number is odd, that is, not divisible by 2.
  */
 bool odd(int n) {
-    return n & 1;
-}
-
-bool odd_l(long n) {
     return n & 1;
 }
 
@@ -51,15 +43,11 @@ bool divides_l(long n, long m) {
  */
 bool is_factor(int n, int m) { return divides(n, m); }
 
-bool is_factor_l(long n, long m) { return divides_l(n, m); }
-
 /*
  * Tests whether a given number is evenly divisible by another given number.
  * n is evenly divisible by m if m divides n.
  */
 bool is_evenly_divisible_by(int n, int m) { return divides(m, n); }
-
-bool is_evenly_divisible_by_l(long n, long m) { return divides_l(m, n); }
 
 /*
  * Returns the number of proper dividers (less than and while divisor)
