@@ -1,23 +1,26 @@
 #include <iostream>
 
 #include "factor.h"
-#include "prime.h"
+#include "prime_sieve.h"
 
 long solve(long p);
 
 #ifndef TESTING
 int main () {
-    long p;
-    std::cin >> p;
-    std::cout << solve(p) << std::endl;
+  long p;
+  std::cin >> p;
+  std::cout << solve(p) << std::endl;
 }
 #endif
 
 long solve(long p) {
-  long f = 2;
+  prime_sieve is_prime;
+  // std::cout << "done constructing sieve" << std::endl;
+  int f = 2;
   while (p > 1) {
-    if (is_prime_l(f) && is_factor_l(f, p)) {
+    if (is_prime[f] && p % f == 0) {
       p /= f;
+      // std::cout << p << std::endl;
       continue;
     }
     f++;

@@ -4,9 +4,9 @@
 -}
 
 import           Control.Monad
-import           Data.List
 
 -- Find all paths in a triangle
+paths :: [[a]] -> [[a]]
 paths [] = []
 paths [[x]] = [[x]]
 paths triangle = map (first:) $ concatMap paths (subtriangles triangle)
@@ -18,7 +18,7 @@ paths triangle = map (first:) $ concatMap paths (subtriangles triangle)
 -- [[1,2,3],[4,5,6,7],[8,9,10,11,12]]
 -- into
 -- [[2],[5,6],[9,10,11]
-
+sharpen :: [[a]] -> Int -> [[a]]
 sharpen trapezium index = map sh trapezium
         where
             sh ll = (firsts . lasts) ll
@@ -26,11 +26,13 @@ sharpen trapezium index = map sh trapezium
             lasts ll = drop index ll
 
 -- Construct the two subtriangles of a given triangle
+subtriangles :: [[t]] -> [[[t]]]
 subtriangles [] = []
 subtriangles [[x]] = [[[x]]]
 subtriangles triangle = map (sharpen (tail triangle)) [0,1]
 
 -- Get the maximum of the sums of all paths
+solve :: [[Int]] -> Int
 solve triangle = maximum $ map sum (paths triangle)
 
 -- IO
