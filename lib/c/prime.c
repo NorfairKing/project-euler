@@ -40,9 +40,9 @@ void sieve(bool nums[], int n){
     for (i = 2; i < n; i++){
         nums[i] = true;
     }  
-    for (i = 2; i*i < n; i++){
+    for (i = 2; i * i < n; i++){
         if (!nums[i]) { continue; }
-        for (j = i+i; j < n; j += i){
+        for (j = i + i; j < n; j += i){
           nums[j] = false;
         }
     }       

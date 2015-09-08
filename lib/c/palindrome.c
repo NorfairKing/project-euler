@@ -10,8 +10,8 @@
 bool is_palindrome(int n) {
     int nr = nr_of_digits(n);
     int i;
-    for (i = 0; i < nr/2; i++) {
-        if (digit(i, n) != digit(nr-1-i, n)) {
+    for (i = 0; i < nr / 2; i++) {
+        if (digit(i, n) != digit(nr - 1 - i, n)) {
             return false;
         }
     }
