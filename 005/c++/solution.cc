@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "factor.h"
-#include "prime.h"
+#include "prime_sieve.h"
 
 int solve(int p);
 
@@ -14,7 +14,7 @@ int main () {
 #endif
 
 int solve(int p) {
-  std::vector<bool> is_prime = sieve(p);
+  prime_sieve is_prime;
 
   int factors[p+1];
   int num, found;
