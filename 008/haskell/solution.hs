@@ -1,6 +1,7 @@
 main :: IO ()
 main = do
   p <- readLn
+  _ <- getLine
   number <- readLn
   print $ solve p number
 
