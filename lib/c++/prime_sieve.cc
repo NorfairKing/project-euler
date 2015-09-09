@@ -1,4 +1,5 @@
 #include <iostream>
+
 #include "prime_sieve.h"
 
 #define PRIME_SIEVE_DEFAULT_CAPACITY 1

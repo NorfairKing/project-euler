@@ -1,5 +1,6 @@
 #include <stdbool.h>
 #include <vector>
+
 #include "factor.h"
 
 /*
@@ -15,26 +16,6 @@ bool is_prime (int n) {
     }
   }
   return true;
-}
-
-/*
- * Fills an array of booleans with indications of which numbers are prime.
- * Works in O(sqrt(n)) time and is correct up to the given n.
- */
-void sieve(bool nums[], int n){
-  int i, j;
-  nums[0] = false;
-  nums[1] = false;
-  for (i = 2; i < n; ++i) {
-    nums[i] = true;
-  }  
-  for (i = 2; i*i < n; ++i) {
-    if (nums[i]) {
-      for (j = i+i; j < n; j += i){
-        nums[j] = false;
-      }
-    }
-  }       
 }
 
 std::vector<bool> sieve(int n) {
