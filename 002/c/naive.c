@@ -12,6 +12,7 @@ int main () {
 }
 #endif
 
+// [002/explanation.tex]
 int solve (int p) {
     int sum = 0;
 

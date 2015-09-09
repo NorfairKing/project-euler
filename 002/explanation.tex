@@ -13,14 +13,19 @@
       Because the terms of the Fibonacci sequence grow exponentially, that is an $O(\log(p))$ runtime solution.
 
       \begin{figure}[H]
-        \inputminted[firstline=15, lastline=33]{c}{\sol{002}{c}/naive.c}
+        \inputminted[firstline=16, lastline=34]{c}{\sol{002}{c}/naive.c}
         \caption{A naive solution in C}
+      \end{figure}
+
+      \begin{figure}[H]
+        \inputminted[firstline=8, lastline=9]{haskell}{\sol{002}{haskell}/solution.hs}
+        \caption{A naive solution in Haskell}
       \end{figure}
 
       \complexity{\log(p)}{1}
     \end{solution}
     \begin{solution}{A better solution}
-      To optimise, need to use the fact that every third Fibonacci number is even.\propref{every-third-fibonacci-term-even}
+      To optimise, we need to use the fact that every third Fibonacci number is even.\propref{every-third-fibonacci-term-even}
 
       This means that we only have to sum every third fiboncci number smaller than $p$.
       Because of the closed form expression describing the Fibonacci sequence, the sum that we're looking for now looks like this:\propref{closed-form-expression-fibonacci-term}
@@ -39,7 +44,7 @@
       \[ n(F_n) = \floor*{\frac{\ln{F_n \cdot \sqrt{5}}}{\ln{\Phi}+\frac{1}{2}}} \]
 
       \begin{figure}[H]
-        \inputminted[firstline=18, lastline=29]{c}{\sol{002}{c}/solution.c}
+        \inputminted[firstline=19, lastline=30]{c}{\sol{002}{c}/solution.c}
         \caption{A better solution in C}
       \end{figure}
 

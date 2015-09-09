@@ -15,6 +15,7 @@ int main () {
 }
 #endif
 
+// [002/explanation.tex]
 int solve (int p) {
   double cte = 1/sqrt(5);
   double h = phi();
