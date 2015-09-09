@@ -15,7 +15,7 @@ int main () {
 }
 #endif
 
-// This is used in 003/explanation.tex
+// [003/explanation.tex]
 long solve(long p) {
   long max = 1;
   long i;

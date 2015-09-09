@@ -8,18 +8,20 @@ long solve(long p);
 
 #ifndef TESTING
 int main () {
-    printf("%ld\n", solve(600851475143));
-    return 0;
+  long p;
+  scanf("%ld", &p);
+  printf("%ld\n", solve(p));
+  return 0;
 }
 #endif
 
 // [003/explanation.tex]
 long solve(long p) {
-    long i;
-    for (i = p/2; i >= 1; i++){
-        if (is_prime(i) && is_factor_l(i, p)){
-            return i;
-        }
+  long i;
+  for (i = 1; i <= p; ++i) {
+    if (is_factor_l(i, p) && is_prime_l(p / i)) {
+      return p / i;
     }
-    return 1;
+  }
+  return 1;
 }

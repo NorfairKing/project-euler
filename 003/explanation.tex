@@ -20,13 +20,11 @@
 
     \begin{solution}{A sligtly better solution}
       A better solution would be to start from $p$ and work our way downwards until we find a prime factor.
-      Because we're now working out way down, it's a good idea to consider possible upper bounds for the largest prime factors of $p$.
-      $p$ is an upper bound, but $\nicefrac{p}{2}$ is also an upper bound because $2$ is the smallest prime.\deref{primes}
+      Working downwards allows us to stop as soon as we find a prime factor.
       \begin{figure}[H]
-        \inputminted[firstline=17, lastline=25]{c}{\sol{003}{c}/better.c}
+        \inputminted[firstline=19, lastline=27]{c}{\sol{003}{c}/better.c}
         \caption{A sligtly better solution in C}
       \end{figure}
-      This is still $O(p)$ though.
     \end{solution}
 
     \begin{solution}{An even better solution}
