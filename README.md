@@ -21,6 +21,7 @@ If you don't want to be spoiled, don't look at the code (or the writeups).
 Solutions are in `<problem>/<language>`.
 After creating your solution, make sure it builds with `eden build solution <problem> <language>`.
 Make sure you add a test and run it with `eden test solution <problem> <language>`.
+A test may be just an `output.txt` file but usually some kind of input is required as well. Put it in `input.txt`.
 
 Please run `eden test all` to ensure that everything is in order before sending a pull request.
 
