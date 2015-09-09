@@ -12,12 +12,9 @@ int main () {
 }
 #endif
 
+// [001/explanation.tex]
 int solve(int p) {
-  int sum = 0;
-
-  sum += multiples_under(p, 3);
-  sum += multiples_under(p, 5);
-  sum -= multiples_under(p, 15);
-
-  return sum;
+  return multiples_under(p, 3)
+       + multiples_under(p, 5)
+       - multiples_under(p, 15);
 }
