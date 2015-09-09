@@ -1,6 +1,6 @@
 #include <vector>
-#include "digit.h"
 
+#include "digit.h"
 #include "palindrome.h"
 
 bool is_palindrome(int n) {

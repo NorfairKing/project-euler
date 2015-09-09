@@ -10,6 +10,7 @@ int main () {
 }
 #endif
 
+// [001/explanation.tex]
 int solve(int p) {
   int sum = 0;
 

@@ -1,7 +1,7 @@
 #include <vector>
 
-#include "base.h"
 #include "digit.h"
+#include "base.h"
 
 /*
  * Gets the number of digits in a given number.

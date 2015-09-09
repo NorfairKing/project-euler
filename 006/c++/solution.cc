@@ -1,5 +1,6 @@
 #include <iostream>
-#include "multiple.h"
+
+#include "series.h"
 
 int solve(int p);
 
@@ -12,7 +13,7 @@ int main () {
 #endif
 
 int solve(int p) {
-  return multiples_under(p, 3)
-       + multiples_under(p, 5)
-       - multiples_under(p, 15);
+  int su = sum_naturals(p);
+  int suosq = sum_squares(p);
+  return su * su - suosq;
 }

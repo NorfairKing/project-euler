@@ -12,5 +12,11 @@ int sum_naturals(int n);
  */
 double sum_geometric(double a, double n, double r);
 
+/* 
+ * Returns the sum of the first n natural squares.
+ * Time: O(1), Space: O(1)
+ */
+int sum_squares(int n);
+
 #endif
 

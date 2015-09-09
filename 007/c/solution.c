@@ -16,18 +16,18 @@ int main () {
 #endif
 
 int solve(int p) {
-    // https://en.wikipedia.org/wiki/Prime_number_theorem#Approximations_for_the_nth_prime_number
-    int n = ceil(p*log(p)+p*log(log(p))); // Large enough.
-    bool primes[n];
-    sieve(primes, n);
+  // https://en.wikipedia.org/wiki/Prime_number_theorem#Approximations_for_the_nth_prime_number
+  int n = ceil(p*log(p)+p*log(log(p))); // Large enough.
+  bool primes[n];
+  sieve(primes, n);
 
-    int j = 0; // j is the
-    int i = 0; // ith prime
-    while (i < p) {
-        j++;
-        if (primes[j]){
-            i++;
-        }
+  int j = 0; // j is the
+  int i = 0; // ith prime
+  while (i < p) {
+    j++;
+    if (primes[j]){
+      i++;
     }
-    return j;
+  }
+  return j;
 }

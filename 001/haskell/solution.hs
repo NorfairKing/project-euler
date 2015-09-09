@@ -1,4 +1,3 @@
-import           Data.List
 import           Multiple
 
 main :: IO ()

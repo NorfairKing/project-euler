@@ -13,14 +13,13 @@ int main () {
 }
 #endif
 
+// [003/explanation.tex]
 long solve(long p) {
   prime_sieve is_prime;
-  // std::cout << "done constructing sieve" << std::endl;
   int f = 2;
   while (p > 1) {
     if (is_prime[f] && p % f == 0) {
       p /= f;
-      // std::cout << p << std::endl;
       continue;
     }
     f++;

@@ -11,14 +11,11 @@ int main () {
 }
 #endif
 
+// [001/explanation.tex]
 int solve(int p) {
-  int sum = 0;
-
-  sum += multiples(p, 3);
-  sum += multiples(p, 5);
-  sum -= multiples(p, 15);
-
-  return sum;
+  return multiples(p, 3)
+       + multiples(p, 5)
+       - multiples(p, 15);
 }
 
 int multiples(int p, int n) {

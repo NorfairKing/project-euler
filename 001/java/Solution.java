@@ -9,10 +9,8 @@ public class Solution {
   }
 
   public static int solve (int p) {
-    int sum = 0;
-    sum += multiplesUnder(p, 3);
-    sum += multiplesUnder(p, 5);
-    sum -= multiplesUnder(p, 15);
-    return sum;
+    return multiplesUnder(p, 3)
+         + multiplesUnder(p, 5)
+         - multiplesUnder(p, 15);
   }
 }
