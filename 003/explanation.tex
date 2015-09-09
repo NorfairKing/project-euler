@@ -16,26 +16,35 @@
         \caption{A Naive solution in C}
       \end{figure}
       This solution is $O(p)$, but with $p$ as big as it is, this will not finish within one minute.
+      \complexity{p}{1}
     \end{solution}
 
-    \begin{solution}{A sligtly better solution}
+    \begin{solution}{A slightly better solution}
       A better solution would be to start from $p$ and work our way downwards until we find a prime factor.
       Working downwards allows us to stop as soon as we find a prime factor.
       \begin{figure}[H]
         \inputminted[firstline=19, lastline=27]{c}{\sol{003}{c}/better.c}
-        \caption{A sligtly better solution in C}
+        \caption{A slightly better solution in C}
       \end{figure}
+      This solution works best (in $\sqrt(p)$ time) if $p$ is a prime.
+      \complexity{p}{1}
     \end{solution}
 
-    \begin{solution}{An even better solution}
+    \begin{solution}{A more better solution}
       There is an easier way to know when you can stop looking for larger prime factors.
       Because the prime factorisation of a number is unique\prref{prime-factorisation-unique}, the product of all prime factors (with their respective multiplicity) is $p$ itself.
       If we divide out every prime factor we find starting from $1$, the last prime factor we found will be the largest prime factor of $p$.
 
       \begin{figure}[H]
-        \inputminted[firstline=19, lastline=29]{c}{\sol{003}{c}/solution.c}
-        \caption{A even better solution in C}
+        \inputminted[firstline=17, lastline=28]{c++}{\sol{003}{c++}/solution.cc}
+        \caption{A better solution in C++}
       \end{figure}
+      \begin{figure}[H]
+        \inputminted[firstline=6, lastline=7]{haskell}{\sol{003}{haskell}/solution.hs}
+        \caption{A more elegant version in Haskell}
+      \end{figure}
+      This solution works best if $p$ has a lot of prime factors.
+      \complexity{\sqrt{p}}{1}
     \end{solution}
   \end{solutions}
 \end{prob}

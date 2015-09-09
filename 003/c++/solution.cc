@@ -13,7 +13,7 @@ int main () {
 }
 #endif
 
-// [002/explanation.tex]
+// [003/explanation.tex]
 long solve(long p) {
   prime_sieve is_prime;
   int f = 2;
