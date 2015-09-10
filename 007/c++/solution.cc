@@ -13,7 +13,7 @@ int main () {
 #endif
 
 int solve(int p) {
-  prime_sieve is_prime;
+  PrimeSieve is_prime;
 
   int j = 0; // j is the
   int i = 0; // ith prime

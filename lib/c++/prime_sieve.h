@@ -3,7 +3,7 @@
 
 #include <vector>
 
-class prime_sieve {
+class PrimeSieve {
   private:
     std::vector<bool> prime;
     int upto;
@@ -11,8 +11,8 @@ class prime_sieve {
     void size_up(int n);
 
   public:
-    prime_sieve();
-    prime_sieve(int n);
+    PrimeSieve();
+    PrimeSieve(int n);
 
     bool is_prime(int n);
     bool operator[] (const int nIndex);

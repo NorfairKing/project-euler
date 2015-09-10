@@ -14,7 +14,7 @@ int main () {
 #endif
 
 int solve(int p) {
-  prime_sieve is_prime;
+  PrimeSieve is_prime;
 
   int factors[p+1];
   int num, found;

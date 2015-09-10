@@ -4,9 +4,9 @@
 
 #define PRIME_SIEVE_DEFAULT_CAPACITY 1
 
-prime_sieve::prime_sieve() : prime_sieve(PRIME_SIEVE_DEFAULT_CAPACITY) {}
+PrimeSieve::PrimeSieve() : PrimeSieve(PRIME_SIEVE_DEFAULT_CAPACITY) {}
 
-prime_sieve::prime_sieve(int m) {
+PrimeSieve::PrimeSieve(int m) {
   int n = std::max(3, m); // Filling in three elements already.
   prime = std::vector<bool>(n, true);
   prime[0] = false;
@@ -17,7 +17,7 @@ prime_sieve::prime_sieve(int m) {
   size_up(n);
 }
 
-void prime_sieve::size_up(int m) {
+void PrimeSieve::size_up(int m) {
   if (upto * upto >= m) { return; } // Don't need to size up
   int p = upto * upto; // Previous size
   int newupto = upto;
@@ -49,11 +49,11 @@ void prime_sieve::size_up(int m) {
   upto = i - 1; // Counted one too many.
 }
 
-bool prime_sieve::is_prime(int n) {
+bool PrimeSieve::is_prime(int n) {
   size_up(n);
   return prime[n];
 }
 
-bool prime_sieve::operator[] (const int n) {
+bool PrimeSieve::operator[] (const int n) {
   return is_prime(n);
 }
