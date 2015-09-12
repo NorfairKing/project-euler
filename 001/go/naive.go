@@ -1,7 +1,6 @@
 package main
 
 import "fmt"
-import "pe"
 
 func main() {
   var p int
@@ -10,5 +9,11 @@ func main() {
 }
 
 func solve(p int) int {
-  return pe.MultiplesUnder(p, 3) + pe.MultiplesUnder(p, 5) - pe.MultiplesUnder(p, 15)
+  sum := 0;
+  for i := 1; i < p; i++ {
+    if i % 3 == 0 || i % 5 == 0 {
+      sum += i
+    }
+  }
+  return sum
 }
