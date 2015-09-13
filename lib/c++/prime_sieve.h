@@ -5,10 +5,10 @@
 
 class PrimeSieve {
   private:
-    std::vector<bool> prime;
-    int upto;
+    std::vector<bool> sieve;
 
-    void size_up(int n);
+    void resize(size_t n);
+    void resieve(size_t from, size_t to, size_t jstart);
 
   public:
     PrimeSieve();

@@ -2,56 +2,38 @@
 
 #include "prime_sieve.h"
 
-#define PRIME_SIEVE_DEFAULT_CAPACITY 1
+static constexpr size_t PRIME_SIEVE_DEFAULT_CAPACITY = 1;
 
 PrimeSieve::PrimeSieve() : PrimeSieve(PRIME_SIEVE_DEFAULT_CAPACITY) {}
 
-PrimeSieve::PrimeSieve(int m) {
-  int n = std::max(3, m); // Filling in three elements already.
-  prime = std::vector<bool>(n, true);
-  prime[0] = false;
-  prime[1] = false;
-  prime[2] = true;
-  upto = 1;
-
-  size_up(n);
+PrimeSieve::PrimeSieve(int m) : sieve(std::max(3,m), true) {
+  sieve[0] = sieve[1] = false;
+  resieve(2, sieve.size(), 0);
 }
 
-void PrimeSieve::size_up(int m) {
-  if (upto * upto >= m) { return; } // Don't need to size up
-  int p = upto * upto; // Previous size
-  int newupto = upto;
-  while (newupto * newupto < m) { newupto++; } // Need to size up
-  int n = newupto * newupto; // Upto upto^2
-  prime.resize(n + 1, true); // Get new elements ready
-
-  // First sieve the lower primes again because the newest elements haven't been
-  // checked for them yet.
-  for (int i = 2; i < upto; ++i) {
-    if (prime[i]) {
-      for (int j = std::max(i * (p / i) + i, i + i); j <= n; j += i) {
-        prime[j] = false;
+void PrimeSieve::resieve(size_t from, size_t to, size_t jstart) {
+  for (; from != to; ++from) {
+    if (sieve[from]) {
+      for (size_t j = std::max(jstart/from*from, from*from); j < sieve.size(); j += from) {
+        sieve[j] = false;
       }
-    } else {
     }
   }
+}
 
-  // Then sieve the primes above what was already checked.
-  int i;
-  for (i = upto; i * i <= n; ++i) {
-    if (prime[i]) {
-      for (int j = i + i; j <= n; j += i){
-        prime[j] = false;
-      }
-    } else {
-    }
-  }
-  upto = i - 1; // Counted one too many.
+void PrimeSieve::resize(size_t n) {
+  if (sieve.size() > n) { return; }
+
+  size_t old = sieve.size();
+  sieve.resize(n + 1, true);
+
+  resieve(2, old, old); // from 2 to old, starting at old
+  resieve(old, sieve.size(), 0); // from old to n
 }
 
 bool PrimeSieve::is_prime(int n) {
-  size_up(n);
-  return prime[n];
+  resize(n);
+  return sieve[n];
 }
 
 bool PrimeSieve::operator[] (const int n) {
