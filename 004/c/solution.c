@@ -2,8 +2,9 @@
 #include <stdbool.h>
 #include <math.h>
 
-#include "factor.h"
+#include "base.h"
 #include "digit.h"
+#include "factor.h"
 
 int solve(int p);
 
@@ -17,24 +18,22 @@ int main () {
 #endif
 
 int solve(int p) {
-  int len = 2*p; int hi = pow(10, p); int lo = pow(10, p-1);
+  int len = 2 * p;
+  int lo = pow(BASE, p - 1);
+  int hi = pow(BASE, p);
   int digits[len];
   int i;
-  for (i = 0; i < hi; i++) {
-    int j;
-    int num = i;
-    for (j = p - 1; j >= 0; j--){
-      digits[j] = 9 - (num % 10);
-      num /= 10;
-    }
-
-    for (j = 0; j < p; j++) { // Fill second half
-      digits[len-1-j] = digits[j];
+  for (i = 0; i < hi; ++i) {
+    int j, num;
+    for (j = 0, num = i; j < p; ++j, num /= BASE){
+      int d = (BASE - 1) - (num % BASE);
+      digits[p - j - 1] = d;
+      digits[p + j] = d;
     }
 
     int palindrome = from_digits(digits, len);
 
-    for (j = hi - 1; j >= lo; j--){
+    for (j = hi - 1; j >= lo; --j){
       int q = palindrome / j;
       int m = palindrome % j;
       if (m == 0 && q < hi && q > lo) {
