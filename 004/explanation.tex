@@ -2,40 +2,41 @@
 \begin{document}
 
 \begin{prob}{4}{Largest Palindrome Product}
-    \begin{problem}
-        A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
-        Find the largest palindrome made from the product of two 3-digit numbers.
-    \end{problem}
-    \begin{solutions}
-        \begin{solution}{A Naive solution}
-            Let $p$ be $3$.
-            The most naive solution would be to go over every pair of $p$-digit numbers and keep the largest palindrome product.
-            \begin{figure}[H]
-                \lstinputlisting[language=c, firstline=15, lastline=28]{\sol{004}{c}/naive.c}
-                \caption{A Naïve solution}
-            \end{figure}
-            This solution is $O(N^2)$ in the amount of $p$-digit numbers, so $O(10^{2p})$.
-            Given that $p$ is only $3$, this solution is already good enough to get an answer within one minute.
-        \end{solution}
-        \TODO{ A solution using a priority queue to look downwards }
+  \begin{problem}
+    A palindromic number reads the same both ways.
+    The largest palindrome made from the product of two $2$-digit numbers is $9009$ = $91 \times 99$.
+    Find the largest palindrome made from the product of two $3$-digit numbers.
+  \end{problem}
+  \begin{solutions}
+    \begin{solution}{A Naive solution}
+      Let $p$ be $3$.
+      The most naive solution would be to go over every pair of $p$-digit numbers and keep the largest palindrome product.
+      \begin{figure}[H]
+        \inputminted[firstline=16, lastline=26]{c++}{\sol{004}{c++}/naive.cc}
+        \caption{A Naïve solution}
+      \end{figure}
+      This solution is $O(N^2)$ in the amount of $p$-digit numbers, so $O(10^{2p})$.
+      Given that $p$ is only $3$, this solution is already good enough to get an answer within one minute.
+    \end{solution}
 
-        \begin{solution}{A better solution}
-            The worst part of the naive solution is that we're still checking a lot of number that aren't even palindromes.
-            We could generate palindromes, check whether they have a $p$-digit divisor with a $p$-digit quotient and keep the largest.
-            We could also generate palindromes starting from the largest and then we could stop as soon as we find one that is divisble by a $p$-digit number with a $p$-digit qutient.
+    \question{Is there a way to enumerate all $p$-digit numbers in reverse order? Then there would be an easier way.}
 
-            To generate palindromes from the top down, we first generate the left half of the number, copy the left half to the right and at the same time reverse the order.
+    \begin{solution}{A better solution}
+      The worst part of the naive solution is that we're still checking a lot of number that aren't even palindromes.
+      We could generate palindromes, check whether they have a $p$-digit divisor with a $p$-digit quotient and keep the largest.
+      We could also generate palindromes starting from the largest and then we could stop as soon as we find one that is divisble by a $p$-digit number with a $p$-digit qutient.
 
-            From these digits, we construct the represented palindrome and check whether it's divisble by a $p$-digit number with a $p$-digit quotient.
+      We can generate the palindromes' digits in $O(\log(p))$ time.
+      From these digits, we construct the represented palindrome and check whether it's divisble by a $p$-digit number with a $p$-digit quotient.
 
-            \begin{figure}[H]
-                \lstinputlisting[language=c, firstline=17, lastline=44]{\sol{004}{c}/solution.c}
-                \caption{A sligtly better solution}
-            \end{figure}
+      \begin{figure}[H]
+        \inputminted[firstline=17, lastline=44]{c}{\sol{004}{c}/solution.c}
+        \caption{A sligtly better solution}
+      \end{figure}
 
-            \TODO{What's the runtime complexity of this algorithm?}
-        \end{solution}
-    \end{solutions}
+      \TODO{What's the runtime complexity of this algorithm?}
+    \end{solution}
+  \end{solutions}
 \end{prob}
 
 

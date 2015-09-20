@@ -18,3 +18,9 @@ all: $(SOLVERS)
 
 test:
 	@echo placeholder
+
+DIRTY_EXT = 
+DIRTY = $(DIRTY_EXT)
+
+clean:
+	rm -f $(DIRTY)
