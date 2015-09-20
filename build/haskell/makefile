@@ -37,7 +37,7 @@ else
 test: $(TESTSUITE)
 	./$(TESTSUITE)
 
-$(TESTSUITE): $(TEST_SRC)
+$(TESTSUITE): $(SOLUTIONS) $(TEST_SRC)
 	cat $(TEST_BOILERPLATE) $(TEST_SRC) > $(TMP_SRC)
 	$(GHC) -o $(TESTSUITE) $(TMP_SRC) $(GHC_OPTIMISATION) --make -main-is TestTmp.test $(SRC_DIR_FLAGS)
 endif
