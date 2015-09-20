@@ -13,7 +13,7 @@
       The most naive solution would be to go over every pair of $p$-digit numbers and keep the largest palindrome product.
       \begin{figure}[H]
         \inputminted[firstline=16, lastline=26]{c++}{\sol{004}{c++}/naive.cc}
-        \caption{A Naïve solution}
+        \caption{A naive solution in C++}
       \end{figure}
       This solution is $O(N^2)$ in the amount of $p$-digit numbers, so $O(10^{2p})$.
       Given that $p$ is only $3$, this solution is already good enough to get an answer within one minute.
@@ -23,7 +23,7 @@
     \begin{solution}{A better solution}
       The worst part of the naive solution is that we're still checking a lot of number that aren't even palindromes.
       We could generate palindromes, check whether they have a $p$-digit divisor with a $p$-digit quotient and keep the largest.
-      There are either $9\cdot 10^{p-1}$ or $9 \cdot 10^{p}$ palindromic $p$ digit numbers depending on whether $p$ is even or odd. \needed % http://math.stackexchange.com/questions/287582/how-many-n-digit-palindromes-are-there
+      There are either $9\cdot 10^{p-1}$ or $9 \cdot 10^{p}$ palindromic $p$ digit numbers depending on whether $p$ is even or odd. \thref{number-of-p-digit-n-palindromes}
       This means that we're checking a lot less numbers.
       We could also generate palindromes starting from the largest and then we could stop as soon as we find one that is divisble by a $p$-digit number with a $p$-digit qutient.
 
@@ -32,7 +32,7 @@
 
       \begin{figure}[H]
         \inputminted[firstline=18, lastline=41]{c++}{\sol{004}{c++}/solution.cc}
-        \caption{A sligtly better solution}
+        \caption{A better solution in C++}
       \end{figure}
 
       Checking whether a palindrom is divisible by a $p$-digit number is done by going from $hi$ to $lo$ with trial division.
