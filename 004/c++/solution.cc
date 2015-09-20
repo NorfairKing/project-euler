@@ -1,26 +1,41 @@
-#include <cmath>
 #include <iostream>
+#include <vector>
 
 #include "base.h"
 #include "digit.h"
-#include "palindrome.h"
+#include "factor.h"
 
-int solve(int);
+int solve(int p);
 
-int main() {
+#ifndef TESTING
+int main () {
   int p;
   std::cin >> p;
   std::cout << solve(p) << std::endl;
 }
+#endif
 
-int solve (int n) {
-  int res = 0;
-  for(int i = pow(BASE, n - 1); i < pow(BASE, n); ++i) {
-    for(int j = pow(BASE, n - 1); j < pow(BASE, n); ++j) {
-      if(is_palindrome(i * j)) {
-        res = std::max(res, i*j);
+int solve(int p) {
+  int len = 2 * p;
+  int lo = pow(BASE, p - 1);
+  int hi = pow(BASE, p);
+  std::vector<int> digits(len);
+  for (int i = 0; i < hi; i++) {
+    for (int j = 0, num = i; j < p; ++j, num /= BASE){
+      int d = (BASE - 1) - (num % BASE);
+      digits[p - j - 1] = d;
+      digits[p + j] = d;
+    }
+
+    int palindrome = from_digits(digits);
+
+    for (int j = hi - 1; j >= lo; --j){
+      int q = palindrome / j;
+      int m = palindrome % j;
+      if (m == 0 && q < hi && q > lo) {
+        return palindrome;
       }
     }
   }
-  return res;
+  return -1;
 }
