@@ -1,0 +1,5 @@
+test_distinctPrimeFactors_1 = assertEqual (distinctPrimeFactors 14) [2,7]
+test_distinctPrimeFactors_2 = assertEqual (distinctPrimeFactors 15) [3,5]
+test_distinctPrimeFactors_3 = assertEqual (distinctPrimeFactors 644) [2,7,23]
+test_distinctPrimeFactors_4 = assertEqual (distinctPrimeFactors 645) [3,5,43]
+test_distinctPrimeFactors_5 = assertEqual (distinctPrimeFactors 646) [2,17,19]
