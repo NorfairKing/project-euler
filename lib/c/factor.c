@@ -56,7 +56,7 @@ bool is_evenly_divisible_by(int n, int m) { return divides(m, n); }
 bool is_evenly_divisible_by_l(long n, long m) { return divides_l(m, n); }
 
 /*
- * Returns the number of proper dividers (less than and while divisor)
+ * Returns the number of proper dividers (less than and whole divisor)
  * of a given number.
  */
 int nr_divisors(int n) {
@@ -81,18 +81,18 @@ int nr_divisors(int n) {
  * Fills a given array of integers with the number of proper divisors for
  * each number.
  */
-  void fill_nr_divisors(int divs[], int n) {
-    int i, j;
-    divs[0] = 0;
-    for (i = 1; i < n; i++) {
-      divs[i] = 1;
-    }
-    for (i = 2; i <= n / 2; i++) {
-      for (j = i+i; j < n; j += i) {
-        divs[j]++;
-      }
+void fill_nr_divisors(int divs[], int n) {
+  int i, j;
+  divs[0] = 0;
+  for (i = 1; i < n; i++) {
+    divs[i] = 1;
+  }
+  for (i = 2; i <= n / 2; i++) {
+    for (j = i+i; j < n; j += i) {
+      divs[j]++;
     }
   }
+}
 
 int sum_divisors(int n){
   if (n == 0) {
