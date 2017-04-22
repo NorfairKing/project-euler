@@ -7,8 +7,10 @@
  * Gets the number of digits in a given number.
  */
 int nr_of_digits(int p) {
-  if (p < 10) { return 1; }
-  return nr_of_digits(p / 10) + 1;
+  if (p < BASE) {
+    return 1;
+  }
+  return nr_of_digits(p / BASE) + 1;
 }
 
 /*
@@ -18,24 +20,33 @@ int nr_of_digits(int p) {
  * and are _zero indexed_. That might seem backwards.
  */
 int digit(int n, int p) {
-  if (n == 0) { return p % 10; }
-  return digit(n - 1, p / 10);
+  if (n == 0) {
+    return p % BASE;
+  }
+  return digit(n - 1, p / BASE);
 }
 
 /*
- * Calculates the number represented by the first n digits in an array of digits.
+ * Calculates the number represented by the first n digits in an array of
+ * digits.
  * Whether the numbers in the array actually represent digits is not checked.
  */
 int from_digits(int digit[], int n) {
-  int j; int num = 0;
+  int j;
+  int num = 0;
   for (j = 0; j < n; j++) {
-    num += digit[j] * pow(10, n - 1 - j);
+    num += digit[j] * pow(BASE, n - 1 - j);
   }
   return num;
 }
 
 /*
  * Fills in the digits of n.
+ *
+ * digit[]: array of digits, in increasing order of significance. This might
+ * seem backward.
+ * nrd: length of the array, must be greater than or equal to nr_of_digits(n)
+ * n: number to break down
  */
 void fill_digits(int digit[], int nrd, int n) {
   int ix = nrd - 1;

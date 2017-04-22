@@ -1,7 +1,7 @@
 #ifndef series_h__
 #define series_h__
 
-/* 
+/*
  * Returns the sum of the first natural numbers up to a given number.
  * Time: O(1), Space: O(1)
  */
@@ -18,4 +18,3 @@ double sum_geometric(double a, double n, double r);
  */
 int sum_squares(int n);
 #endif
-

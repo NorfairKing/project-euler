@@ -12,4 +12,3 @@ double phi();
 double psi();
 
 #endif
-
