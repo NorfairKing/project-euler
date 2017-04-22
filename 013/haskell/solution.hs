@@ -1,12 +1,12 @@
 import Control.Monad (replicateM)
 
-solve :: [Integer] -> Integer
-solve = read . take 10 . show . sum
+solve :: Int -> [Integer] -> Integer
+solve d = read . take d . show . sum
 
 main :: IO ()
 main = do
-    _ <- getLine
+    d <- readLn
     _ <- getLine
     n <- readLn
     ints <- replicateM n readLn
-    print $ solve ints
+    print $ solve d ints
