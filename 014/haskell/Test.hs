@@ -1,1 +1,1 @@
-test_description = assertEqual (length . itseq $ 13) 10
+test_description = assertEqual (collatzLength 13) 10

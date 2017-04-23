@@ -5,7 +5,6 @@
 
 int solve(int n);
 int collatz_len(int n);
-long collatz_next(long n);
 
 #ifndef TESTING
 int main() {
@@ -34,16 +33,12 @@ int collatz_len(int n) {
   int len = 0;
   long tmp = n;
   while (tmp != 1) {
-    tmp = collatz_next(tmp);
+    if (even(tmp)) {
+      tmp /= 2;
+    } else {
+      tmp = 3 * tmp + 1;
+    }
     len++;
   }
   return len;
-}
-
-long collatz_next(long n) {
-  if (even(n)) {
-    return n / 2;
-  } else {
-    return 3 * n + 1;
-  }
 }
