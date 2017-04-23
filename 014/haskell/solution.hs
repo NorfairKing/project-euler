@@ -1,4 +1,5 @@
-import Data.List (maximumBy, comparing)
+import Data.List (maximumBy)
+import Data.Ord (comparing)
 
 main :: IO ()
 main = readLn >>= print . solve
@@ -13,4 +14,5 @@ collatzNext n
     | otherwise = 3 * n + 1
 
 solve :: Int -> Int
-solve p = fst $ maximumBy (comparing snd) $ map (\i -> (i, collatzLength i) [1..p]
+solve p =
+    fst $ maximumBy (comparing snd) $ map (\i -> (i, collatzLength i)) [1 .. p]
